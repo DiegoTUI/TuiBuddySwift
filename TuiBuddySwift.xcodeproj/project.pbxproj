@@ -14,6 +14,7 @@
 		76BF412A1A0CCCE60042966D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76BF41281A0CCCE60042966D /* LaunchScreen.xib */; };
 		76BF41361A0CCCE60042966D /* TuiBuddySwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BF41351A0CCCE60042966D /* TuiBuddySwiftTests.swift */; };
 		76BF41421A0CD02E0042966D /* AttractionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BF41411A0CD02E0042966D /* AttractionsTableViewController.swift */; };
+		76BF41461A0CE4700042966D /* AddEditAttractionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BF41451A0CE4700042966D /* AddEditAttractionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		76BF41341A0CCCE60042966D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76BF41351A0CCCE60042966D /* TuiBuddySwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuiBuddySwiftTests.swift; sourceTree = "<group>"; };
 		76BF41411A0CD02E0042966D /* AttractionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionsTableViewController.swift; sourceTree = "<group>"; };
+		76BF41451A0CE4700042966D /* AddEditAttractionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditAttractionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				76BF41281A0CCCE60042966D /* LaunchScreen.xib */,
 				76BF411B1A0CCCE60042966D /* Supporting Files */,
 				76BF41411A0CD02E0042966D /* AttractionsTableViewController.swift */,
+				76BF41451A0CE4700042966D /* AddEditAttractionViewController.swift */,
 			);
 			path = TuiBuddySwift;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				76BF41221A0CCCE60042966D /* DetailViewController.swift in Sources */,
 				76BF41421A0CD02E0042966D /* AttractionsTableViewController.swift in Sources */,
 				76BF411E1A0CCCE60042966D /* AppDelegate.swift in Sources */,
+				76BF41461A0CE4700042966D /* AddEditAttractionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

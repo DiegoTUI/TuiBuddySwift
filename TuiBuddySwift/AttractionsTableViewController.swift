@@ -22,7 +22,7 @@ class AttractionsTableViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         // self.navigationItem.leftBarButtonItem = self.editButtonItem()
         
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
+        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addNewAttraction:")
         self.navigationItem.rightBarButtonItem = addButton
         //Delegate and data source
         self.tableView.dataSource = self
@@ -32,6 +32,10 @@ class AttractionsTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func addNewAttraction(sender: AnyObject) {
+        self.performSegueWithIdentifier("addEditAttraction", sender: "add")
     }
     
     func insertNewObject(sender: AnyObject) {
@@ -48,6 +52,12 @@ class AttractionsTableViewController: UITableViewController {
                 let object = objects[indexPath.row] as NSDate
                 (segue.destinationViewController as DetailViewController).detailItem = object
             }
+        } else if segue.identifier == "addEditAttraction" {
+            if sender as String == "add" {
+                let destinationViewController = segue.destinationViewController as AddEditAttractionViewController
+                destinationViewController.titleText = "Add Attraction"
+            }
+        
         }
     }
     
