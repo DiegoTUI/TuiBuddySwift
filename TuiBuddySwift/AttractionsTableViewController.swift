@@ -57,7 +57,6 @@ class AttractionsTableViewController: UITableViewController {
                 let destinationViewController = segue.destinationViewController as AddEditAttractionViewController
                 destinationViewController.titleText = "Add Attraction"
             }
-        
         }
     }
     

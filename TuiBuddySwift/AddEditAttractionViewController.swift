@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddEditAttractionViewController: UIViewController {
+class AddEditAttractionViewController: UIViewController, UITextFieldDelegate {
     
     var titleText: String? = nil
     var name: String? = nil
@@ -27,13 +27,22 @@ class AddEditAttractionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // assign texts
         titleLabel.text = titleText
         nameTextField.text = name
         latitudeTextField.text = latitude
         longitudeTextField.text = longitude
         radiusTextField.text = radius
         linkTextField.text = link
+        // delegates to hide keyboard
+        nameTextField.delegate = self
+        latitudeTextField.delegate = self
+        longitudeTextField.delegate = self
+        radiusTextField.delegate = self
+        linkTextField.delegate = self
+        // Tap gesture recognizer
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("hideKeyboard"))
+        self.view.addGestureRecognizer(tapGestureRecognizer)
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,8 +66,21 @@ class AddEditAttractionViewController: UIViewController {
     }
     
     @IBAction func doneButtonClicked(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     @IBAction func cancelButtonClicked(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // MARK: - TextFieldDelegate
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // MARK: - Keyboard
+    func hideKeyboard() {
+        self.view.endEditing(true)
     }
 }
