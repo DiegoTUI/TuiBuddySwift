@@ -10,8 +10,7 @@ import UIKit
 
 class AttractionsTableViewController: UITableViewController {
 
-    var objects = NSMutableArray()
-    
+    var attractions = SqliteManager.sharedInstance.readAttractions()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,19 +37,14 @@ class AttractionsTableViewController: UITableViewController {
         self.performSegueWithIdentifier("addEditAttraction", sender: "add")
     }
     
-    func insertNewObject(sender: AnyObject) {
-        objects.insertObject(NSDate(), atIndex: 0)
-        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-    }
     
     // MARK: - Segues
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
-                let object = objects[indexPath.row] as NSDate
-                (segue.destinationViewController as DetailViewController).detailItem = object
+                /*let object = objects[indexPath.row] as NSDate
+                (segue.destinationViewController as DetailViewController).detailItem = object*/
             }
         } else if segue.identifier == "addEditAttraction" {
             if sender as String == "add" {
@@ -67,14 +61,14 @@ class AttractionsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return attractions.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         
-        let object = objects[indexPath.row] as NSDate
-        cell.textLabel.text = object.description
+        let attraction = attractions[indexPath.row] as Attraction
+        cell.textLabel.text = attraction.name
         return cell
     }
     
@@ -87,7 +81,8 @@ class AttractionsTableViewController: UITableViewController {
         
         var deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler:{[unowned self](action, indexPath) in
             println("DELETE•ACTION");
-            self.objects.removeObjectAtIndex(indexPath.row)
+            // TO DO: REMOVE IN SQLITE!!!
+            self.attractions.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         });
         

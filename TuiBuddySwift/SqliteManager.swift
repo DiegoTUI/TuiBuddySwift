@@ -13,6 +13,7 @@ class SqliteManager {
     var _database: COpaquePointer = nil
     
     // MARK: - Shared instance
+    
     class var sharedInstance: SqliteManager {
         struct Static {
             static var instance: SqliteManager?
@@ -27,6 +28,7 @@ class SqliteManager {
     }
     
     // MARK: - Construction and destruction
+    
     init() {
         let dbPath: String! = NSBundle.mainBundle().pathForResource("attractions", ofType: "sqlite")
         if sqlite3_open((dbPath as NSString).UTF8String, &_database) != SQLITE_OK {
@@ -45,10 +47,38 @@ class SqliteManager {
     }
     
     // MARK: - Read
+    
+    func readAttractions() -> Array<Attraction> {
+        var result = Array<Attraction>()
+        // define sql query
+        let query = "SELECT * FROM geofences"
+        var statement:COpaquePointer = nil
+        // prepare statement
+        if sqlite3_prepare_v2(_database, (query as NSString).UTF8String, -1, &statement, nil) == SQLITE_OK {
+            // iterate results
+            while sqlite3_step(statement) == SQLITE_ROW {
+                var attraction = Attraction()
+                attraction.name = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(statement, 0)))!
+                attraction.latitude = sqlite3_column_double(statement,1)
+                attraction.longitude = sqlite3_column_double(statement,2)
+                attraction.radius = sqlite3_column_double(statement,3)
+                attraction.link = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(statement, 4)))!
+                // add to result
+                result.append(attraction)
+            }
+        }
+        else {
+            println("[***ERROR***] Failed to step statement: \(query)")
+        }
+
+        
+        return result
+    }
+    
     func readAttraction(#name: String) -> Attraction? {
         var result = Attraction()
+        // define sql query
         let query = "SELECT * FROM geofences WHERE name=\"\(name)\""
-        let query2 = "SELECT * FROM geofences"
         var statement:COpaquePointer = nil
         // prepare statement
         if sqlite3_prepare_v2(_database, (query as NSString).UTF8String, -1, &statement, nil) == SQLITE_OK {
