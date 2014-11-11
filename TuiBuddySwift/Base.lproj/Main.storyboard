@@ -55,7 +55,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Attractions" id="tQt-TN-PWz"/>
                     <connections>
-                        <segue destination="tab-xE-gHx" kind="presentation" identifier="addEditAttraction" id="low-eL-Wt6"/>
+                        <segue destination="tab-xE-gHx" kind="presentation" identifier="addAttraction" id="low-eL-Wt6"/>
+                        <segue destination="tab-xE-gHx" kind="presentation" identifier="editAttraction" id="J8A-1i-Ton"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Cn-md-YlS" sceneMemberID="firstResponder"/>
@@ -254,4 +255,7 @@
             <point key="canvasLocation" x="1343" y="760"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="J8A-1i-Ton"/>
+    </inferredMetricsTieBreakers>
 </document>

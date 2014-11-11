@@ -61,18 +61,19 @@ class SqliteManager {
     func readAttractions() -> [Attraction] {
         var result = Array<Attraction>()
         // define sql query
-        let query = "SELECT * FROM geofences"
+        let query = "SELECT rowid,* FROM geofences"
         var statement:COpaquePointer = nil
         // prepare statement
         if sqlite3_prepare_v2(_database, (query as NSString).UTF8String, -1, &statement, nil) == SQLITE_OK {
             // iterate results
             while sqlite3_step(statement) == SQLITE_ROW {
                 var attraction = Attraction()
-                attraction.name = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(statement, 0)))!
-                attraction.latitude = sqlite3_column_double(statement,1)
-                attraction.longitude = sqlite3_column_double(statement,2)
-                attraction.radius = sqlite3_column_double(statement,3)
-                attraction.link = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(statement, 4)))!
+                attraction.rowid = sqlite3_column_int(statement, 0)
+                attraction.name = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(statement, 1)))!
+                attraction.latitude = sqlite3_column_double(statement,2)
+                attraction.longitude = sqlite3_column_double(statement,3)
+                attraction.radius = sqlite3_column_double(statement,4)
+                attraction.link = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(statement, 5)))!
                 // add to result
                 result.append(attraction)
             }
@@ -81,39 +82,11 @@ class SqliteManager {
             println("[***ERROR***] Failed to step statement: \(query)")
         }
 
-        
         return result
     }
     
-    func readAttraction(#name: String) -> Attraction? {
-        var result = Attraction()
-        // define sql query
-        let query = "SELECT * FROM geofences WHERE name=\"\(name)\""
-        var statement:COpaquePointer = nil
-        // prepare statement
-        if sqlite3_prepare_v2(_database, (query as NSString).UTF8String, -1, &statement, nil) == SQLITE_OK {
-            // get the first (and supposedly only) result
-            if sqlite3_step(statement) == SQLITE_ROW {
-                // fill in dictionary
-                result.name = name
-                result.latitude = sqlite3_column_double(statement,1)
-                result.longitude = sqlite3_column_double(statement,2)
-                result.radius = sqlite3_column_double(statement,3)
-                result.link = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(statement, 4)))!
-                
-            }
-            else {
-                println("[***ERROR***] Failed to step statement: \(query)")
-            }
-        }
-        else {
-            println("[***ERROR***] Failed to prepare statement: \(query)")
-        }
-        
-        return countElements(result.name) > 0 ? result : nil
-    }
     
-    // MARK: - Write
+    // MARK: - Write/Update
     
     func writeAttraction(attraction: Attraction) {
         // define sql query
@@ -126,6 +99,32 @@ class SqliteManager {
             sqlite3_bind_double(statement, 3, attraction.longitude)
             sqlite3_bind_double(statement, 4, attraction.radius)
             sqlite3_bind_text(statement, 5, (attraction.link as NSString).UTF8String, -1, nil)
+            
+            if sqlite3_step(statement) == SQLITE_DONE {
+                sqlite3_finalize(statement)
+                statement = nil
+            }
+            else {
+                println("[***ERROR***] Failed to step statement: \(query)")
+            }
+        }
+        else {
+            println("[***ERROR***] Failed to prepare statement: \(query)")
+        }
+    }
+    
+    func updateAttraction(attraction: Attraction) {
+        // define sql query
+        let query = "UPDATE geofences SET name=?, latitude=?, longitude=?, radius=?, link=? WHERE rowid=?"
+        var statement:COpaquePointer = nil
+        // prepare statement
+        if sqlite3_prepare_v2(_database, (query as NSString).UTF8String, -1, &statement, nil) == SQLITE_OK {
+            sqlite3_bind_text(statement, 1, (attraction.name as NSString).UTF8String, -1, nil)
+            sqlite3_bind_double(statement, 2, attraction.latitude)
+            sqlite3_bind_double(statement, 3, attraction.longitude)
+            sqlite3_bind_double(statement, 4, attraction.radius)
+            sqlite3_bind_text(statement, 5, (attraction.link as NSString).UTF8String, -1, nil)
+            sqlite3_bind_int(statement, 6, attraction.rowid)
             
             if sqlite3_step(statement) == SQLITE_DONE {
                 sqlite3_finalize(statement)

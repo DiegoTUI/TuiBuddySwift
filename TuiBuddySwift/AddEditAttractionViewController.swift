@@ -21,13 +21,14 @@ extension String {
 }
 
 protocol AddEditAttractionViewControllerDelegate {
-    func attractionAdded()
+    func attractionAdded(attractionRow: Int?)
 }
 
 class AddEditAttractionViewController: UIViewController, UITextFieldDelegate {
     
     var titleText: String? = nil
     var attraction: Attraction? = nil
+    var attractionRow: Int? = nil
     var delegate:AddEditAttractionViewControllerDelegate? = nil
     
 
@@ -113,14 +114,22 @@ class AddEditAttractionViewController: UIViewController, UITextFieldDelegate {
         save = checkTextFieldForEmpty(linkTextField) && save
         
         if save {
-            attraction = Attraction(name: nameTextField.text,
-                latitude: latitudeTextField.text.double,
-                longitude: longitudeTextField.text.double,
-                radius: radiusTextField.text.double,
-                link: linkTextField.text)
-            SqliteManager.sharedInstance.writeAttraction(attraction!)
+            // update or write?
+            let update: Bool = (attraction != nil)
+            // build the attraction to update/write
+            attraction = update ? attraction : Attraction()
+            attraction!.name = nameTextField.text
+            attraction!.latitude = latitudeTextField.text.double
+            attraction!.longitude = longitudeTextField.text.double
+            attraction!.radius = radiusTextField.text.double
+            attraction!.link = linkTextField.text
+            // choose the action to perform
+            let action = update ? SqliteManager.sharedInstance.updateAttraction : SqliteManager.sharedInstance.writeAttraction
+            // perform the action
+            action(attraction!)
+            // dismiss view controller and tell delegate
             self.dismissViewControllerAnimated(true, completion: nil)
-            delegate?.attractionAdded()
+            delegate?.attractionAdded(attractionRow)
         }
         else {
             var alert = UIAlertController(title: "Alert", message: "Some of the fields are incorrect. Please check.", preferredStyle: UIAlertControllerStyle.Alert)

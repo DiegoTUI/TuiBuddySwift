@@ -34,13 +34,16 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
     }
     
     func addNewAttraction(sender: AnyObject) {
-        self.performSegueWithIdentifier("addEditAttraction", sender: "add")
+        self.performSegueWithIdentifier("addAttraction", sender: nil)
     }
     
     // MARK: - AddEditAttractionViewControllerDelegate
-    func attractionAdded () {
+    
+    func attractionAdded (attractionRow: Int?) {
         attractions = SqliteManager.sharedInstance.readAttractions()
-        self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: countElements(attractions) - 1, inSection: 0)], withRowAnimation: .Automatic)
+        let action = (attractionRow == nil) ? self.tableView.insertRowsAtIndexPaths : self.tableView.reloadRowsAtIndexPaths
+        let row = (attractionRow == nil) ? countElements(attractions) - 1 : attractionRow!
+        action([NSIndexPath(forRow: row, inSection: 0)], withRowAnimation: .Automatic)
     }
     
     
@@ -52,12 +55,16 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
                 /*let object = objects[indexPath.row] as NSDate
                 (segue.destinationViewController as DetailViewController).detailItem = object*/
             }
-        } else if segue.identifier == "addEditAttraction" {
-            if sender as String == "add" {
-                let destinationViewController = segue.destinationViewController as AddEditAttractionViewController
-                destinationViewController.titleText = "Add Attraction"
-                destinationViewController.delegate = self
-            }
+        } else if segue.identifier == "addAttraction" {
+            let destinationViewController = segue.destinationViewController as AddEditAttractionViewController
+            destinationViewController.titleText = "Add Attraction"
+            destinationViewController.delegate = self
+        } else if segue.identifier == "editAttraction" {
+            let destinationViewController = segue.destinationViewController as AddEditAttractionViewController
+            destinationViewController.titleText = "Edit Attraction"
+            destinationViewController.attraction = attractions[(sender as NSIndexPath).row]
+            destinationViewController.attractionRow = (sender as NSIndexPath).row
+            destinationViewController.delegate = self
         }
     }
     
@@ -85,6 +92,7 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
         var moreRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Edit", handler:{[unowned self](action, indexPath) in
             println("EDIT•ACTION");
             // TODO: perform segue to detail view controller
+            self.performSegueWithIdentifier("editAttraction", sender: indexPath)
         });
         moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
         
