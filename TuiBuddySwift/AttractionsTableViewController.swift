@@ -79,8 +79,7 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
         return cell
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    }
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {}
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
         var moreRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Edit", handler:{[unowned self](action, indexPath) in
@@ -91,7 +90,7 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
         
         var deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler:{[unowned self](action, indexPath) in
             println("DELETE•ACTION");
-            // TO DO: REMOVE IN SQLITE!!!
+            SqliteManager.sharedInstance.deleteAttraction(self.attractions[indexPath.row])
             self.attractions.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         });

@@ -139,4 +139,25 @@ class SqliteManager {
             println("[***ERROR***] Failed to prepare statement: \(query)")
         }
     }
+    
+    // MARK: - Delete
+    
+    func deleteAttraction(attraction: Attraction) {
+        // define sql query
+        let query = "DELETE FROM geofences WHERE name=\"\(attraction.name)\""
+        var statement:COpaquePointer = nil
+        // prepare statement
+        if sqlite3_prepare_v2(_database, (query as NSString).UTF8String, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_DONE {
+                sqlite3_finalize(statement)
+                statement = nil
+            }
+            else {
+                println("[***ERROR***] Failed to step statement: \(query)")
+            }
+        }
+        else {
+            println("[***ERROR***] Failed to prepare statement: \(query)")
+        }
+    }
 }
