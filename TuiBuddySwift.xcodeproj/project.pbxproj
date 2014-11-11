@@ -19,6 +19,8 @@
 		76BF414B1A10DB830042966D /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 76BF414A1A10DB830042966D /* libsqlite3.0.dylib */; };
 		76BF414D1A10DDA80042966D /* SqliteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BF414C1A10DDA80042966D /* SqliteManager.swift */; };
 		76BF414F1A10FA980042966D /* Attraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BF414E1A10FA980042966D /* Attraction.swift */; };
+		76EBF36F1A122B5200D7E3F8 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EBF36E1A122B5200D7E3F8 /* LocationManager.swift */; };
+		76EBF3711A122C1E00D7E3F8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EBF3701A122C1E00D7E3F8 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		76BF414A1A10DB830042966D /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		76BF414C1A10DDA80042966D /* SqliteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SqliteManager.swift; sourceTree = "<group>"; };
 		76BF414E1A10FA980042966D /* Attraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attraction.swift; sourceTree = "<group>"; };
+		76EBF36E1A122B5200D7E3F8 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		76EBF3701A122C1E00D7E3F8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76EBF3711A122C1E00D7E3F8 /* CoreLocation.framework in Frameworks */,
 				76BF414B1A10DB830042966D /* libsqlite3.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,6 +78,7 @@
 		76BF410F1A0CCCE50042966D = {
 			isa = PBXGroup;
 			children = (
+				76EBF3701A122C1E00D7E3F8 /* CoreLocation.framework */,
 				76BF414A1A10DB830042966D /* libsqlite3.0.dylib */,
 				76BF411A1A0CCCE60042966D /* TuiBuddySwift */,
 				76BF41321A0CCCE60042966D /* TuiBuddySwiftTests */,
@@ -104,6 +110,7 @@
 				76BF41491A10DB570042966D /* BridgingHeader.h */,
 				76BF414C1A10DDA80042966D /* SqliteManager.swift */,
 				76BF414E1A10FA980042966D /* Attraction.swift */,
+				76EBF36E1A122B5200D7E3F8 /* LocationManager.swift */,
 			);
 			path = TuiBuddySwift;
 			sourceTree = "<group>";
@@ -237,6 +244,7 @@
 				76BF414D1A10DDA80042966D /* SqliteManager.swift in Sources */,
 				76BF41221A0CCCE60042966D /* DetailViewController.swift in Sources */,
 				76BF41421A0CD02E0042966D /* AttractionsTableViewController.swift in Sources */,
+				76EBF36F1A122B5200D7E3F8 /* LocationManager.swift in Sources */,
 				76BF411E1A0CCCE60042966D /* AppDelegate.swift in Sources */,
 				76BF414F1A10FA980042966D /* Attraction.swift in Sources */,
 				76BF41461A0CE4700042966D /* AddEditAttractionViewController.swift in Sources */,
@@ -433,6 +441,7 @@
 				76BF413B1A0CCCE60042966D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		76BF413C1A0CCCE60042966D /* Build configuration list for PBXNativeTarget "TuiBuddySwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -441,6 +450,7 @@
 				76BF413E1A0CCCE60042966D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
