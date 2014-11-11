@@ -10,10 +10,17 @@ import Foundation
 import UIKit
 import CoreLocation
 
+protocol LocationManagerDelegate {
+    func didEnterRegion(attractionId: Int32)
+}
+
 class LocationManager: NSObject, CLLocationManagerDelegate {
     
     var _regions = Array<CLCircularRegion>()
     var _locationManager = CLLocationManager()
+    var _inRegions = Array<String>()
+    
+    var delegate:LocationManagerDelegate? = nil
     
     // MARK: - Shared instance
     
@@ -51,7 +58,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         for attraction:Attraction in SqliteManager.sharedInstance.readAttractions() {
             let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: attraction.latitude, longitude: attraction.longitude),
                 radius: attraction.radius,
-                identifier: String(attraction.rowid))
+                identifier: String(attraction.id))
             _regions.append(region)
         }
     }
@@ -66,9 +73,29 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         _locationManager.stopUpdatingLocation()
     }
     
+    func regionsForCoordinate(coordinate: CLLocationCoordinate2D) -> [CLCircularRegion] {
+        var regions = Array<CLCircularRegion>()
+        for region in _regions {
+            if region.containsCoordinate(coordinate) {
+                regions.append(region)
+            }
+        }
+        return regions
+    }
+    
     // MARK: - CLLocationDelegate
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]) {
         println("did update locations")
+        let regions = regionsForCoordinate((locations.last as CLLocation).coordinate)
+        var newInRegions = Array<String>()
+        for region in regions {
+            newInRegions.append(String(region.identifier))
+            // we only enter a region when we were out of it before
+            if !contains(_inRegions, region.identifier) {
+                delegate?.didEnterRegion(Int32(region.identifier.toInt()!))
+            }
+        }
+        _inRegions = newInRegions
     }
 }

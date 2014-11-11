@@ -68,7 +68,7 @@ class SqliteManager {
             // iterate results
             while sqlite3_step(statement) == SQLITE_ROW {
                 var attraction = Attraction()
-                attraction.rowid = sqlite3_column_int(statement, 0)
+                attraction.id = sqlite3_column_int(statement, 0)
                 attraction.name = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(statement, 1)))!
                 attraction.latitude = sqlite3_column_double(statement,2)
                 attraction.longitude = sqlite3_column_double(statement,3)
@@ -124,7 +124,7 @@ class SqliteManager {
             sqlite3_bind_double(statement, 3, attraction.longitude)
             sqlite3_bind_double(statement, 4, attraction.radius)
             sqlite3_bind_text(statement, 5, (attraction.link as NSString).UTF8String, -1, nil)
-            sqlite3_bind_int(statement, 6, attraction.rowid)
+            sqlite3_bind_int(statement, 6, attraction.id)
             
             if sqlite3_step(statement) == SQLITE_DONE {
                 sqlite3_finalize(statement)

@@ -9,7 +9,7 @@
 import Foundation
 
 struct Attraction {
-    var rowid: Int32 = -1
+    var id: Int32 = -1
     var name: String = ""
     var latitude: Double = 0.0
     var longitude: Double = 0.0
@@ -18,13 +18,13 @@ struct Attraction {
     
     init () {}
     
-    init(rowid: Int32 = -1,
+    init(id: Int32 = -1,
         name: String,
         latitude: Double,
         longitude: Double,
         radius: Double,
         link: String) {
-            self.rowid = rowid
+            self.id = id
             self.name = name
             self.latitude = latitude
             self.longitude = longitude
