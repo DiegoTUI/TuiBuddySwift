@@ -30,8 +30,18 @@ class SqliteManager {
     // MARK: - Construction and destruction
     
     init() {
+        // copy the db to writable file system and open it
         let dbPath: String! = NSBundle.mainBundle().pathForResource("attractions", ofType: "sqlite")
-        if sqlite3_open((dbPath as NSString).UTF8String, &_database) != SQLITE_OK {
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        let writableDbPath = "\(documentsPath)/attractions.sqlite"
+        // copy the db file if it doesn't exist
+        if !NSFileManager.defaultManager().fileExistsAtPath(writableDbPath) {
+            var error: NSError? = nil
+            if (!NSFileManager.defaultManager().copyItemAtPath(dbPath, toPath: writableDbPath, error: &error)) {
+                println("[***ERROR***] Failed to create writable database file with message \(error!.localizedDescription)")
+            }
+        }
+        if sqlite3_open((writableDbPath as NSString).UTF8String, &_database) != SQLITE_OK {
             println("[***ERROR***] Failed to open database")
         }
         else {
@@ -48,7 +58,7 @@ class SqliteManager {
     
     // MARK: - Read
     
-    func readAttractions() -> Array<Attraction> {
+    func readAttractions() -> [Attraction] {
         var result = Array<Attraction>()
         // define sql query
         let query = "SELECT * FROM geofences"
@@ -101,5 +111,32 @@ class SqliteManager {
         }
         
         return countElements(result.name) > 0 ? result : nil
+    }
+    
+    // MARK: - Write
+    
+    func writeAttraction(attraction: Attraction) {
+        // define sql query
+        let query = "INSERT INTO geofences(name, latitude, longitude, radius, link) VALUES(?, ?, ?, ?, ?)"
+        var statement:COpaquePointer = nil
+        // prepare statement
+        if sqlite3_prepare_v2(_database, (query as NSString).UTF8String, -1, &statement, nil) == SQLITE_OK {
+            sqlite3_bind_text(statement, 1, (attraction.name as NSString).UTF8String, -1, nil)
+            sqlite3_bind_double(statement, 2, attraction.latitude)
+            sqlite3_bind_double(statement, 3, attraction.longitude)
+            sqlite3_bind_double(statement, 4, attraction.radius)
+            sqlite3_bind_text(statement, 5, (attraction.link as NSString).UTF8String, -1, nil)
+            
+            if sqlite3_step(statement) == SQLITE_DONE {
+                sqlite3_finalize(statement)
+                statement = nil
+            }
+            else {
+                println("[***ERROR***] Failed to step statement: \(query)")
+            }
+        }
+        else {
+            println("[***ERROR***] Failed to prepare statement: \(query)")
+        }
     }
 }

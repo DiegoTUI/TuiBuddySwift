@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AttractionsTableViewController: UITableViewController {
+class AttractionsTableViewController: UITableViewController, AddEditAttractionViewControllerDelegate {
 
     var attractions = SqliteManager.sharedInstance.readAttractions()
     
@@ -37,6 +37,12 @@ class AttractionsTableViewController: UITableViewController {
         self.performSegueWithIdentifier("addEditAttraction", sender: "add")
     }
     
+    // MARK: - AddEditAttractionViewControllerDelegate
+    func attractionAdded () {
+        attractions = SqliteManager.sharedInstance.readAttractions()
+        self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: countElements(attractions) - 1, inSection: 0)], withRowAnimation: .Automatic)
+    }
+    
     
     // MARK: - Segues
     
@@ -50,6 +56,7 @@ class AttractionsTableViewController: UITableViewController {
             if sender as String == "add" {
                 let destinationViewController = segue.destinationViewController as AddEditAttractionViewController
                 destinationViewController.titleText = "Add Attraction"
+                destinationViewController.delegate = self
             }
         }
     }
@@ -70,6 +77,9 @@ class AttractionsTableViewController: UITableViewController {
         let attraction = attractions[indexPath.row] as Attraction
         cell.textLabel.text = attraction.name
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     }
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
