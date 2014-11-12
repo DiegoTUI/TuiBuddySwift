@@ -20,10 +20,10 @@
             </objects>
             <point key="canvasLocation" x="-148" y="64"/>
         </scene>
-        <!--AttractionsTable-->
+        <!--Attractions Table-->
         <scene sceneID="VgW-fR-Quf">
             <objects>
-                <tableViewController title="AttractionsTable" id="pGg-6v-bdr" customClass="AttractionsTableViewController" customModule="TuiBuddySwift" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Attractions Table" id="pGg-6v-bdr" customClass="AttractionsTableViewController" customModule="TuiBuddySwift" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mLL-gJ-YKr">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,9 +46,6 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="Ah7-4n-0Wa" kind="show" identifier="showDetail" id="jUr-3t-vfg"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -57,47 +54,46 @@
                     <connections>
                         <segue destination="tab-xE-gHx" kind="presentation" identifier="addAttraction" id="low-eL-Wt6"/>
                         <segue destination="tab-xE-gHx" kind="presentation" identifier="editAttraction" id="J8A-1i-Ton"/>
+                        <segue destination="tLe-Ap-R7V" kind="show" identifier="showInfo" id="9jA-3I-3iH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Cn-md-YlS" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="615" y="64"/>
         </scene>
-        <!--Detail-->
-        <scene sceneID="Cn3-H9-jdl">
+        <!--Attraction Info-->
+        <scene sceneID="HKA-Aw-NPl">
             <objects>
-                <viewController title="Detail" id="Ah7-4n-0Wa" customClass="DetailViewController" customModule="TuiBuddySwift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Attraction Info" id="tLe-Ap-R7V" customClass="AttractionInfoViewController" customModule="TuiBuddySwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="cIm-e0-J51"/>
-                        <viewControllerLayoutGuide type="bottom" id="a0L-h9-sNL"/>
+                        <viewControllerLayoutGuide type="top" id="ihL-Yb-hkI"/>
+                        <viewControllerLayoutGuide type="bottom" id="UJv-TF-d1Z"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="MMQ-IT-qOo">
+                    <view key="view" contentMode="scaleToFill" id="UfM-WX-ZrL">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Detail view content goes here" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Lei-5M-9Gs">
-                                <rect key="frame" x="20" y="292" width="560" height="17"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kKW-wO-s37">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" size="system"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </webView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Lei-5M-9Gs" firstAttribute="leading" secondItem="MMQ-IT-qOo" secondAttribute="leading" constant="20" symbolic="YES" id="62x-JV-TTJ"/>
-                            <constraint firstItem="Lei-5M-9Gs" firstAttribute="centerY" secondItem="MMQ-IT-qOo" secondAttribute="centerY" id="JzS-HC-Rnl"/>
-                            <constraint firstAttribute="trailing" secondItem="Lei-5M-9Gs" secondAttribute="trailing" constant="20" symbolic="YES" id="pXB-RP-Zz6"/>
+                            <constraint firstItem="kKW-wO-s37" firstAttribute="leading" secondItem="UfM-WX-ZrL" secondAttribute="leading" id="1AO-8h-BCf"/>
+                            <constraint firstItem="kKW-wO-s37" firstAttribute="top" secondItem="UfM-WX-ZrL" secondAttribute="top" id="6B9-Bi-yPm"/>
+                            <constraint firstItem="kKW-wO-s37" firstAttribute="bottom" secondItem="UJv-TF-d1Z" secondAttribute="top" id="9DR-eK-Fmb"/>
+                            <constraint firstAttribute="trailing" secondItem="kKW-wO-s37" secondAttribute="trailing" id="sXe-gb-gUD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Detail" id="cra-N8-TIN"/>
+                    <navigationItem key="navigationItem" title="Attraction Info" id="S2h-Vx-IKE"/>
                     <connections>
-                        <outlet property="detailDescriptionLabel" destination="Lei-5M-9Gs" id="sCT-F7-F6f"/>
+                        <outlet property="_webView" destination="kKW-wO-s37" id="sQ0-bV-qSl"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lrm-kH-fPn" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m3y-N3-C4A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1343" y="64"/>
+            <point key="canvasLocation" x="1384" y="64"/>
         </scene>
         <!--Add Edit Attraction View Controller-->
         <scene sceneID="zOV-EL-DvW">

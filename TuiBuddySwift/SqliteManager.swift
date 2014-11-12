@@ -73,7 +73,7 @@ class SqliteManager {
                 attraction.latitude = sqlite3_column_double(statement,2)
                 attraction.longitude = sqlite3_column_double(statement,3)
                 attraction.radius = sqlite3_column_double(statement,4)
-                attraction.link = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(statement, 5)))!
+                attraction.url = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(statement, 5)))!
                 // add to result
                 result.append(attraction)
             }
@@ -98,7 +98,7 @@ class SqliteManager {
             sqlite3_bind_double(statement, 2, attraction.latitude)
             sqlite3_bind_double(statement, 3, attraction.longitude)
             sqlite3_bind_double(statement, 4, attraction.radius)
-            sqlite3_bind_text(statement, 5, (attraction.link as NSString).UTF8String, -1, nil)
+            sqlite3_bind_text(statement, 5, (attraction.url as NSString).UTF8String, -1, nil)
             
             if sqlite3_step(statement) == SQLITE_DONE {
                 sqlite3_finalize(statement)
@@ -123,7 +123,7 @@ class SqliteManager {
             sqlite3_bind_double(statement, 2, attraction.latitude)
             sqlite3_bind_double(statement, 3, attraction.longitude)
             sqlite3_bind_double(statement, 4, attraction.radius)
-            sqlite3_bind_text(statement, 5, (attraction.link as NSString).UTF8String, -1, nil)
+            sqlite3_bind_text(statement, 5, (attraction.url as NSString).UTF8String, -1, nil)
             sqlite3_bind_int(statement, 6, attraction.id)
             
             if sqlite3_step(statement) == SQLITE_DONE {

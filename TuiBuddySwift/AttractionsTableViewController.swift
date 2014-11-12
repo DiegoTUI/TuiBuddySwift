@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AttractionsTableViewController: UITableViewController, AddEditAttractionViewControllerDelegate {
+class AttractionsTableViewController: UITableViewController, AddEditAttractionViewControllerDelegate, LocationManagerDelegate {
 
     var attractions = SqliteManager.sharedInstance.readAttractions()
     
@@ -26,6 +26,8 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
         //Delegate and data source
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        // Become delagte of LocationManager
+        LocationManager.sharedInstance.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -46,15 +48,24 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
         action([NSIndexPath(forRow: row, inSection: 0)], withRowAnimation: .Automatic)
     }
     
+    // MARK: - LocationManagerDelegate
+    
+    func didEnterRegion(attractionId: Int32) {
+        
+    }
     
     // MARK: - Segues
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showDetail" {
-            if let indexPath = self.tableView.indexPathForSelectedRow() {
-                /*let object = objects[indexPath.row] as NSDate
-                (segue.destinationViewController as DetailViewController).detailItem = object*/
-            }
+        if segue.identifier == "showInfo" {
+            // sender is the title of the cell
+            let attraction = attractions.filter({$0.name == (sender as String)})[0]
+            (segue.destinationViewController as AttractionInfoViewController).url = attraction.url
+            (segue.destinationViewController as AttractionInfoViewController).navigationTitle = (sender as String)
+            /*if let indexPath = self.tableView.indexPathForSelectedRow() {
+                let object = objects[indexPath.row] as NSDate
+                (segue.destinationViewController as DetailViewController).detailItem = object
+            }*/
         } else if segue.identifier == "addAttraction" {
             let destinationViewController = segue.destinationViewController as AddEditAttractionViewController
             destinationViewController.titleText = "Add Attraction"
@@ -84,6 +95,10 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
         let attraction = attractions[indexPath.row] as Attraction
         cell.textLabel.text = attraction.name
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("showInfo", sender: tableView.cellForRowAtIndexPath(indexPath)?.textLabel.text)
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {}

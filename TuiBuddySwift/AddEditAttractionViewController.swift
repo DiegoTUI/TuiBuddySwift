@@ -49,7 +49,7 @@ class AddEditAttractionViewController: UIViewController, UITextFieldDelegate {
             latitudeTextField.text = String(format:"%f", attraction!.latitude)
             longitudeTextField.text = String(format:"%f", attraction!.longitude)
             radiusTextField.text = String(format:"%f", attraction!.radius)
-            linkTextField.text = attraction!.link
+            linkTextField.text = attraction!.url
         }
         // delegates to hide keyboard
         nameTextField.delegate = self
@@ -122,7 +122,7 @@ class AddEditAttractionViewController: UIViewController, UITextFieldDelegate {
             attraction!.latitude = latitudeTextField.text.double
             attraction!.longitude = longitudeTextField.text.double
             attraction!.radius = radiusTextField.text.double
-            attraction!.link = linkTextField.text
+            attraction!.url = linkTextField.text
             // choose the action to perform
             let action = update ? SqliteManager.sharedInstance.updateAttraction : SqliteManager.sharedInstance.writeAttraction
             // perform the action
