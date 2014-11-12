@@ -19,8 +19,6 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        // self.navigationItem.leftBarButtonItem = self.editButtonItem()
-        
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addNewAttraction:")
         self.navigationItem.rightBarButtonItem = addButton
         //Delegate and data source
@@ -28,6 +26,11 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
         self.tableView.delegate = self
         // Become delagte of LocationManager
         LocationManager.sharedInstance.delegate = self
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = "Attractions"
     }
     
     override func didReceiveMemoryWarning() {
@@ -51,7 +54,26 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
     // MARK: - LocationManagerDelegate
     
     func didEnterRegion(attractionId: Int32) {
-        
+        // find attraction
+        let attraction = attractions.filter({$0.id == attractionId})[0]
+        let message = "Check out these cool facts about \(attraction.name)!!"
+        // check if background or foreground
+        if UIApplication.sharedApplication().applicationState == .Background {
+            // launch local notification
+            var localNotification = UILocalNotification()
+            localNotification.timeZone = NSTimeZone.defaultTimeZone()
+            localNotification.alertBody = message
+            localNotification.userInfo = ["attractionId":String(attractionId)]
+            UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+        }
+        else {
+            // app in foreground. Show UIAlert
+            var alert = UIAlertController(title: "Hey!!", message: message, preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "No, thanks", style: .Cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK!!", style: .Default, handler:{[unowned self] action in
+                self.performSegueWithIdentifier("showInfo", sender: attraction.name)}))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     // MARK: - Segues
@@ -62,10 +84,6 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
             let attraction = attractions.filter({$0.name == (sender as String)})[0]
             (segue.destinationViewController as AttractionInfoViewController).url = attraction.url
             (segue.destinationViewController as AttractionInfoViewController).navigationTitle = (sender as String)
-            /*if let indexPath = self.tableView.indexPathForSelectedRow() {
-                let object = objects[indexPath.row] as NSDate
-                (segue.destinationViewController as DetailViewController).detailItem = object
-            }*/
         } else if segue.identifier == "addAttraction" {
             let destinationViewController = segue.destinationViewController as AddEditAttractionViewController
             destinationViewController.titleText = "Add Attraction"
