@@ -24,13 +24,15 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
         //Delegate and data source
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        // Become delagte of LocationManager
+        // Become deleagte of LocationManager
         LocationManager.sharedInstance.delegate = self
+        LocationManager.sharedInstance.startMonitoringRegions()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.title = "Attractions"
+        LocationManager.sharedInstance.startMonitoringRegions()
     }
     
     override func didReceiveMemoryWarning() {
@@ -63,7 +65,8 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
             var localNotification = UILocalNotification()
             localNotification.timeZone = NSTimeZone.defaultTimeZone()
             localNotification.alertBody = message
-            localNotification.userInfo = ["attractionId":String(attractionId)]
+            localNotification.userInfo = ["name":attraction.name,
+                                          "url":attraction.url]
             UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
         }
         else {
@@ -79,6 +82,9 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
     // MARK: - Segues
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // stop updating locations
+        LocationManager.sharedInstance.stopMonitoringRegions()
+        // deal with segue
         if segue.identifier == "showInfo" {
             // sender is the title of the cell
             let attraction = attractions.filter({$0.name == (sender as String)})[0]

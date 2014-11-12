@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 extension String {
     // Calculates if a string can be converted to double
@@ -24,12 +25,13 @@ protocol AddEditAttractionViewControllerDelegate {
     func attractionAdded(attractionRow: Int?)
 }
 
-class AddEditAttractionViewController: UIViewController, UITextFieldDelegate {
+class AddEditAttractionViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate {
     
     var titleText: String? = nil
     var attraction: Attraction? = nil
     var attractionRow: Int? = nil
     var delegate:AddEditAttractionViewControllerDelegate? = nil
+    var _locationManager = CLLocationManager()
     
 
     @IBOutlet weak var titleLabel: UILabel!
@@ -60,6 +62,9 @@ class AddEditAttractionViewController: UIViewController, UITextFieldDelegate {
         // Tap gesture recognizer
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("hideKeyboard"))
         self.view.addGestureRecognizer(tapGestureRecognizer)
+        // Location Manager
+        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        _locationManager.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,18 +72,9 @@ class AddEditAttractionViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     // MARK: - Check text fields
+    
     func checkTextFieldForDouble(textField: UITextField) -> Bool {
         if textField.text.isDouble() {
             textField.layer.borderColor = UIColor.blackColor().CGColor
@@ -100,7 +96,12 @@ class AddEditAttractionViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - Actions
+    
     @IBAction func currentLocationButtonClicked(sender: AnyObject) {
+        // disable location text fields
+        latitudeTextField.enabled = false
+        longitudeTextField.enabled = false
+        _locationManager.startUpdatingLocation()
     }
     
     @IBAction func doneButtonClicked(sender: AnyObject) {
@@ -143,13 +144,29 @@ class AddEditAttractionViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - TextFieldDelegate
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
     // MARK: - Keyboard
+    
     func hideKeyboard() {
         self.view.endEditing(true)
+    }
+    
+    // MARK: - CLLocationDelegate
+    
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]) {
+        _locationManager.stopUpdatingLocation()
+        let location = (locations.last as CLLocation)
+        // fill text fields in
+        latitudeTextField.text = "\(location.coordinate.latitude)"
+        longitudeTextField.text = "\(location.coordinate.longitude)"
+        // enable textfields
+        latitudeTextField.enabled = true
+        longitudeTextField.enabled = true
+        
     }
 }

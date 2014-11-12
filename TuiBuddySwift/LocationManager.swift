@@ -87,12 +87,14 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]) {
         println("did update locations")
-        let regions = regionsForCoordinate((locations.last as CLLocation).coordinate)
+        let location = (locations.last as CLLocation)
+        let regions = regionsForCoordinate(location.coordinate)
         var newInRegions = Array<String>()
         for region in regions {
-            newInRegions.append(String(region.identifier))
+            newInRegions.append(region.identifier)
             // we only enter a region when we were out of it before
             if !contains(_inRegions, region.identifier) {
+                _inRegions.append(region.identifier)
                 delegate?.didEnterRegion(Int32(region.identifier.toInt()!))
             }
         }

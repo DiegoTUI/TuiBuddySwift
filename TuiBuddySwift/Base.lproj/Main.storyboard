@@ -64,7 +64,7 @@
         <!--Attraction Info-->
         <scene sceneID="HKA-Aw-NPl">
             <objects>
-                <viewController title="Attraction Info" id="tLe-Ap-R7V" customClass="AttractionInfoViewController" customModule="TuiBuddySwift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="attractionInfo" title="Attraction Info" id="tLe-Ap-R7V" customClass="AttractionInfoViewController" customModule="TuiBuddySwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ihL-Yb-hkI"/>
                         <viewControllerLayoutGuide type="bottom" id="UJv-TF-d1Z"/>

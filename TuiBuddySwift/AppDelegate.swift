@@ -16,7 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        LocationManager.sharedInstance.startMonitoringRegions()
+        // register for local notifications (iOS8 only)
+        if UIApplication.instancesRespondToSelector(Selector("registerUserNotificationSettings:")) {
+            application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
+        }
         return true
     }
 
@@ -28,6 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        println("Entered background.")
+        /*var localNotification = UILocalNotification()
+        localNotification.timeZone = NSTimeZone.defaultTimeZone()
+        localNotification.alertBody = "holy crap!!"
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)*/
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -40,6 +48,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        var rootViewController = self.window!.rootViewController as UINavigationController
+        var visibleViewController = rootViewController.visibleViewController
+        var name = (notification.userInfo?["name"] as String)
+        var url = (notification.userInfo?["url"] as String)
+        if visibleViewController is AttractionInfoViewController {
+            var name = notification.userInfo?["name"] as String
+            (visibleViewController as AttractionInfoViewController).navigationTitle = name
+            (visibleViewController as AttractionInfoViewController).url = url
+            (visibleViewController as AttractionInfoViewController).reloadData()
+        }
+        else if visibleViewController is AttractionsTableViewController {
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            var attractionInfoViewController = mainStoryboard.instantiateViewControllerWithIdentifier("attractionInfo") as AttractionInfoViewController
+        
+            attractionInfoViewController.navigationTitle = name
+            attractionInfoViewController.url = url
+            rootViewController.pushViewController(attractionInfoViewController, animated: false)
+        }
     }
 
 

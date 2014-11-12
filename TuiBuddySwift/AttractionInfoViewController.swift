@@ -19,11 +19,15 @@ class AttractionInfoViewController: UIViewController {
         super.viewDidLoad()
         // remove the title in the back button
         self.navigationController?.navigationBar.topItem?.title = ""
+        
+        reloadData()
+    }
+    
+    func reloadData() {
         // set title in navigation bar
         navigationItem.title = navigationTitle
         // load url
         _webView.loadRequest(NSURLRequest(URL: NSURL(string: url!)!))
-        //_webView.loadRequest(NSURLRequest(URL: NSURL(string: "http://en.m.wikipedia.org/wiki/Palma_Cathedral")!))
     }
     
 
