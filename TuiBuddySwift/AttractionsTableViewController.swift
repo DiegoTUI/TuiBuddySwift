@@ -56,6 +56,7 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
     // MARK: - LocationManagerDelegate
     
     func didEnterRegion(attractionId: Int32) {
+        println("Entered region: \(attractionId)")
         // find attraction
         let attraction = attractions.filter({$0.id == attractionId})[0]
         let message = "Check out these cool facts about \(attraction.name)!!"
