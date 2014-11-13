@@ -8,6 +8,18 @@
 
 import UIKit
 
+extension UITableViewController {
+    override func isVisible() -> Bool {
+        return self.isViewLoaded() && (self.tableView.window != nil)
+    }
+}
+
+extension UIViewController {
+    func isVisible() -> Bool {
+        return self.isViewLoaded() && (self.view.window != nil)
+    }
+}
+
 class AttractionsTableViewController: UITableViewController, AddEditAttractionViewControllerDelegate, RegionManagerDelegate {
 
     var attractions = AttractionManager.sharedInstance.readAttractions()
@@ -32,7 +44,6 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.title = "Attractions"
-        RegionManager.sharedInstance.startMonitoringRegions()
     }
     
     override func didReceiveMemoryWarning() {
@@ -70,8 +81,8 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
                                           "url":attraction.url]
             UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
         }
-        else {
-            // app in foreground. Show UIAlert
+        else if config.showAlerts && self.isVisible() {
+            // app in foreground. Show UIAlert only if config.showAlerts is true and this is the visible view controller
             var alert = UIAlertController(title: "Hey!!", message: message, preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "No, thanks", style: .Cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "OK!!", style: .Default, handler:{[unowned self] action in
@@ -83,8 +94,6 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
     // MARK: - Segues
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // stop updating locations
-        RegionManager.sharedInstance.stopMonitoringRegions()
         // deal with segue
         if segue.identifier == "showInfo" {
             // sender is the title of the cell
@@ -92,10 +101,14 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
             (segue.destinationViewController as AttractionInfoViewController).url = attraction.url
             (segue.destinationViewController as AttractionInfoViewController).navigationTitle = (sender as String)
         } else if segue.identifier == "addAttraction" {
+            // stop updating locations
+            RegionManager.sharedInstance.stopMonitoringRegions()
             let destinationViewController = segue.destinationViewController as AddEditAttractionViewController
             destinationViewController.titleText = "Add Attraction"
             destinationViewController.delegate = self
         } else if segue.identifier == "editAttraction" {
+            // stop updating locations
+            RegionManager.sharedInstance.stopMonitoringRegions()
             let destinationViewController = segue.destinationViewController as AddEditAttractionViewController
             destinationViewController.titleText = "Edit Attraction"
             destinationViewController.attraction = attractions[(sender as NSIndexPath).row]

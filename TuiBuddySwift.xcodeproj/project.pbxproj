@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		760CB36A1A14FCB000789A55 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760CB3691A14FCB000789A55 /* Config.swift */; };
+		760CB36B1A14FCB000789A55 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760CB3691A14FCB000789A55 /* Config.swift */; };
 		761F2AF21A14D936007ECC6D /* RegionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761F2AF11A14D936007ECC6D /* RegionManagerTests.swift */; };
 		761F2AF31A14D99D007ECC6D /* RegionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EBF36E1A122B5200D7E3F8 /* RegionManager.swift */; };
 		76BF411E1A0CCCE60042966D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BF411D1A0CCCE60042966D /* AppDelegate.swift */; };
@@ -40,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		760CB3691A14FCB000789A55 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		761F2AF11A14D936007ECC6D /* RegionManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionManagerTests.swift; sourceTree = "<group>"; };
 		76BF41181A0CCCE60042966D /* TuiBuddySwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TuiBuddySwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76BF411C1A0CCCE60042966D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -119,6 +122,7 @@
 				76BF414E1A10FA980042966D /* Attraction.swift */,
 				76EBF36E1A122B5200D7E3F8 /* RegionManager.swift */,
 				76EBF3721A1344E400D7E3F8 /* AttractionInfoViewController.swift */,
+				760CB3691A14FCB000789A55 /* Config.swift */,
 			);
 			path = TuiBuddySwift;
 			sourceTree = "<group>";
@@ -266,6 +270,7 @@
 				76EBF36F1A122B5200D7E3F8 /* RegionManager.swift in Sources */,
 				76BF411E1A0CCCE60042966D /* AppDelegate.swift in Sources */,
 				76EBF3731A1344E400D7E3F8 /* AttractionInfoViewController.swift in Sources */,
+				760CB36A1A14FCB000789A55 /* Config.swift in Sources */,
 				76BF414F1A10FA980042966D /* Attraction.swift in Sources */,
 				76BF41461A0CE4700042966D /* AddEditAttractionViewController.swift in Sources */,
 			);
@@ -280,6 +285,7 @@
 				761F2AF31A14D99D007ECC6D /* RegionManager.swift in Sources */,
 				76EBF38F1A14B3BA00D7E3F8 /* AttractionManager.swift in Sources */,
 				76EBF38E1A14B1FF00D7E3F8 /* AttractionManagerTests.swift in Sources */,
+				760CB36B1A14FCB000789A55 /* Config.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

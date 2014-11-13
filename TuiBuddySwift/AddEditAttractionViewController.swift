@@ -128,8 +128,10 @@ class AddEditAttractionViewController: UIViewController, UITextFieldDelegate, CL
             let action = update ? AttractionManager.sharedInstance.updateAttraction : AttractionManager.sharedInstance.writeAttraction
             // perform the action
             action(attraction!)
+            // update regions in RegionManager
+            RegionManager.sharedInstance.updateRegions()
             // dismiss view controller and tell delegate
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismissViewControllerAnimated(true, completion: {RegionManager.sharedInstance.startMonitoringRegions()})
             delegate?.attractionAdded(attractionRow)
         }
         else {
@@ -140,7 +142,7 @@ class AddEditAttractionViewController: UIViewController, UITextFieldDelegate, CL
     }
 
     @IBAction func cancelButtonClicked(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: {RegionManager.sharedInstance.startMonitoringRegions()})
     }
     
     // MARK: - TextFieldDelegate
