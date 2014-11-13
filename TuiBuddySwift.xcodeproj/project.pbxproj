@@ -21,6 +21,11 @@
 		76EBF36F1A122B5200D7E3F8 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EBF36E1A122B5200D7E3F8 /* LocationManager.swift */; };
 		76EBF3711A122C1E00D7E3F8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EBF3701A122C1E00D7E3F8 /* CoreLocation.framework */; };
 		76EBF3731A1344E400D7E3F8 /* AttractionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EBF3721A1344E400D7E3F8 /* AttractionInfoViewController.swift */; };
+		76EBF38E1A14B1FF00D7E3F8 /* SqliteManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EBF38D1A14B1FF00D7E3F8 /* SqliteManagerTests.swift */; };
+		76EBF38F1A14B3BA00D7E3F8 /* SqliteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BF414C1A10DDA80042966D /* SqliteManager.swift */; };
+		76EBF3901A14B50D00D7E3F8 /* attractions.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 76BF41471A10D9B10042966D /* attractions.sqlite */; };
+		76EBF3911A14B51500D7E3F8 /* Attraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BF414E1A10FA980042966D /* Attraction.swift */; };
+		76EBF3931A14B59D00D7E3F8 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 76BF414A1A10DB830042966D /* libsqlite3.0.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +58,8 @@
 		76EBF36E1A122B5200D7E3F8 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		76EBF3701A122C1E00D7E3F8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		76EBF3721A1344E400D7E3F8 /* AttractionInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionInfoViewController.swift; sourceTree = "<group>"; };
+		76EBF38D1A14B1FF00D7E3F8 /* SqliteManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SqliteManagerTests.swift; sourceTree = "<group>"; };
+		76EBF3921A14B54800D7E3F8 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76EBF3931A14B59D00D7E3F8 /* libsqlite3.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,8 +86,7 @@
 		76BF410F1A0CCCE50042966D = {
 			isa = PBXGroup;
 			children = (
-				76EBF3701A122C1E00D7E3F8 /* CoreLocation.framework */,
-				76BF414A1A10DB830042966D /* libsqlite3.0.dylib */,
+				76EBF38C1A14B1A200D7E3F8 /* Frameworks */,
 				76BF411A1A0CCCE60042966D /* TuiBuddySwift */,
 				76BF41321A0CCCE60042966D /* TuiBuddySwiftTests */,
 				76BF41191A0CCCE60042966D /* Products */,
@@ -128,6 +135,8 @@
 			children = (
 				76BF41351A0CCCE60042966D /* TuiBuddySwiftTests.swift */,
 				76BF41331A0CCCE60042966D /* Supporting Files */,
+				76EBF38D1A14B1FF00D7E3F8 /* SqliteManagerTests.swift */,
+				76EBF3921A14B54800D7E3F8 /* BridgingHeader.h */,
 			);
 			path = TuiBuddySwiftTests;
 			sourceTree = "<group>";
@@ -138,6 +147,15 @@
 				76BF41341A0CCCE60042966D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		76EBF38C1A14B1A200D7E3F8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				76EBF3701A122C1E00D7E3F8 /* CoreLocation.framework */,
+				76BF414A1A10DB830042966D /* libsqlite3.0.dylib */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +249,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76EBF3901A14B50D00D7E3F8 /* attractions.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,7 +274,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76EBF3911A14B51500D7E3F8 /* Attraction.swift in Sources */,
+				76EBF38F1A14B3BA00D7E3F8 /* SqliteManager.swift in Sources */,
 				76BF41361A0CCCE60042966D /* TuiBuddySwiftTests.swift in Sources */,
+				76EBF38E1A14B1FF00D7E3F8 /* SqliteManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +431,7 @@
 				INFOPLIST_FILE = TuiBuddySwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = TuiBuddySwift/BridgingHeader.h;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TuiBuddySwift.app/TuiBuddySwift";
 			};
 			name = Debug;
@@ -424,6 +447,7 @@
 				INFOPLIST_FILE = TuiBuddySwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = TuiBuddySwift/BridgingHeader.h;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TuiBuddySwift.app/TuiBuddySwift";
 			};
 			name = Release;

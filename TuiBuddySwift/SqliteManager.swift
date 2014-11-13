@@ -143,10 +143,11 @@ class SqliteManager {
     
     func deleteAttraction(attraction: Attraction) {
         // define sql query
-        let query = "DELETE FROM geofences WHERE name=\"\(attraction.name)\""
+        let query = "DELETE FROM geofences WHERE rowid=?"
         var statement:COpaquePointer = nil
         // prepare statement
         if sqlite3_prepare_v2(_database, (query as NSString).UTF8String, -1, &statement, nil) == SQLITE_OK {
+            sqlite3_bind_int(statement, 1, attraction.id)
             if sqlite3_step(statement) == SQLITE_DONE {
                 sqlite3_finalize(statement)
                 statement = nil
