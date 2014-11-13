@@ -10,6 +10,14 @@ import Foundation
 import CoreLocation
 import XCTest
 
+var shouldHaveEnteredRegion = Dictionary<Int32, Bool>()
+
+class mockRegionManagerDelegate: RegionManagerDelegate {
+    func didEnterRegion(attractionId: Int32) {
+        XCTAssertTrue(shouldHaveEnteredRegion[attractionId]!, "Entered region \(attractionId) and it shouldn't have")
+    }
+}
+
 class RegionManagerTests: XCTestCase {
     
     var regionManagerInstance: RegionManager? = nil
@@ -48,5 +56,35 @@ class RegionManagerTests: XCTestCase {
             XCTAssertEqualWithAccuracy(attraction.longitude, region.center.longitude, 0.01, "attraction and region have different longitude")
             XCTAssertEqualWithAccuracy(attraction.radius, region.radius, 0.01, "attraction and region have different radius")
         }
+    }
+    
+    func testUpdatingRegions() {
+        // test entering and exiting a region and check the _inRegions var and the calls to the delegate methods
+        regionManagerInstance = RegionManager()
+        // assign a delegate
+        regionManagerInstance!.delegate = mockRegionManagerDelegate()
+        // we take the first attraction
+        var attraction = AttractionManager.sharedInstance.readAttractions()[0]
+        // if the first location given by CLLocationManager is inside region 1, didEnterRegion must be called
+        shouldHaveEnteredRegion[attraction.id] = true
+        regionManagerInstance!.locationManager(CLLocationManager(), didUpdateLocations: [CLLocation(latitude: attraction.latitude, longitude: attraction.longitude)])
+        // enter another hundred times. DidEnterRegion should not be called.
+        shouldHaveEnteredRegion[attraction.id] = false
+        for i in 1...100 {
+            regionManagerInstance!.locationManager(CLLocationManager(), didUpdateLocations: [CLLocation(latitude: attraction.latitude, longitude: attraction.longitude)])
+        }
+        // exit region
+        regionManagerInstance!.locationManager(CLLocationManager(), didUpdateLocations: [CLLocation(latitude: 0.0, longitude: 0.0)])
+        // enter again. didEnterRegion should be called
+        shouldHaveEnteredRegion[attraction.id] = true
+        regionManagerInstance!.locationManager(CLLocationManager(), didUpdateLocations: [CLLocation(latitude: attraction.latitude, longitude: attraction.longitude)])
+        // exit a hundred times. didEnterRegion should not be called
+        shouldHaveEnteredRegion[attraction.id] = true
+        for i in 1...100 {
+            regionManagerInstance!.locationManager(CLLocationManager(), didUpdateLocations: [CLLocation(latitude: 0.0, longitude: 0.0)])
+        }
+        // enter again. didEnterRegion should be called
+        shouldHaveEnteredRegion[attraction.id] = true
+        regionManagerInstance!.locationManager(CLLocationManager(), didUpdateLocations: [CLLocation(latitude: attraction.latitude, longitude: attraction.longitude)])
     }
 }
