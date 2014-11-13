@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AttractionsTableViewController: UITableViewController, AddEditAttractionViewControllerDelegate, LocationManagerDelegate {
+class AttractionsTableViewController: UITableViewController, AddEditAttractionViewControllerDelegate, RegionManagerDelegate {
 
     var attractions = AttractionManager.sharedInstance.readAttractions()
     
@@ -24,15 +24,15 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
         //Delegate and data source
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        // Become deleagte of LocationManager
-        LocationManager.sharedInstance.delegate = self
-        LocationManager.sharedInstance.startMonitoringRegions()
+        // Become deleagte of RegionManager
+        RegionManager.sharedInstance.delegate = self
+        RegionManager.sharedInstance.startMonitoringRegions()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.title = "Attractions"
-        LocationManager.sharedInstance.startMonitoringRegions()
+        RegionManager.sharedInstance.startMonitoringRegions()
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,7 +53,7 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
         action([NSIndexPath(forRow: row, inSection: 0)], withRowAnimation: .Automatic)
     }
     
-    // MARK: - LocationManagerDelegate
+    // MARK: - RegionManagerDelegate
     
     func didEnterRegion(attractionId: Int32) {
         println("Entered region: \(attractionId)")
@@ -84,7 +84,7 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // stop updating locations
-        LocationManager.sharedInstance.stopMonitoringRegions()
+        RegionManager.sharedInstance.stopMonitoringRegions()
         // deal with segue
         if segue.identifier == "showInfo" {
             // sender is the title of the cell

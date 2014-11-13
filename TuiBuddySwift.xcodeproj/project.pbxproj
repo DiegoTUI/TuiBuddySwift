@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		761F2AF21A14D936007ECC6D /* RegionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761F2AF11A14D936007ECC6D /* RegionManagerTests.swift */; };
+		761F2AF31A14D99D007ECC6D /* RegionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EBF36E1A122B5200D7E3F8 /* RegionManager.swift */; };
 		76BF411E1A0CCCE60042966D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BF411D1A0CCCE60042966D /* AppDelegate.swift */; };
 		76BF41251A0CCCE60042966D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76BF41231A0CCCE60042966D /* Main.storyboard */; };
 		76BF41271A0CCCE60042966D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76BF41261A0CCCE60042966D /* Images.xcassets */; };
@@ -17,7 +19,7 @@
 		76BF414B1A10DB830042966D /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 76BF414A1A10DB830042966D /* libsqlite3.0.dylib */; };
 		76BF414D1A10DDA80042966D /* AttractionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BF414C1A10DDA80042966D /* AttractionManager.swift */; };
 		76BF414F1A10FA980042966D /* Attraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BF414E1A10FA980042966D /* Attraction.swift */; };
-		76EBF36F1A122B5200D7E3F8 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EBF36E1A122B5200D7E3F8 /* LocationManager.swift */; };
+		76EBF36F1A122B5200D7E3F8 /* RegionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EBF36E1A122B5200D7E3F8 /* RegionManager.swift */; };
 		76EBF3711A122C1E00D7E3F8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EBF3701A122C1E00D7E3F8 /* CoreLocation.framework */; };
 		76EBF3731A1344E400D7E3F8 /* AttractionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EBF3721A1344E400D7E3F8 /* AttractionInfoViewController.swift */; };
 		76EBF38E1A14B1FF00D7E3F8 /* AttractionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EBF38D1A14B1FF00D7E3F8 /* AttractionManagerTests.swift */; };
@@ -38,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		761F2AF11A14D936007ECC6D /* RegionManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionManagerTests.swift; sourceTree = "<group>"; };
 		76BF41181A0CCCE60042966D /* TuiBuddySwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TuiBuddySwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76BF411C1A0CCCE60042966D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76BF411D1A0CCCE60042966D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,7 +56,7 @@
 		76BF414A1A10DB830042966D /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		76BF414C1A10DDA80042966D /* AttractionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionManager.swift; sourceTree = "<group>"; };
 		76BF414E1A10FA980042966D /* Attraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attraction.swift; sourceTree = "<group>"; };
-		76EBF36E1A122B5200D7E3F8 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		76EBF36E1A122B5200D7E3F8 /* RegionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionManager.swift; sourceTree = "<group>"; };
 		76EBF3701A122C1E00D7E3F8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		76EBF3721A1344E400D7E3F8 /* AttractionInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionInfoViewController.swift; sourceTree = "<group>"; };
 		76EBF38D1A14B1FF00D7E3F8 /* AttractionManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionManagerTests.swift; sourceTree = "<group>"; };
@@ -114,7 +117,7 @@
 				76BF41491A10DB570042966D /* BridgingHeader.h */,
 				76BF414C1A10DDA80042966D /* AttractionManager.swift */,
 				76BF414E1A10FA980042966D /* Attraction.swift */,
-				76EBF36E1A122B5200D7E3F8 /* LocationManager.swift */,
+				76EBF36E1A122B5200D7E3F8 /* RegionManager.swift */,
 				76EBF3721A1344E400D7E3F8 /* AttractionInfoViewController.swift */,
 			);
 			path = TuiBuddySwift;
@@ -131,6 +134,7 @@
 		76BF41321A0CCCE60042966D /* TuiBuddySwiftTests */ = {
 			isa = PBXGroup;
 			children = (
+				761F2AF11A14D936007ECC6D /* RegionManagerTests.swift */,
 				76BF41331A0CCCE60042966D /* Supporting Files */,
 				76EBF38D1A14B1FF00D7E3F8 /* AttractionManagerTests.swift */,
 				76EBF3921A14B54800D7E3F8 /* BridgingHeader.h */,
@@ -259,7 +263,7 @@
 			files = (
 				76BF414D1A10DDA80042966D /* AttractionManager.swift in Sources */,
 				76BF41421A0CD02E0042966D /* AttractionsTableViewController.swift in Sources */,
-				76EBF36F1A122B5200D7E3F8 /* LocationManager.swift in Sources */,
+				76EBF36F1A122B5200D7E3F8 /* RegionManager.swift in Sources */,
 				76BF411E1A0CCCE60042966D /* AppDelegate.swift in Sources */,
 				76EBF3731A1344E400D7E3F8 /* AttractionInfoViewController.swift in Sources */,
 				76BF414F1A10FA980042966D /* Attraction.swift in Sources */,
@@ -272,6 +276,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				76EBF3911A14B51500D7E3F8 /* Attraction.swift in Sources */,
+				761F2AF21A14D936007ECC6D /* RegionManagerTests.swift in Sources */,
+				761F2AF31A14D99D007ECC6D /* RegionManager.swift in Sources */,
 				76EBF38F1A14B3BA00D7E3F8 /* AttractionManager.swift in Sources */,
 				76EBF38E1A14B1FF00D7E3F8 /* AttractionManagerTests.swift in Sources */,
 			);

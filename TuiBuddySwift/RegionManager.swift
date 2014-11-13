@@ -1,5 +1,5 @@
 //
-//  LocationManager.swift
+//  RegionManager.swift
 //  TuiBuddySwift
 //
 //  Created by Diego Lafuente on 11/11/14.
@@ -10,28 +10,28 @@ import Foundation
 import UIKit
 import CoreLocation
 
-protocol LocationManagerDelegate {
+protocol RegionManagerDelegate {
     func didEnterRegion(attractionId: Int32)
 }
 
-class LocationManager: NSObject, CLLocationManagerDelegate {
+class RegionManager: NSObject, CLLocationManagerDelegate {
     
     var _regions = Array<CLCircularRegion>()
     var _locationManager = CLLocationManager()
     var _inRegions = Array<String>()
     
-    var delegate:LocationManagerDelegate? = nil
+    var delegate:RegionManagerDelegate? = nil
     
     // MARK: - Shared instance
     
-    class var sharedInstance: LocationManager {
+    class var sharedInstance: RegionManager {
         struct Static {
-            static var instance: LocationManager?
+            static var instance: RegionManager?
             static var token: dispatch_once_t = 0
         }
         
         dispatch_once(&Static.token) {
-            Static.instance = LocationManager()
+            Static.instance = RegionManager()
         }
         
         return Static.instance!
@@ -43,7 +43,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         super.init()
         // update regions
         updateRegions()
-        // init locationManager
+        // init RegionManager
         // request authorization if os version higher than 8.0.0
         if UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) != .OrderedAscending {
             _locationManager.requestAlwaysAuthorization()
