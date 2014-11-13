@@ -22,6 +22,7 @@ extension UIViewController {
 
 class AttractionsTableViewController: UITableViewController, AddEditAttractionViewControllerDelegate, RegionManagerDelegate {
 
+    var _alertViewShowing = false
     var attractions = AttractionManager.sharedInstance.readAttractions()
     
     override func awakeFromNib() {
@@ -74,20 +75,18 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
         // check if background or foreground
         if UIApplication.sharedApplication().applicationState == .Background {
             // launch local notification
-            var localNotification = UILocalNotification()
-            localNotification.timeZone = NSTimeZone.defaultTimeZone()
-            localNotification.alertBody = message
-            localNotification.userInfo = ["name":attraction.name,
-                                          "url":attraction.url]
-            UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+            NotificationManager.sendLocalNotificationForAttraction(attraction, withMessage: message)
         }
-        else if config.showAlerts && self.isVisible() {
-            // app in foreground. Show UIAlert only if config.showAlerts is true and this is the visible view controller
+        else if config.showAlerts && isVisible() && !_alertViewShowing {
+            // app in foreground. Show UIAlert only if config.showAlerts is true and this is the visible view controller, and there are no alerts being showed so far
             var alert = UIAlertController(title: "Hey!!", message: message, preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "No, thanks", style: .Cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "No, thanks", style: .Cancel, handler: {[unowned self] action in
+                self._alertViewShowing = false}))
             alert.addAction(UIAlertAction(title: "OK!!", style: .Default, handler:{[unowned self] action in
-                self.performSegueWithIdentifier("showInfo", sender: attraction.name)}))
+                self.performSegueWithIdentifier("showInfo", sender: attraction.name)
+                self._alertViewShowing = false}))
             self.presentViewController(alert, animated: true, completion: nil)
+            _alertViewShowing = true
         }
     }
     

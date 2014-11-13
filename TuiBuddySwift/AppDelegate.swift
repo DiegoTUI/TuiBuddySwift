@@ -51,6 +51,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        // clear notifications in NotificationManager
+        NotificationManager.resetNotifications()
+        // handle notification (could be done through NSNotificationCenter
         var rootViewController = self.window!.rootViewController as UINavigationController
         var visibleViewController = rootViewController.visibleViewController
         var name = (notification.userInfo?["name"] as String)
