@@ -125,7 +125,7 @@ class AddEditAttractionViewController: UIViewController, UITextFieldDelegate, CL
             attraction!.radius = radiusTextField.text.double
             attraction!.url = linkTextField.text
             // choose the action to perform
-            let action = update ? SqliteManager.sharedInstance.updateAttraction : SqliteManager.sharedInstance.writeAttraction
+            let action = update ? AttractionManager.sharedInstance.updateAttraction : AttractionManager.sharedInstance.writeAttraction
             // perform the action
             action(attraction!)
             // dismiss view controller and tell delegate

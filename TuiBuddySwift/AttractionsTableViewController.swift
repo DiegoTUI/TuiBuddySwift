@@ -10,7 +10,7 @@ import UIKit
 
 class AttractionsTableViewController: UITableViewController, AddEditAttractionViewControllerDelegate, LocationManagerDelegate {
 
-    var attractions = SqliteManager.sharedInstance.readAttractions()
+    var attractions = AttractionManager.sharedInstance.readAttractions()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,7 +47,7 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
     // MARK: - AddEditAttractionViewControllerDelegate
     
     func attractionAdded (attractionRow: Int?) {
-        attractions = SqliteManager.sharedInstance.readAttractions()
+        attractions = AttractionManager.sharedInstance.readAttractions()
         let action = (attractionRow == nil) ? self.tableView.insertRowsAtIndexPaths : self.tableView.reloadRowsAtIndexPaths
         let row = (attractionRow == nil) ? countElements(attractions) - 1 : attractionRow!
         action([NSIndexPath(forRow: row, inSection: 0)], withRowAnimation: .Automatic)
@@ -138,7 +138,7 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
         
         var deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler:{[unowned self](action, indexPath) in
             println("DELETE•ACTION");
-            SqliteManager.sharedInstance.deleteAttraction(self.attractions[indexPath.row])
+            AttractionManager.sharedInstance.deleteAttraction(self.attractions[indexPath.row])
             self.attractions.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         });

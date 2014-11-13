@@ -8,20 +8,20 @@
 
 import Foundation
 
-class SqliteManager {
+class AttractionManager {
     // the database
     var _database: COpaquePointer = nil
     
     // MARK: - Shared instance
     
-    class var sharedInstance: SqliteManager {
+    class var sharedInstance: AttractionManager {
         struct Static {
-            static var instance: SqliteManager?
+            static var instance: AttractionManager?
             static var token: dispatch_once_t = 0
         }
         
         dispatch_once(&Static.token) {
-            Static.instance = SqliteManager()
+            Static.instance = AttractionManager()
         }
         
         return Static.instance!
@@ -143,11 +143,10 @@ class SqliteManager {
     
     func deleteAttraction(attraction: Attraction) {
         // define sql query
-        let query = "DELETE FROM geofences WHERE rowid=?"
+        let query = "DELETE FROM geofences WHERE name=\"\(attraction.name)\""
         var statement:COpaquePointer = nil
         // prepare statement
         if sqlite3_prepare_v2(_database, (query as NSString).UTF8String, -1, &statement, nil) == SQLITE_OK {
-            sqlite3_bind_int(statement, 1, attraction.id)
             if sqlite3_step(statement) == SQLITE_DONE {
                 sqlite3_finalize(statement)
                 statement = nil

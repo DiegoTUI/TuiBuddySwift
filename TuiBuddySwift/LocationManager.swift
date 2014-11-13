@@ -55,7 +55,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     // MARK: - Update regions
     
     func updateRegions() {
-        for attraction:Attraction in SqliteManager.sharedInstance.readAttractions() {
+        for attraction:Attraction in AttractionManager.sharedInstance.readAttractions() {
             let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: attraction.latitude, longitude: attraction.longitude),
                 radius: attraction.radius,
                 identifier: String(attraction.id))
