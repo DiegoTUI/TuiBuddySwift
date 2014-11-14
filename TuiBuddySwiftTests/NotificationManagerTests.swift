@@ -11,14 +11,11 @@ import XCTest
 
 class NotificationManagerTests: XCTestCase {
     
-    var shouldSendLocalNotification = false
     var attractionInNotification: Attraction? = nil
     var messageInNotification: String? = nil
     var notificationsReceived: Dictionary<Int32, Int>? = nil
     
     func handleLocalNotification (notification: UILocalNotification) {
-        XCTAssertTrue(self.shouldSendLocalNotification, "sent local notification when it shouldn't")
-        
         XCTAssertEqual(notification.alertBody!, messageInNotification!, "wrong message sent in notification")
         XCTAssertEqual(notification.userInfo!["name"] as String, attractionInNotification!.name, "wrong name sent in notification")
         XCTAssertEqual(notification.userInfo!["url"] as String, attractionInNotification!.url, "wrong url sent in notification")
@@ -59,24 +56,20 @@ class NotificationManagerTests: XCTestCase {
         notificationsReceived = [attraction1.id: 0, attraction2.id: 0]
         // send notification for attraction1
         attractionInNotification = attraction1
-        shouldSendLocalNotification = true
         messageInNotification = "message1"
         NotificationManager.sendLocalNotificationForAttraction(attraction1, withMessage: messageInNotification!)
         attractionsShouldHaveReceived(1, 0)
         // send a hundred more notifications for attraction1
-        shouldSendLocalNotification = false
         for i in 1...100 {
             NotificationManager.sendLocalNotificationForAttraction(attraction1, withMessage: messageInNotification!)
         }
         attractionsShouldHaveReceived(1, 0)
         // send notification for attraction2
         attractionInNotification = attraction2
-        shouldSendLocalNotification = true
         messageInNotification = "message2"
         NotificationManager.sendLocalNotificationForAttraction(attraction2, withMessage: messageInNotification!)
         attractionsShouldHaveReceived(1, 1)
         // send a hundred more notifications for attraction2
-        shouldSendLocalNotification = false
         for i in 1...100 {
             NotificationManager.sendLocalNotificationForAttraction(attraction2, withMessage: messageInNotification!)
         }
@@ -84,7 +77,6 @@ class NotificationManagerTests: XCTestCase {
         // reset notifications (unlock the phone)
         NotificationManager.resetNotifications()
         // send notification2 again
-        shouldSendLocalNotification = true
         NotificationManager.sendLocalNotificationForAttraction(attraction2, withMessage: messageInNotification!)
         attractionsShouldHaveReceived(1, 2)
     }
