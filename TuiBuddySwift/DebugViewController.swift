@@ -22,6 +22,10 @@ class DebugViewController: UIViewController, RegionManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // empty actionsTextView
+        actionsTextView.text = ""
+        // init regionStatusView
+        regionStatusView.initWithAttractions(AttractionManager.sharedInstance.readAttractions())
         // capture Region Manager Delegate
         RegionManager.sharedInstance.delegate = self
     }
@@ -35,10 +39,26 @@ class DebugViewController: UIViewController, RegionManagerDelegate {
     // MARK: - RegionManagerDelegate
     
     func didEnterRegion(attractionId: Int32) {
-        
+        regionStatusView.labelForAttractionId(attractionId)?.textColor = UIColor.redColor()
+        log("entered region: \(attractionId)")
+    }
+    
+    func didExitRegion(attractionId: Int32) {
+        regionStatusView.labelForAttractionId(attractionId)?.textColor = UIColor.blueColor()
+        log("exited region: \(attractionId)")
     }
     
     func didUpdateLocation(location: CLLocation) {
-        
+        // update labels
+        latitudeLabel.text = "\(location.coordinate.latitude)"
+        longitudeLabel.text = "\(location.coordinate.longitude)"
+        // add to actionsTextView
+        log("updated location")
+    }
+    
+    // MARK: - Logging
+    
+    func log(message: String) {
+        actionsTextView.text = "\(actionsTextView.text)updated location\n"
     }
 }

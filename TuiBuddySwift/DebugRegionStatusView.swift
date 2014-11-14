@@ -10,14 +10,35 @@ import UIKit
 
 class DebugRegionStatusView: UIView {
     
+    let kTopMargin: Double = 8.0
+    let kBottomMargin: Double = 8.0
+    let kLeftMargin: Double = 8.0
+    let kRightMargin: Double = 8.0
+    let kSpaceBetweenLabels: Double = 8.0
+    let kMinimmumLabelHeight: Double = 20.0
     var _labels = Dictionary<Int32, UILabel>()
     
     func initWithAttractions(attractions: Array<Attraction>) {
         // Add labels with attractions
+        let labelSize = labelSizeForRows(countElements(attractions))
+        for (index, attraction) in enumerate(attractions) {
+            var label = UILabel(frame: CGRect(origin: CGPoint(x: kLeftMargin, y: kTopMargin + Double(index)*Double(labelSize.height)), size: labelSize))
+            label.adjustsFontSizeToFitWidth = true
+            label.text = attraction.name
+            label.font = UIFont.systemFontOfSize(10)
+            self.addSubview(label)
+            _labels[attraction.id] = label
+        }
     }
     
-    func labelForAttraction(attraction: Attraction) -> UILabel? {
-        return _labels[attraction.id]
+    func labelSizeForRows(numberOfRows: Int) -> CGSize {
+        var width = Double(self.frame.size.width) - kLeftMargin - kRightMargin
+        var height = (Double(self.frame.size.height) - kTopMargin - kBottomMargin)/Double(numberOfRows) < (kMinimmumLabelHeight) ? Double(self.frame.size.height)/Double(numberOfRows) - kTopMargin - kBottomMargin : kMinimmumLabelHeight
+        return CGSize(width: width, height: height)
+    }
+    
+    func labelForAttractionId(attractionId: Int32) -> UILabel? {
+        return _labels[attractionId]
     }
 
     /*
