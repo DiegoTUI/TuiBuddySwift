@@ -20,7 +20,7 @@ extension UIViewController {
     }
 }
 
-class AttractionsTableViewController: UITableViewController, AddEditAttractionViewControllerDelegate, RegionManagerDelegate {
+class AttractionsTableViewController: UITableViewController, AddEditAttractionViewControllerDelegate, RegionManagerDelegate, UIPopoverPresentationControllerDelegate {
 
     var _alertViewShowing = false
     var attractions = AttractionManager.sharedInstance.readAttractions()
@@ -65,7 +65,18 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
     // MARK: - Actions
     
     func debugButtonClicked () {
-        println("debug button clicked")
+        /*println("debug button clicked")
+        var popoverContent = self.storyboard!.instantiateViewControllerWithIdentifier("debug") as DebugViewController
+        var nav = UINavigationController(rootViewController: popoverContent)
+        nav.modalPresentationStyle = UIModalPresentationStyle.Popover
+        var popover = nav.popoverPresentationController
+        popoverContent.preferredContentSize = CGSizeMake(200,300)
+        popover!.delegate = self
+        popover!.sourceView = self.view
+        popover!.sourceRect = CGRectMake(100,100,0,0)
+        
+        self.presentViewController(nav, animated: true, completion: nil)*/
+        performSegueWithIdentifier("showDebug", sender: nil)
     }
     
     // MARK: - AddEditAttractionViewControllerDelegate
