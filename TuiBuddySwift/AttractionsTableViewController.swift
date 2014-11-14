@@ -32,8 +32,14 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        // add "add button"
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addNewAttraction:")
         self.navigationItem.rightBarButtonItem = addButton
+        // add "debug" button
+        if config.debug {
+            let debugButton = UIBarButtonItem(title: "Debug", style: .Plain, target: self, action: Selector("debugButtonClicked"))
+            self.navigationItem.leftBarButtonItem = debugButton
+        }
         //Delegate and data source
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -54,6 +60,12 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
     
     func addNewAttraction(sender: AnyObject) {
         self.performSegueWithIdentifier("addAttraction", sender: nil)
+    }
+    
+    // MARK: - Actions
+    
+    func debugButtonClicked () {
+        println("debug button clicked")
     }
     
     // MARK: - AddEditAttractionViewControllerDelegate

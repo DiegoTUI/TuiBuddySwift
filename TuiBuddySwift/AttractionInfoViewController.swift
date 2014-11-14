@@ -19,8 +19,13 @@ class AttractionInfoViewController: UIViewController {
         super.viewDidLoad()
         // remove the title in the back button
         self.navigationController?.navigationBar.topItem?.title = ""
-        
+        // set title and webview
         reloadData()
+        // add "debug" button
+        if config.debug {
+            let debugButton = UIBarButtonItem(title: "Debug", style: .Plain, target: self, action: Selector("debugButtonClicked"))
+            self.navigationItem.rightBarButtonItem = debugButton
+        }
     }
     
     func reloadData() {
@@ -30,5 +35,9 @@ class AttractionInfoViewController: UIViewController {
         _webView.loadRequest(NSURLRequest(URL: NSURL(string: url!)!))
     }
     
-
+    // MARK: - Actions
+    
+    func debugButtonClicked () {
+        println("debug button clicked")
+    }
 }
