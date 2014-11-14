@@ -7,10 +7,38 @@
 //
 
 import UIKit
+import CoreLocation
 
-class DebugViewController: UIViewController {
+protocol DebugViewControllerDelegate {
+    func closeButtonClicked()
+}
 
+class DebugViewController: UIViewController, RegionManagerDelegate {
+
+    @IBOutlet weak var latitudeLabel: UILabel!
+    @IBOutlet weak var longitudeLabel: UILabel!
+    @IBOutlet weak var actionsTextView: UITextView!
+    @IBOutlet weak var regionStatusView: DebugRegionStatusView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // capture Region Manager Delegate
+        RegionManager.sharedInstance.delegate = self
+    }
+    
+    // MARK: - Actions
+    
     @IBAction func closeButtonClicked(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // MARK: - RegionManagerDelegate
+    
+    func didEnterRegion(attractionId: Int32) {
+        
+    }
+    
+    func didUpdateLocation(location: CLLocation) {
+        
     }
 }

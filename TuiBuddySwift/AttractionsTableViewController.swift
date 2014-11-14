@@ -20,7 +20,7 @@ extension UIViewController {
     }
 }
 
-class AttractionsTableViewController: UITableViewController, AddEditAttractionViewControllerDelegate, RegionManagerDelegate, UIPopoverPresentationControllerDelegate {
+class AttractionsTableViewController: UITableViewController, AddEditAttractionViewControllerDelegate, RegionManagerDelegate, DebugViewControllerDelegate {
 
     var _alertViewShowing = false
     var attractions = AttractionManager.sharedInstance.readAttractions()
@@ -111,6 +111,13 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
             self.presentViewController(alert, animated: true, completion: nil)
             _alertViewShowing = true
         }
+    }
+    
+    // MARK: - DebugViewControllerDelegate
+    
+    func closeButtonClicked() {
+        // get the delegation of RegionManager back
+        RegionManager.sharedInstance.delegate = self
     }
     
     // MARK: - Segues

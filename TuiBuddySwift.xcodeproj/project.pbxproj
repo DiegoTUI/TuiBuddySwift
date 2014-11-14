@@ -15,6 +15,7 @@
 		760CB3721A16189200789A55 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760CB3711A16189200789A55 /* DebugViewController.swift */; };
 		761F2AF21A14D936007ECC6D /* RegionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761F2AF11A14D936007ECC6D /* RegionManagerTests.swift */; };
 		761F2AF31A14D99D007ECC6D /* RegionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EBF36E1A122B5200D7E3F8 /* RegionManager.swift */; };
+		76A2DBD91A1635A400341118 /* DebugRegionStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2DBD81A1635A400341118 /* DebugRegionStatusView.swift */; };
 		76BF411E1A0CCCE60042966D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BF411D1A0CCCE60042966D /* AppDelegate.swift */; };
 		76BF41251A0CCCE60042966D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76BF41231A0CCCE60042966D /* Main.storyboard */; };
 		76BF41271A0CCCE60042966D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76BF41261A0CCCE60042966D /* Images.xcassets */; };
@@ -51,6 +52,7 @@
 		760CB36F1A1511ED00789A55 /* NotificationManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManagerTests.swift; sourceTree = "<group>"; };
 		760CB3711A16189200789A55 /* DebugViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
 		761F2AF11A14D936007ECC6D /* RegionManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionManagerTests.swift; sourceTree = "<group>"; };
+		76A2DBD81A1635A400341118 /* DebugRegionStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugRegionStatusView.swift; sourceTree = "<group>"; };
 		76BF41181A0CCCE60042966D /* TuiBuddySwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TuiBuddySwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76BF411C1A0CCCE60042966D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76BF411D1A0CCCE60042966D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				760CB3691A14FCB000789A55 /* Config.swift */,
 				760CB36C1A15099100789A55 /* NotificationManager.swift */,
 				760CB3711A16189200789A55 /* DebugViewController.swift */,
+				76A2DBD81A1635A400341118 /* DebugRegionStatusView.swift */,
 			);
 			path = TuiBuddySwift;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				760CB3721A16189200789A55 /* DebugViewController.swift in Sources */,
 				76BF411E1A0CCCE60042966D /* AppDelegate.swift in Sources */,
 				76EBF3731A1344E400D7E3F8 /* AttractionInfoViewController.swift in Sources */,
+				76A2DBD91A1635A400341118 /* DebugRegionStatusView.swift in Sources */,
 				760CB36A1A14FCB000789A55 /* Config.swift in Sources */,
 				76BF414F1A10FA980042966D /* Attraction.swift in Sources */,
 				76BF41461A0CE4700042966D /* AddEditAttractionViewController.swift in Sources */,
