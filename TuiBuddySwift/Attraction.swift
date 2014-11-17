@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Attraction {
+class Attraction: NSObject {
     var id: Int32 = -1
     var name: String = ""
     var latitude: Double = 0.0
@@ -16,7 +16,9 @@ struct Attraction {
     var radius: Double = 0.0
     var url: String = ""
     
-    init () {}
+    override init () {
+        super.init()
+    }
     
     init(id: Int32 = -1,
         name: String,
@@ -24,6 +26,7 @@ struct Attraction {
         longitude: Double,
         radius: Double,
         url: String) {
+            super.init()
             self.id = id
             self.name = name
             self.latitude = latitude

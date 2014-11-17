@@ -9,10 +9,6 @@
 import UIKit
 import CoreLocation
 
-protocol DebugViewControllerDelegate {
-    func closeButtonClicked()
-}
-
 class DebugViewController: UIViewController, RegionManagerDelegate {
 
     @IBOutlet weak var latitudeLabel: UILabel!
@@ -33,7 +29,7 @@ class DebugViewController: UIViewController, RegionManagerDelegate {
     // MARK: - Actions
     
     @IBAction func closeButtonClicked(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: {RegionManager.sharedInstance.delegate = NotificationManager.sharedInstance})
     }
     
     // MARK: - RegionManagerDelegate

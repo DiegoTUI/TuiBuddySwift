@@ -13,9 +13,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        // make NotificationManager RegionManager's delegate
+        RegionManager.sharedInstance.delegate = NotificationManager.sharedInstance
         // register for local notifications (iOS8 only)
         if UIApplication.instancesRespondToSelector(Selector("registerUserNotificationSettings:")) {
             application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
@@ -52,27 +53,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         // clear notifications in NotificationManager
-        NotificationManager.resetNotifications()
-        // handle notification (could be done through NSNotificationCenter
-        var rootViewController = self.window!.rootViewController as UINavigationController
-        var visibleViewController = rootViewController.visibleViewController
-        var name = (notification.userInfo?["name"] as String)
-        var url = (notification.userInfo?["url"] as String)
-        if visibleViewController is AttractionInfoViewController {
-            var name = notification.userInfo?["name"] as String
-            (visibleViewController as AttractionInfoViewController).navigationTitle = name
-            (visibleViewController as AttractionInfoViewController).url = url
-            (visibleViewController as AttractionInfoViewController).reloadData()
-        }
-        else if visibleViewController is AttractionsTableViewController {
-            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            var attractionInfoViewController = mainStoryboard.instantiateViewControllerWithIdentifier("attractionInfo") as AttractionInfoViewController
-        
-            attractionInfoViewController.navigationTitle = name
-            attractionInfoViewController.url = url
-            rootViewController.pushViewController(attractionInfoViewController, animated: false)
+        NotificationManager.sharedInstance.resetLocalNotifications()
+        // handle notification
+        var visibleViewController = NotificationManager.visibleViewController()
+        if let notificationHandler = visibleViewController as? NotificationHandler {
+            let id: Int32 = Int32((notification.userInfo!["id"] as String).toInt()!)
+            let name: String = notification.userInfo!["name"] as String
+            let latitude: Double = (notification.userInfo!["latitude"] as NSString).doubleValue
+            let longitude: Double = (notification.userInfo!["longitude"] as NSString).doubleValue
+            let radius: Double = (notification.userInfo!["radius"] as NSString).doubleValue
+            let url: String = notification.userInfo!["url"] as String
+            var attraction = Attraction(id: id, name: name, latitude: latitude, longitude: longitude, radius: radius, url: url)
+            notificationHandler.handleNotificationForAttraction(attraction)
         }
     }
+    
+    // MARK: - Visible view controller
+    
+    /*func visibleViewController() -> (UIViewController?) {
+        var rootViewController = self.window!.rootViewController
+        // return nil if rootViewController is nil
+        if rootViewController == nil {
+            return nil
+        }
+        if rootViewController! is UINavigationController {
+            return (rootViewController! as UINavigationController).visibleViewController
+        }
+        return rootViewController!
+    }*/
 
 
 }

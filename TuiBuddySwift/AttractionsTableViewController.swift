@@ -20,10 +20,12 @@ extension UIViewController {
     }
 }
 
-class AttractionsTableViewController: UITableViewController, AddEditAttractionViewControllerDelegate, RegionManagerDelegate, DebugViewControllerDelegate {
+class AttractionsTableViewController: UITableViewController, AddEditAttractionViewControllerDelegate, NotificationHandler {
 
     var _alertViewShowing = false
     var attractions = AttractionManager.sharedInstance.readAttractions()
+    // Notification handler protocol
+    var shouldShow = true
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -43,8 +45,7 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
         //Delegate and data source
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        // Become deleagte of RegionManager
-        RegionManager.sharedInstance.delegate = self
+        // Become delegate of RegionManager
         RegionManager.sharedInstance.startMonitoringRegions()
     }
     
@@ -65,18 +66,13 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
     // MARK: - Actions
     
     func debugButtonClicked () {
-        /*println("debug button clicked")
-        var popoverContent = self.storyboard!.instantiateViewControllerWithIdentifier("debug") as DebugViewController
-        var nav = UINavigationController(rootViewController: popoverContent)
-        nav.modalPresentationStyle = UIModalPresentationStyle.Popover
-        var popover = nav.popoverPresentationController
-        popoverContent.preferredContentSize = CGSizeMake(200,300)
-        popover!.delegate = self
-        popover!.sourceView = self.view
-        popover!.sourceRect = CGRectMake(100,100,0,0)
-        
-        self.presentViewController(nav, animated: true, completion: nil)*/
         performSegueWithIdentifier("showDebug", sender: nil)
+    }
+    
+    // MARK: - Notification Handler
+    
+    func handleNotificationForAttraction(attraction: Attraction) {
+        performSegueWithIdentifier("showInfo", sender: attraction.name)
     }
     
     // MARK: - AddEditAttractionViewControllerDelegate
@@ -86,38 +82,6 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
         let action = (attractionRow == nil) ? self.tableView.insertRowsAtIndexPaths : self.tableView.reloadRowsAtIndexPaths
         let row = (attractionRow == nil) ? countElements(attractions) - 1 : attractionRow!
         action([NSIndexPath(forRow: row, inSection: 0)], withRowAnimation: .Automatic)
-    }
-    
-    // MARK: - RegionManagerDelegate
-    
-    func didEnterRegion(attractionId: Int32) {
-        println("Entered region: \(attractionId)")
-        // find attraction
-        let attraction = attractions.filter({$0.id == attractionId})[0]
-        let message = "Check out these cool facts about \(attraction.name)!!"
-        // check if background or foreground
-        if UIApplication.sharedApplication().applicationState == .Background {
-            // launch local notification
-            NotificationManager.sendLocalNotificationForAttraction(attraction, withMessage: message)
-        }
-        else if config.showAlerts && isVisible() && !_alertViewShowing {
-            // app in foreground. Show UIAlert only if config.showAlerts is true and this is the visible view controller, and there are no alerts being showed so far
-            var alert = UIAlertController(title: "Hey!!", message: message, preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "No, thanks", style: .Cancel, handler: {[unowned self] action in
-                self._alertViewShowing = false}))
-            alert.addAction(UIAlertAction(title: "OK!!", style: .Default, handler:{[unowned self] action in
-                self.performSegueWithIdentifier("showInfo", sender: attraction.name)
-                self._alertViewShowing = false}))
-            self.presentViewController(alert, animated: true, completion: nil)
-            _alertViewShowing = true
-        }
-    }
-    
-    // MARK: - DebugViewControllerDelegate
-    
-    func closeButtonClicked() {
-        // get the delegation of RegionManager back
-        RegionManager.sharedInstance.delegate = self
     }
     
     // MARK: - Segues
