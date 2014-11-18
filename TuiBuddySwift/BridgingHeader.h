@@ -10,6 +10,7 @@
 #define TuiBuddySwift_BridgingHeader_h
 
 #import <Reachability/Reachability.h>
+#import "External/RNCachingURLProtocol.h"
 #include <sqlite3.h>
 
 #endif

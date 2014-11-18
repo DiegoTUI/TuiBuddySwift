@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Tui Travel A&D. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 @UIApplicationMain
@@ -19,9 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         RegionManager.sharedInstance.delegate = NotificationManager.sharedInstance
         // start reachability
         ReachabilityManager.sharedInstance
-        // Set personalized cache
-        /*let URLCache = NSURLCache(memoryCapacity: 4 * 1024 * 1024, diskCapacity: 20 * 1024 * 1024, diskPath: nil)
-        NSURLCache.setSharedURLCache(URLCache)*/
+        // Register protocol for caching
+        //NSURLProtocol.registerClass(RNCachingURLProtocol.self)
         // register for local notifications (iOS8 only)
         if UIApplication.instancesRespondToSelector(Selector("registerUserNotificationSettings:")) {
             application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
