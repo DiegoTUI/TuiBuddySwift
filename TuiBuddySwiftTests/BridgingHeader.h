@@ -9,5 +9,6 @@
 #ifndef TuiBuddySwiftTests_BridgingHeader_h
 #define TuiBuddySwiftTests_BridgingHeader_h
 
+#include <sqlite3.h>
 
 #endif

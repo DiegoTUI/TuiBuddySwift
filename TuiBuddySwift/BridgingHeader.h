@@ -9,6 +9,7 @@
 #ifndef TuiBuddySwift_BridgingHeader_h
 #define TuiBuddySwift_BridgingHeader_h
 
+#import <Reachability/Reachability.h>
 #include <sqlite3.h>
 
 #endif

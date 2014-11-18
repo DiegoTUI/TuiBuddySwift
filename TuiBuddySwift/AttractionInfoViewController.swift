@@ -39,7 +39,10 @@ class AttractionInfoViewController: UIViewController, UIWebViewDelegate, Notific
         navigationItem.title = navigationTitle
         // load url
         _activityIndicator.startAnimating()
-        _webView.loadRequest(NSURLRequest(URL: NSURL(string: url!)!))
+        let cachePolicy: NSURLRequestCachePolicy = ReachabilityManager.sharedInstance.isInternetReachable! == true ? .ReturnCacheDataElseLoad: .ReturnCacheDataDontLoad
+        let request = NSURLRequest(URL: NSURL(string: url!)!, cachePolicy: cachePolicy, timeoutInterval: 10.0)
+        //let request = NSURLRequest(URL:NSURL(string: url!)!)
+        _webView.loadRequest(request)
     }
     
     // MARK: - Actions
