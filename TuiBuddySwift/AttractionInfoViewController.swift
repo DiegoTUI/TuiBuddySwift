@@ -39,7 +39,7 @@ class AttractionInfoViewController: UIViewController, NotificationHandler {
     // MARK: - Actions
     
     func debugButtonClicked () {
-        println("debug button clicked")
+        performSegueWithIdentifier("showDebug", sender: nil)
     }
     
     // MARK: - Notification Handler

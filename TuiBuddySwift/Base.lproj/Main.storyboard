@@ -91,6 +91,7 @@
                     <navigationItem key="navigationItem" title="Attraction Info" id="S2h-Vx-IKE"/>
                     <connections>
                         <outlet property="_webView" destination="kKW-wO-s37" id="sQ0-bV-qSl"/>
+                        <segue destination="UVb-2H-l1y" kind="presentation" identifier="showDebug" id="roV-KH-K1n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m3y-N3-C4A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -360,5 +361,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="J8A-1i-Ton"/>
+        <segue reference="roV-KH-K1n"/>
     </inferredMetricsTieBreakers>
 </document>
