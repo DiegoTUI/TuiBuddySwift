@@ -8,18 +8,23 @@
 
 import UIKit
 
-class AttractionInfoViewController: UIViewController, NotificationHandler {
+class AttractionInfoViewController: UIViewController, UIWebViewDelegate, NotificationHandler {
     
     var navigationTitle: String? = nil
     var url: String? = nil
     var shouldShow = true
     
     @IBOutlet weak var _webView: UIWebView!
+    @IBOutlet weak var _activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // remove the title in the back button
         self.navigationController?.navigationBar.topItem?.title = ""
+        // hide activity indicator when stopped
+        _activityIndicator.hidesWhenStopped = true
+        // set webViewDelegate
+        _webView.delegate = self
         // set title and webview
         reloadData()
         // add "debug" button
@@ -33,6 +38,7 @@ class AttractionInfoViewController: UIViewController, NotificationHandler {
         // set title in navigation bar
         navigationItem.title = navigationTitle
         // load url
+        _activityIndicator.startAnimating()
         _webView.loadRequest(NSURLRequest(URL: NSURL(string: url!)!))
     }
     
@@ -48,5 +54,15 @@ class AttractionInfoViewController: UIViewController, NotificationHandler {
         navigationTitle = attraction.name
         url = attraction.url
         reloadData()
+    }
+    
+    // MARK: - Webview delegate
+    
+    func webViewDidFinishLoad(webView: UIWebView) {
+        _activityIndicator.stopAnimating()
+    }
+    
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
+        _activityIndicator.stopAnimating()
     }
 }

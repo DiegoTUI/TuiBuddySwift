@@ -79,17 +79,23 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Eae-w0-aSk">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="kKW-wO-s37" firstAttribute="leading" secondItem="UfM-WX-ZrL" secondAttribute="leading" id="1AO-8h-BCf"/>
-                            <constraint firstItem="kKW-wO-s37" firstAttribute="top" secondItem="UfM-WX-ZrL" secondAttribute="top" id="6B9-Bi-yPm"/>
-                            <constraint firstItem="kKW-wO-s37" firstAttribute="bottom" secondItem="UJv-TF-d1Z" secondAttribute="top" id="9DR-eK-Fmb"/>
-                            <constraint firstAttribute="trailing" secondItem="kKW-wO-s37" secondAttribute="trailing" id="sXe-gb-gUD"/>
+                            <constraint firstItem="kKW-wO-s37" firstAttribute="leading" secondItem="UfM-WX-ZrL" secondAttribute="leading" id="3rO-ez-jgg"/>
+                            <constraint firstItem="Eae-w0-aSk" firstAttribute="centerX" secondItem="kKW-wO-s37" secondAttribute="centerX" id="HF8-W7-tR1"/>
+                            <constraint firstItem="kKW-wO-s37" firstAttribute="top" secondItem="UfM-WX-ZrL" secondAttribute="top" id="Hoc-YG-6hE"/>
+                            <constraint firstItem="kKW-wO-s37" firstAttribute="bottom" secondItem="UJv-TF-d1Z" secondAttribute="top" id="Jwa-oL-Hrs"/>
+                            <constraint firstAttribute="trailing" secondItem="kKW-wO-s37" secondAttribute="trailing" id="aXW-Hx-lDQ"/>
+                            <constraint firstItem="Eae-w0-aSk" firstAttribute="centerY" secondItem="kKW-wO-s37" secondAttribute="centerY" id="jqk-BS-vsJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Attraction Info" id="S2h-Vx-IKE"/>
                     <connections>
+                        <outlet property="_activityIndicator" destination="Eae-w0-aSk" id="Itq-AL-LRE"/>
                         <outlet property="_webView" destination="kKW-wO-s37" id="sQ0-bV-qSl"/>
                         <segue destination="UVb-2H-l1y" kind="presentation" identifier="showDebug" id="roV-KH-K1n"/>
                     </connections>
