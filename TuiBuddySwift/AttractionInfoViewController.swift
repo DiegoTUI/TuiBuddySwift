@@ -8,10 +8,11 @@
 
 import UIKit
 
-class AttractionInfoViewController: UIViewController {
+class AttractionInfoViewController: UIViewController, NotificationHandler {
     
     var navigationTitle: String? = nil
     var url: String? = nil
+    var shouldShow = true
     
     @IBOutlet weak var _webView: UIWebView!
     
@@ -39,5 +40,13 @@ class AttractionInfoViewController: UIViewController {
     
     func debugButtonClicked () {
         println("debug button clicked")
+    }
+    
+    // MARK: - Notification Handler
+    
+    func handleNotificationForAttraction(attraction: Attraction) {
+        navigationTitle = attraction.name
+        url = attraction.url
+        reloadData()
     }
 }
