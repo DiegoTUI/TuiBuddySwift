@@ -48,9 +48,9 @@ class AddEditAttractionViewController: UIViewController, UITextFieldDelegate, CL
         // assign text (if attraction)
         if attraction != nil {
             nameTextField.text = attraction!.name
-            latitudeTextField.text = String(format:"%f", attraction!.latitude)
-            longitudeTextField.text = String(format:"%f", attraction!.longitude)
-            radiusTextField.text = String(format:"%f", attraction!.radius)
+            latitudeTextField.text = "\(attraction!.latitude)"
+            longitudeTextField.text = "\(attraction!.longitude)"
+            radiusTextField.text = "\(attraction!.radius)"
             linkTextField.text = attraction!.url
         }
         // delegates to hide keyboard
