@@ -26,8 +26,8 @@ class NotificationManagerTests: XCTestCase {
         XCTAssertEqual(attraction.id, attractionInNotification!.id, "wrong id sent in notification")
         XCTAssertEqual(attraction.name, attractionInNotification!.name, "wrong name sent in notification")
         XCTAssertEqual(attraction.latitude, attractionInNotification!.latitude, "wrong latitude sent in notification")
-        XCTAssertEqual(attraction.longitude, attractionInNotification!.latitude, "wrong longitude sent in notification")
-        XCTAssertEqual(attraction.radius, attractionInNotification!.radius, "wrong longitude sent in notification")
+        XCTAssertEqual(attraction.longitude, attractionInNotification!.longitude, "wrong longitude sent in notification")
+        XCTAssertEqual(attraction.radius, attractionInNotification!.radius, "wrong radius sent in notification")
         XCTAssertEqual(attraction.url, attractionInNotification!.url, "wrong url sent in notification")
         
         notificationsReceived![attractionInNotification!.id]!++
