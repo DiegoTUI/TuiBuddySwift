@@ -24,6 +24,10 @@ class DebugViewController: UIViewController, RegionManagerDelegate {
         regionStatusView.initWithAttractions(AttractionManager.sharedInstance.readAttractions())
         // capture Region Manager Delegate
         RegionManager.sharedInstance.delegate = self
+        // check _inRegions and update colors of labels
+        for regionIdentifier in RegionManager.sharedInstance._inRegions {
+            regionStatusView.labelForAttractionId(Int32(regionIdentifier.toInt()!))?.textColor = UIColor.redColor()
+        }
     }
     
     // MARK: - Actions
@@ -40,7 +44,7 @@ class DebugViewController: UIViewController, RegionManagerDelegate {
     }
     
     func didExitRegion(attractionId: Int32) {
-        regionStatusView.labelForAttractionId(attractionId)?.textColor = UIColor.blueColor()
+        regionStatusView.labelForAttractionId(attractionId)?.textColor = UIColor.blackColor()
         log("exited region: \(attractionId)")
     }
     
@@ -49,12 +53,12 @@ class DebugViewController: UIViewController, RegionManagerDelegate {
         latitudeLabel.text = "\(location.coordinate.latitude)"
         longitudeLabel.text = "\(location.coordinate.longitude)"
         // add to actionsTextView
-        log("updated location")
+        // log("updated location")
     }
     
     // MARK: - Logging
     
     func log(message: String) {
-        actionsTextView.text = "\(actionsTextView.text)updated location\n"
+        actionsTextView.text = "\(actionsTextView.text)\(message)\n"
     }
 }
