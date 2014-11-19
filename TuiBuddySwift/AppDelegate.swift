@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // start reachability
         ReachabilityManager.sharedInstance
         // Register protocol for caching
-        //NSURLProtocol.registerClass(RNCachingURLProtocol.self)
+        NSURLProtocol.registerClass(RNCachingURLProtocol.self)
         // register for local notifications (iOS8 only)
         if UIApplication.instancesRespondToSelector(Selector("registerUserNotificationSettings:")) {
             application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
