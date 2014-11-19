@@ -62,13 +62,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // handle notification
         var visibleViewController = NotificationManager.visibleViewController()
         if let notificationHandler = visibleViewController as? NotificationHandler {
-            let id: Int32 = Int32((notification.userInfo!["id"] as String).toInt()!)
-            let name: String = notification.userInfo!["name"] as String
-            let latitude: Double = (notification.userInfo!["latitude"] as NSString).doubleValue
-            let longitude: Double = (notification.userInfo!["longitude"] as NSString).doubleValue
-            let radius: Double = (notification.userInfo!["radius"] as NSString).doubleValue
-            let url: String = notification.userInfo!["url"] as String
-            var attraction = Attraction(id: id, name: name, latitude: latitude, longitude: longitude, radius: radius, url: url)
+            let archivedAttraction = notification.userInfo!["attraction"] as NSData
+            let attraction: Attraction = NSKeyedUnarchiver.unarchiveObjectWithData(archivedAttraction) as Attraction
             notificationHandler.handleNotificationForAttraction(attraction)
         }
     }

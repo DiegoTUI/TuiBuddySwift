@@ -20,8 +20,15 @@ class NotificationManagerTests: XCTestCase {
     
     func handleLocalNotification (notification: UILocalNotification) {
         XCTAssertEqual(notification.alertBody!, messageInNotification!, "wrong message sent in notification")
-        XCTAssertEqual(notification.userInfo!["name"] as String, attractionInNotification!.name, "wrong name sent in notification")
-        XCTAssertEqual(notification.userInfo!["url"] as String, attractionInNotification!.url, "wrong url sent in notification")
+        // unarchive attraction
+        let archivedAttraction = notification.userInfo!["attraction"] as NSData
+        let attraction: Attraction = NSKeyedUnarchiver.unarchiveObjectWithData(archivedAttraction) as Attraction
+        XCTAssertEqual(attraction.id, attractionInNotification!.id, "wrong id sent in notification")
+        XCTAssertEqual(attraction.name, attractionInNotification!.name, "wrong name sent in notification")
+        XCTAssertEqual(attraction.latitude, attractionInNotification!.latitude, "wrong latitude sent in notification")
+        XCTAssertEqual(attraction.longitude, attractionInNotification!.latitude, "wrong longitude sent in notification")
+        XCTAssertEqual(attraction.radius, attractionInNotification!.radius, "wrong longitude sent in notification")
+        XCTAssertEqual(attraction.url, attractionInNotification!.url, "wrong url sent in notification")
         
         notificationsReceived![attractionInNotification!.id]!++
     }

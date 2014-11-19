@@ -95,7 +95,9 @@ class NotificationManager: RegionManagerDelegate {
             var localNotification = UILocalNotification()
             localNotification.timeZone = NSTimeZone.defaultTimeZone()
             localNotification.alertBody = message
-            localNotification.userInfo = ["id":String(attraction.id), "name":attraction.name, "latitude":"\(attraction.latitude)", "longitude":"\(attraction.longitude)", "radius": "\(attraction.radius)", "url": attraction.url]
+            // serialize the attraction using a NSKeyedArchiver
+            let archivedAttraction = NSKeyedArchiver.archivedDataWithRootObject(attraction)
+            localNotification.userInfo = ["attraction": archivedAttraction]
             // set the attraction as notified
             _localNotifications[attraction.id] = true
             // schedule notification
