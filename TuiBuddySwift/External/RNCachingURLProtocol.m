@@ -90,12 +90,17 @@ static NSString *RNCachingURLHeader = @"X-RNCache";
   // This stores in the Caches directory, which can be deleted when space is low, but we only use it for offline access
   NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
   //return [cachesPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%lx", (unsigned long)[[[aRequest URL] absoluteString] hash]]];
-  return [cachesPath stringByAppendingPathComponent:[[[aRequest URL] absoluteString] sha1]];
+    //NSString *cachePath = [cachesPath stringByAppendingPathComponent: [[aRequest URL] absoluteString]];
+    //NSLog(@"absolutePath: %@", [[aRequest URL] absoluteString]);
+    NSString *cachePath = [cachesPath stringByAppendingPathComponent:[[[aRequest URL] absoluteString] sha1]];
+    //NSLog(@"cachePath: %@", cachePath);
+  return cachePath;
 }
 
 - (void)startLoading
 {
   if (![self useCache]) {
+      NSLog(@"startLoading: %@", [[self.request URL] absoluteString]);
     NSMutableURLRequest *connectionRequest = 
 #if WORKAROUND_MUTABLE_COPY_LEAK
       [[self request] mutableCopyWorkaround];
@@ -109,6 +114,7 @@ static NSString *RNCachingURLHeader = @"X-RNCache";
     [self setConnection:connection];
   }
   else {
+      NSLog(@"[cached] startLoading: %@", [[self.request URL] absoluteString]);
     RNCachedData *cache = [NSKeyedUnarchiver unarchiveObjectWithFile:[self cachePathForRequest:[self request]]];
     if (cache) {
       NSData *data = [cache data];
@@ -131,6 +137,7 @@ static NSString *RNCachingURLHeader = @"X-RNCache";
 
 - (void)stopLoading
 {
+    NSLog(@"stopLoading: %@", [[self.request URL] absoluteString]);
   [[self connection] cancel];
 }
 
@@ -140,6 +147,7 @@ static NSString *RNCachingURLHeader = @"X-RNCache";
 {
 // Thanks to Nick Dowell https://gist.github.com/1885821
   if (response != nil) {
+      NSLog(@"[redirect] willSendRequest: %@", [[self.request URL] absoluteString]);
       NSMutableURLRequest *redirectableRequest =
 #if WORKAROUND_MUTABLE_COPY_LEAK
       [request mutableCopyWorkaround];
@@ -162,18 +170,21 @@ static NSString *RNCachingURLHeader = @"X-RNCache";
     [[self client] URLProtocol:self wasRedirectedToRequest:redirectableRequest redirectResponse:response];
     return redirectableRequest;
   } else {
+      NSLog(@"willSendRequest: %@", [[self.request URL] absoluteString]);
     return request;
   }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
+    NSLog(@"didReceiveData: %@", [[self.request URL] absoluteString]);
   [[self client] URLProtocol:self didLoadData:data];
   [self appendData:data];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
+    NSLog(@"didFailWithError: %@", [[self.request URL] absoluteString]);
   [[self client] URLProtocol:self didFailWithError:error];
   [self setConnection:nil];
   [self setData:nil];
@@ -182,12 +193,14 @@ static NSString *RNCachingURLHeader = @"X-RNCache";
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
+    NSLog(@"didReceiveResponse: %@", [[self.request URL] absoluteString]);
   [self setResponse:response];
   [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];  // We cache ourselves.
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
+    NSLog(@"didFinishLoading: %@", [[self.request URL] absoluteString]);
   [[self client] URLProtocolDidFinishLoading:self];
 
   NSString *cachePath = [self cachePathForRequest:[self request]];
