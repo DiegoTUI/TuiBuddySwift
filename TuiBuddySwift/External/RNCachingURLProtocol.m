@@ -26,6 +26,7 @@
 //
 
 #import "RNCachingURLProtocol.h"
+#import <CommonCrypto/CommonDigest.h>
 #import <Reachability/Reachability.h>
 
 #define WORKAROUND_MUTABLE_COPY_LEAK 1
@@ -38,6 +39,13 @@
 
 @end
 #endif
+
+// NSString category including SHA1
+@interface NSString(SHA1)
+
+- (NSString *)sha1;
+
+@end
 
 @interface RNCachedData : NSObject <NSCoding>
 @property (nonatomic, readwrite, strong) NSData *data;
@@ -52,6 +60,8 @@ static NSString *RNCachingURLHeader = @"X-RNCache";
 @property (nonatomic, readwrite, strong) NSMutableData *data;
 @property (nonatomic, readwrite, strong) NSURLResponse *response;
 - (void)appendData:(NSData *)newData;
+- (NSString *)cachePathForRequest:(NSURLRequest *)aRequest;
+- (BOOL) useCache;
 @end
 
 @implementation RNCachingURLProtocol
@@ -79,7 +89,8 @@ static NSString *RNCachingURLHeader = @"X-RNCache";
 {
   // This stores in the Caches directory, which can be deleted when space is low, but we only use it for offline access
   NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-  return [cachesPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%x", [[[aRequest URL] absoluteString] hash]]];
+  //return [cachesPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%lx", (unsigned long)[[[aRequest URL] absoluteString] hash]]];
+  return [cachesPath stringByAppendingPathComponent:[[[aRequest URL] absoluteString] sha1]];
 }
 
 - (void)startLoading
@@ -253,3 +264,24 @@ static NSString *const kRedirectRequestKey = @"redirectRequest";
 
 @end
 #endif
+
+@implementation NSString(SHA1)
+
+- (NSString *)sha1
+{
+    NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
+    uint8_t digest[CC_SHA1_DIGEST_LENGTH];
+    
+    CC_SHA1(data.bytes, (unsigned int)data.length, digest);
+    
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
+    
+    for (int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++)
+    {
+        [output appendFormat:@"%02x", digest[i]];
+    }
+    
+    return output;
+}
+
+@end
