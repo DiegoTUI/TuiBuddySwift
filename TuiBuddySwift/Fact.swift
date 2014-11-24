@@ -10,6 +10,7 @@ import Foundation
 
 class Fact: NSObject, NSCoding, Equatable {
     var id: Int32 = -1
+    var attractionId: Int32 = -1
     var text: String = ""
     var type: String = ""
     var resource: String = ""
@@ -21,11 +22,13 @@ class Fact: NSObject, NSCoding, Equatable {
     }
     
     init(id: Int32 = -1,
+        attractionId: Int32 = -1,
         text: String,
         type: String,
         resource: String) {
             super.init()
             self.id = id
+            self.attractionId = attractionId
             self.text = text
             self.type = type
             self.resource = resource
@@ -36,6 +39,7 @@ class Fact: NSObject, NSCoding, Equatable {
     convenience required init(coder decoder: NSCoder) {
         self.init()
         id = decoder.decodeInt32ForKey("id")
+        attractionId = decoder.decodeInt32ForKey("attractionId")
         text = decoder.decodeObjectForKey("text") as String
         type = decoder.decodeObjectForKey("type") as String
         resource = decoder.decodeObjectForKey("resource") as String
@@ -44,6 +48,7 @@ class Fact: NSObject, NSCoding, Equatable {
     
     func encodeWithCoder(encoder: NSCoder) {
         encoder.encodeInt32(id, forKey:"id")
+        encoder.encodeInt32(attractionId, forKey:"attractionId")
         encoder.encodeObject(text, forKey:"text")
         encoder.encodeObject(type, forKey:"type")
         encoder.encodeObject(resource, forKey:"resource")
@@ -54,7 +59,8 @@ class Fact: NSObject, NSCoding, Equatable {
 
 func == (left: Fact, right: Fact) -> Bool {
     return left.id == right.id &&
+        left.attractionId == right.attractionId &&
         left.text == right.text &&
         left.type == right.type &&
-        left.resource == right.resource 
+        left.resource == right.resource
 }

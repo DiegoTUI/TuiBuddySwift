@@ -61,6 +61,7 @@ class AttractionManager {
     
     func readAttractions() -> [Attraction] {
         var result = Array<Attraction>()
+        // read facts from fake CMS
         // define sql query
         let query = "SELECT rowid,* FROM geofences"
         var statement:COpaquePointer = nil
