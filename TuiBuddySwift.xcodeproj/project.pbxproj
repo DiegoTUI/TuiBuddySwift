@@ -30,6 +30,11 @@
 		76BF414B1A10DB830042966D /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 76BF414A1A10DB830042966D /* libsqlite3.0.dylib */; };
 		76BF414D1A10DDA80042966D /* AttractionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BF414C1A10DDA80042966D /* AttractionManager.swift */; };
 		76BF414F1A10FA980042966D /* Attraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BF414E1A10FA980042966D /* Attraction.swift */; };
+		76D41FA11A23219F0053F687 /* AttractionFactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D41FA01A23219F0053F687 /* AttractionFactViewController.swift */; };
+		76D41FA61A2327C10053F687 /* Attractions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76D41FA51A2327C10053F687 /* Attractions.plist */; };
+		76D41FA81A2328E10053F687 /* Fact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D41FA71A2328E10053F687 /* Fact.swift */; };
+		76D41FA91A232CCA0053F687 /* Fact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D41FA71A2328E10053F687 /* Fact.swift */; };
+		76D41FAB1A232EFE0053F687 /* FactTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D41FAA1A232EFE0053F687 /* FactTests.swift */; };
 		76EBF36F1A122B5200D7E3F8 /* RegionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EBF36E1A122B5200D7E3F8 /* RegionManager.swift */; };
 		76EBF3711A122C1E00D7E3F8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EBF3701A122C1E00D7E3F8 /* CoreLocation.framework */; };
 		76EBF3731A1344E400D7E3F8 /* AttractionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EBF3721A1344E400D7E3F8 /* AttractionInfoViewController.swift */; };
@@ -78,6 +83,10 @@
 		76BF414A1A10DB830042966D /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		76BF414C1A10DDA80042966D /* AttractionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionManager.swift; sourceTree = "<group>"; };
 		76BF414E1A10FA980042966D /* Attraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attraction.swift; sourceTree = "<group>"; };
+		76D41FA01A23219F0053F687 /* AttractionFactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionFactViewController.swift; sourceTree = "<group>"; };
+		76D41FA51A2327C10053F687 /* Attractions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Attractions.plist; path = CMS/Attractions.plist; sourceTree = "<group>"; };
+		76D41FA71A2328E10053F687 /* Fact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fact.swift; sourceTree = "<group>"; };
+		76D41FAA1A232EFE0053F687 /* FactTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactTests.swift; sourceTree = "<group>"; };
 		76EBF36E1A122B5200D7E3F8 /* RegionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionManager.swift; sourceTree = "<group>"; };
 		76EBF3701A122C1E00D7E3F8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		76EBF3721A1344E400D7E3F8 /* AttractionInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionInfoViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +158,7 @@
 		76BF411A1A0CCCE60042966D /* TuiBuddySwift */ = {
 			isa = PBXGroup;
 			children = (
+				76D41FA21A23239A0053F687 /* CMS */,
 				765B84191A1B952700C84DAC /* External */,
 				76BF41471A10D9B10042966D /* attractions.sqlite */,
 				76BF411D1A0CCCE60042966D /* AppDelegate.swift */,
@@ -168,6 +178,8 @@
 				760CB3711A16189200789A55 /* DebugViewController.swift */,
 				76A2DBD81A1635A400341118 /* DebugRegionStatusView.swift */,
 				765B84171A1B589A00C84DAC /* ReachabilityManager.swift */,
+				76D41FA01A23219F0053F687 /* AttractionFactViewController.swift */,
+				76D41FA71A2328E10053F687 /* Fact.swift */,
 			);
 			path = TuiBuddySwift;
 			sourceTree = "<group>";
@@ -183,6 +195,7 @@
 		76BF41321A0CCCE60042966D /* TuiBuddySwiftTests */ = {
 			isa = PBXGroup;
 			children = (
+				76D41FAA1A232EFE0053F687 /* FactTests.swift */,
 				765B841D1A1C996900C84DAC /* AttractionTests.swift */,
 				760CB36F1A1511ED00789A55 /* NotificationManagerTests.swift */,
 				761F2AF11A14D936007ECC6D /* RegionManagerTests.swift */,
@@ -199,6 +212,14 @@
 				76BF41341A0CCCE60042966D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		76D41FA21A23239A0053F687 /* CMS */ = {
+			isa = PBXGroup;
+			children = (
+				76D41FA51A2327C10053F687 /* Attractions.plist */,
+			);
+			name = CMS;
 			sourceTree = "<group>";
 		};
 		76EBF38C1A14B1A200D7E3F8 /* Frameworks */ = {
@@ -296,6 +317,7 @@
 				76BF41251A0CCCE60042966D /* Main.storyboard in Resources */,
 				76BF412A1A0CCCE60042966D /* LaunchScreen.xib in Resources */,
 				76BF41481A10D9B10042966D /* attractions.sqlite in Resources */,
+				76D41FA61A2327C10053F687 /* Attractions.plist in Resources */,
 				76BF41271A0CCCE60042966D /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,12 +377,14 @@
 				765B84181A1B589A00C84DAC /* ReachabilityManager.swift in Sources */,
 				760CB36D1A15099100789A55 /* NotificationManager.swift in Sources */,
 				760CB3721A16189200789A55 /* DebugViewController.swift in Sources */,
+				76D41FA81A2328E10053F687 /* Fact.swift in Sources */,
 				76EBF3731A1344E400D7E3F8 /* AttractionInfoViewController.swift in Sources */,
 				76A2DBD91A1635A400341118 /* DebugRegionStatusView.swift in Sources */,
 				760CB36A1A14FCB000789A55 /* Config.swift in Sources */,
 				765B841C1A1B954500C84DAC /* RNCachingURLProtocol.m in Sources */,
 				76BF414F1A10FA980042966D /* Attraction.swift in Sources */,
 				76BF41461A0CE4700042966D /* AddEditAttractionViewController.swift in Sources */,
+				76D41FA11A23219F0053F687 /* AttractionFactViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,8 +397,10 @@
 				761F2AF31A14D99D007ECC6D /* RegionManager.swift in Sources */,
 				76EBF38F1A14B3BA00D7E3F8 /* AttractionManager.swift in Sources */,
 				765B841E1A1C996900C84DAC /* AttractionTests.swift in Sources */,
+				76D41FAB1A232EFE0053F687 /* FactTests.swift in Sources */,
 				760CB36E1A15099100789A55 /* NotificationManager.swift in Sources */,
 				76EBF38E1A14B1FF00D7E3F8 /* AttractionManagerTests.swift in Sources */,
+				76D41FA91A232CCA0053F687 /* Fact.swift in Sources */,
 				760CB3701A1511ED00789A55 /* NotificationManagerTests.swift in Sources */,
 				760CB36B1A14FCB000789A55 /* Config.swift in Sources */,
 			);

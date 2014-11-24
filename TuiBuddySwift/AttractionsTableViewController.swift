@@ -129,7 +129,7 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("showInfo", sender: tableView.cellForRowAtIndexPath(indexPath)?.textLabel.text)
+        performSegueWithIdentifier("showFacts", sender: tableView.cellForRowAtIndexPath(indexPath)?.textLabel.text)
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {}
