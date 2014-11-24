@@ -61,7 +61,6 @@ class AttractionManager {
     
     func readAttractions() -> [Attraction] {
         var result = Array<Attraction>()
-        // read facts from fake CMS
         // define sql query
         let query = "SELECT rowid,* FROM geofences"
         var statement:COpaquePointer = nil
@@ -76,6 +75,8 @@ class AttractionManager {
                 attraction.longitude = sqlite3_column_double(statement,3)
                 attraction.radius = sqlite3_column_double(statement,4)
                 attraction.url = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(statement, 5)))!
+                // refresh facts
+                attraction.refreshFacts()
                 // add to result
                 result.append(attraction)
             }

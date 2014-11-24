@@ -34,6 +34,15 @@ class Fact: NSObject, NSCoding, Equatable {
             self.resource = resource
     }
     
+    init(nsDictionary: NSDictionary, attractionId: Int32) {
+        super.init()
+        self.id = Int32(nsDictionary["id"] as Int)
+        self.attractionId = attractionId
+        self.text = nsDictionary["text"] as String
+        self.type = (nsDictionary["media"] as NSDictionary)["type"] as String
+        self.resource = (nsDictionary["media"] as NSDictionary)["resource"] as String
+    }
+    
     //MARK: - NSCoding protocol
     
     convenience required init(coder decoder: NSCoder) {

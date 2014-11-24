@@ -31,10 +31,11 @@
 		76BF414D1A10DDA80042966D /* AttractionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BF414C1A10DDA80042966D /* AttractionManager.swift */; };
 		76BF414F1A10FA980042966D /* Attraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BF414E1A10FA980042966D /* Attraction.swift */; };
 		76D41FA11A23219F0053F687 /* AttractionFactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D41FA01A23219F0053F687 /* AttractionFactViewController.swift */; };
-		76D41FA61A2327C10053F687 /* Attractions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76D41FA51A2327C10053F687 /* Attractions.plist */; };
 		76D41FA81A2328E10053F687 /* Fact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D41FA71A2328E10053F687 /* Fact.swift */; };
 		76D41FA91A232CCA0053F687 /* Fact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D41FA71A2328E10053F687 /* Fact.swift */; };
 		76D41FAB1A232EFE0053F687 /* FactTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D41FAA1A232EFE0053F687 /* FactTests.swift */; };
+		76D41FAF1A2359720053F687 /* attractions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76D41FAE1A2359720053F687 /* attractions.plist */; };
+		76D41FB31A237A810053F687 /* attractions_test.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76D41FB21A237A810053F687 /* attractions_test.plist */; };
 		76EBF36F1A122B5200D7E3F8 /* RegionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EBF36E1A122B5200D7E3F8 /* RegionManager.swift */; };
 		76EBF3711A122C1E00D7E3F8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EBF3701A122C1E00D7E3F8 /* CoreLocation.framework */; };
 		76EBF3731A1344E400D7E3F8 /* AttractionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EBF3721A1344E400D7E3F8 /* AttractionInfoViewController.swift */; };
@@ -84,9 +85,10 @@
 		76BF414C1A10DDA80042966D /* AttractionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionManager.swift; sourceTree = "<group>"; };
 		76BF414E1A10FA980042966D /* Attraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attraction.swift; sourceTree = "<group>"; };
 		76D41FA01A23219F0053F687 /* AttractionFactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionFactViewController.swift; sourceTree = "<group>"; };
-		76D41FA51A2327C10053F687 /* Attractions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Attractions.plist; path = CMS/Attractions.plist; sourceTree = "<group>"; };
 		76D41FA71A2328E10053F687 /* Fact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fact.swift; sourceTree = "<group>"; };
 		76D41FAA1A232EFE0053F687 /* FactTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactTests.swift; sourceTree = "<group>"; };
+		76D41FAE1A2359720053F687 /* attractions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = attractions.plist; path = CMS/attractions.plist; sourceTree = "<group>"; };
+		76D41FB21A237A810053F687 /* attractions_test.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = attractions_test.plist; path = CMS/attractions_test.plist; sourceTree = "<group>"; };
 		76EBF36E1A122B5200D7E3F8 /* RegionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionManager.swift; sourceTree = "<group>"; };
 		76EBF3701A122C1E00D7E3F8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		76EBF3721A1344E400D7E3F8 /* AttractionInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionInfoViewController.swift; sourceTree = "<group>"; };
@@ -217,7 +219,8 @@
 		76D41FA21A23239A0053F687 /* CMS */ = {
 			isa = PBXGroup;
 			children = (
-				76D41FA51A2327C10053F687 /* Attractions.plist */,
+				76D41FAE1A2359720053F687 /* attractions.plist */,
+				76D41FB21A237A810053F687 /* attractions_test.plist */,
 			);
 			name = CMS;
 			sourceTree = "<group>";
@@ -317,8 +320,9 @@
 				76BF41251A0CCCE60042966D /* Main.storyboard in Resources */,
 				76BF412A1A0CCCE60042966D /* LaunchScreen.xib in Resources */,
 				76BF41481A10D9B10042966D /* attractions.sqlite in Resources */,
-				76D41FA61A2327C10053F687 /* Attractions.plist in Resources */,
+				76D41FB31A237A810053F687 /* attractions_test.plist in Resources */,
 				76BF41271A0CCCE60042966D /* Images.xcassets in Resources */,
+				76D41FAF1A2359720053F687 /* attractions.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

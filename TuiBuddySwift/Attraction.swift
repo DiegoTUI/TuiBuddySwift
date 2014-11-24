@@ -15,7 +15,7 @@ class Attraction: NSObject, NSCoding, Equatable {
     var longitude: Double = 0.0
     var radius: Double = 0.0
     var url: String = ""
-    var facts: [Fact] = []
+    var facts = Array<Fact>()
     
     // MARK: - Initialization
     
@@ -38,6 +38,29 @@ class Attraction: NSObject, NSCoding, Equatable {
             self.radius = radius
             self.url = url
             self.facts = facts
+    }
+    
+    // MARK: - Facts
+    // refresh facts from the fake cms
+    func refreshFacts() {
+        var newFacts = Array<Fact>()
+        // read facts from fake CMS
+        var cmsContents: NSArray? = nil
+        if let path = NSBundle.mainBundle().pathForResource(config.fakeCMS, ofType: "plist") {
+            cmsContents = NSArray(contentsOfFile: path)
+        }
+        // add facts if any
+        let indexSet = cmsContents?.indexesOfObjectsPassingTest() { (item, index, weirdPointer) in
+            let attractionId = (item as NSDictionary)["id"] as Int
+            return Int32(attractionId) == self.id
+        }
+        if indexSet != nil && indexSet?.count > 0 {
+            let facts: NSArray! = (cmsContents!.objectsAtIndexes(indexSet!)[0] as NSDictionary)["facts"] as NSArray
+            for fact in facts {
+                newFacts.append(Fact(nsDictionary: fact as NSDictionary, attractionId: self.id))
+            }
+        }
+        self.facts = newFacts
     }
     
     //MARK: - NSCoding protocol

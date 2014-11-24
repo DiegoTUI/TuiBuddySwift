@@ -11,6 +11,8 @@ struct _Config {
     let showAlerts = true
     // are we in debug mode?
     let debug = true
+    // fakeCMS
+    var fakeCMS = "attractions"
 }
 
 var config = _Config()

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+    <dict>
+        <key>id</key>
+        <integer>1</integer>
+        <key>facts</key>
+        <array>
+            <dict>
+                <key>id</key>
+                <integer>1</integer>
+                <key>text</key>
+                <string>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec consectetur magna sit amet sapien laoreet, vel pellentesque arcu efficitur. Nunc vitae luctus velit. Nulla quis tellus a arcu rhoncus tincidunt vel faucibus nisl. Aliquam nec mi eget dui iaculis ultrices sed non sem. Duis congue tortor id dolor pretium, nec scelerisque justo consequat. Donec tempor pulvinar elit vitae dignissim. Donec viverra ultrices magna, id eleifend ligula molestie vel.</string>
+                <key>media</key>
+                <dict>
+                    <key>type</key>
+                    <string>video</string>
+                    <key>resource</key>
+                    <string>1.1.mp4</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>id</key>
+                <integer>2</integer>
+                <key>text</key>
+                <string>Nam nec lacus scelerisque, semper ligula sit amet, gravida mi. Etiam ac magna sapien. Maecenas lacinia arcu vel augue semper, eget dignissim arcu dignissim. Integer scelerisque porta ultrices. Phasellus at justo nunc. Proin iaculis pretium commodo. Nam nec blandit orci. Etiam placerat lorem ac ex sagittis condimentum a quis dolor. Ut vulputate massa ante, vel gravida elit porttitor id. Donec volutpat faucibus diam, ut scelerisque metus.</string>
+                <key>media</key>
+                <dict>
+                    <key>type</key>
+                    <string>image</string>
+                    <key>resource</key>
+                    <string>1.2.jpg</string>
+                </dict>
+            </dict>
+        </array>
+    </dict>
+</array>
+</plist>
