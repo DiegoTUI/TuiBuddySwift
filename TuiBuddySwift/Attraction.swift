@@ -8,6 +8,12 @@
 
 import Foundation
 
+class FactIterator {
+    var current: (() -> Fact?) = {return nil}
+    var next: (() -> Fact?) = {return nil}
+    var prev: (() -> Fact?) = {return nil}
+}
+
 class Attraction: NSObject, NSCoding, Equatable {
     var id: Int32 = -1
     var name: String = ""
@@ -61,6 +67,45 @@ class Attraction: NSObject, NSCoding, Equatable {
             }
         }
         self.facts = newFacts
+    }
+    
+    func iterator() -> FactIterator {
+        var currentFact: Fact? = (countElements(self.facts) > 0) ? self.facts[0] : nil
+        var theIterator = FactIterator()
+        // current
+        theIterator.current = {[unowned self]() in
+            return currentFact
+        }
+        // next
+        theIterator.next = {[unowned self]() in
+            if currentFact == nil {
+                return nil
+            }
+            if let index = find(self.facts, currentFact!) {
+                if index < countElements(self.facts) - 1 {
+                    currentFact = self.facts[index + 1]
+                    return currentFact
+                }
+                return nil
+            }
+            return nil
+        }
+        // prev
+        theIterator.prev = {[unowned self]() in
+            if currentFact == nil {
+                return nil
+            }
+            if let index = find(self.facts, currentFact!) {
+                if index > 0 {
+                    currentFact = self.facts[index - 1]
+                    return currentFact
+                }
+                return nil
+            }
+            return nil
+        }
+        
+        return theIterator
     }
     
     //MARK: - NSCoding protocol

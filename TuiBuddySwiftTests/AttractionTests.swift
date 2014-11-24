@@ -57,5 +57,34 @@ class AttractionTests: XCTestCase {
             XCTAssertEqual(fact.resource, "resource\(id)", "wrong resource in fact \(id)")
         }
     }
+    
+    func testIterator() {
+        var attraction = Attraction()
+        attraction.refreshFacts()
+        var iterator = attraction.iterator()
+        XCTAssertNil(iterator.current(), "No facts should return nil current")
+        XCTAssertNil(iterator.prev(), "No facts should return nil prev")
+        XCTAssertNil(iterator.next(), "No facts should return nil prev")
+        attraction.id = 1
+        attraction.refreshFacts()
+        let factor1 = attraction.facts[0]
+        let factor2 = attraction.facts[1]
+        // create iterator
+        iterator = attraction.iterator()
+        XCTAssertNil(iterator.prev(), "First fact. Prev should return nil")
+        // check current
+        XCTAssertEqual(iterator.current()!, factor1, "wrong starting factor")
+        // go to next
+        XCTAssertEqual(iterator.next()!, factor2, "next iterated correctly")
+        XCTAssertEqual(iterator.current()!, factor2, "current did not change accordingly")
+        // next is nil
+        XCTAssertNil(iterator.next(), "Last fact. next() should return nil")
+        XCTAssertEqual(iterator.current()!, factor2, "current shouldn't have changed")
+        // prev is fact1
+        XCTAssertEqual(iterator.prev()!, factor1, "prev iterated correctly")
+        XCTAssertEqual(iterator.current()!, factor1, "current did not change accordingly")
+        // prev again
+        XCTAssertNil(iterator.prev(), "First fact. Prev should return nil")
+    }
 
 }
