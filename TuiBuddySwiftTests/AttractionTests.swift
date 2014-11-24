@@ -65,25 +65,32 @@ class AttractionTests: XCTestCase {
         XCTAssertNil(iterator.current(), "No facts should return nil current")
         XCTAssertNil(iterator.prev(), "No facts should return nil prev")
         XCTAssertNil(iterator.next(), "No facts should return nil prev")
+        XCTAssertFalse(iterator.isPrev(), "No facts should return no prev")
+        XCTAssertFalse(iterator.isNext(), "No facts should return no next")
         attraction.id = 1
         attraction.refreshFacts()
         let factor1 = attraction.facts[0]
         let factor2 = attraction.facts[1]
         // create iterator
         iterator = attraction.iterator()
+        XCTAssertFalse(iterator.isPrev(), "First fact. No prev.")
         XCTAssertNil(iterator.prev(), "First fact. Prev should return nil")
         // check current
         XCTAssertEqual(iterator.current()!, factor1, "wrong starting factor")
         // go to next
+        XCTAssertTrue(iterator.isNext(), "First fact. Should be a next one.")
         XCTAssertEqual(iterator.next()!, factor2, "next iterated correctly")
         XCTAssertEqual(iterator.current()!, factor2, "current did not change accordingly")
         // next is nil
+        XCTAssertFalse(iterator.isNext(), "Last fact. No next.")
         XCTAssertNil(iterator.next(), "Last fact. next() should return nil")
         XCTAssertEqual(iterator.current()!, factor2, "current shouldn't have changed")
         // prev is fact1
+        XCTAssertTrue(iterator.isPrev(), "Last fact. Should be a prev one.")
         XCTAssertEqual(iterator.prev()!, factor1, "prev iterated correctly")
         XCTAssertEqual(iterator.current()!, factor1, "current did not change accordingly")
         // prev again
+        XCTAssertFalse(iterator.isPrev(), "First fact. No prev.")
         XCTAssertNil(iterator.prev(), "First fact. Prev should return nil")
     }
 

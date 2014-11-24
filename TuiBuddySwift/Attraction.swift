@@ -9,9 +9,11 @@
 import Foundation
 
 class FactIterator {
-    var current: (() -> Fact?) = {return nil}
-    var next: (() -> Fact?) = {return nil}
-    var prev: (() -> Fact?) = {return nil}
+    var current: () -> Fact? = {return nil}
+    var next: () -> Fact? = {return nil}
+    var prev: () -> Fact? = {return nil}
+    var isPrev: () -> Bool = {return false}
+    var isNext: () -> Bool = {return false}
 }
 
 class Attraction: NSObject, NSCoding, Equatable {
@@ -90,6 +92,19 @@ class Attraction: NSObject, NSCoding, Equatable {
             }
             return nil
         }
+        // isNext
+        theIterator.isNext = {[unowned self]() in
+            if currentFact == nil {
+                return false
+            }
+            if let index = find(self.facts, currentFact!) {
+                if index < countElements(self.facts) - 1 {
+                    return true
+                }
+                return false
+            }
+            return false
+        }
         // prev
         theIterator.prev = {[unowned self]() in
             if currentFact == nil {
@@ -103,6 +118,19 @@ class Attraction: NSObject, NSCoding, Equatable {
                 return nil
             }
             return nil
+        }
+        // isPrev
+        theIterator.isPrev = {[unowned self]() in
+            if currentFact == nil {
+                return false
+            }
+            if let index = find(self.facts, currentFact!) {
+                if index > 0 {
+                    return true
+                }
+                return false
+            }
+            return false
         }
         
         return theIterator

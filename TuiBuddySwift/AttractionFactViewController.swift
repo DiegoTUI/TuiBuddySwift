@@ -9,8 +9,7 @@
 import UIKit
 
 class AttractionFactViewController: UIViewController {
-    var attraction: Attraction? = nil
-    var currentFact: Fact? = nil
+    var factIterator: FactIterator? = nil
     
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var shakeLabel: UILabel!
@@ -21,6 +20,7 @@ class AttractionFactViewController: UIViewController {
     }
     
     func setupView() {
+        var currentFact = factIterator?.current()
         // set title in navigation bar
         navigationItem.title = "Fact #\(currentFact?.id)"
         // set description
