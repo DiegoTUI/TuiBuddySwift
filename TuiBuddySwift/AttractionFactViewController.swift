@@ -9,7 +9,13 @@
 import UIKit
 
 class AttractionFactViewController: UIViewController {
-    var factIterator: FactIterator? = nil
+    
+    private struct StaticStruct { static var _factIterator: FactIterator? = nil }
+    
+    class var factIterator: FactIterator? {
+        get {return StaticStruct._factIterator}
+        set {StaticStruct._factIterator = newValue}
+    }
     
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var shakeLabel: UILabel!
@@ -20,13 +26,15 @@ class AttractionFactViewController: UIViewController {
     }
     
     func setupView() {
-        var currentFact = factIterator?.current()
+        var currentFact = AttractionFactViewController.factIterator?.current()
+        let title = currentFact?.id == nil ? "" : "\(currentFact!.id)"
+        let description = currentFact?.text == nil ? "" : "\(currentFact!.text)"
         // set title in navigation bar
-        navigationItem.title = "Fact #\(currentFact?.id)"
+        navigationItem.title = "Fact #\(title)"
         // set description
-        descriptionLabel.text = currentFact?.text
+        descriptionLabel.text = description
         // show/hide shakeLabel
-        //shakeLabel.hidden = (nextFact == nil)
+        shakeLabel.hidden = AttractionFactViewController.factIterator == nil || !AttractionFactViewController.factIterator!.isNext()
     }
     
     // MARK: - Shaking -
@@ -38,10 +46,20 @@ class AttractionFactViewController: UIViewController {
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
         if motion == .MotionShake {
             // push a new view controller into the Navigation View Controller if there is a nextFact
-            /*if let next = nextFact {
-                var destinationViewController = AttractionFactViewController()
-                
-            }*/
+            if let nextFact = AttractionFactViewController.factIterator?.next() {
+                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                var destinationViewController = storyBoard.instantiateViewControllerWithIdentifier("attractionFactViewController") as AttractionFactViewController
+                self.navigationController?.pushViewController(destinationViewController, animated: true)
+            }
+        }
+    }
+    
+    // MARK: - Back button -
+    
+    override func willMoveToParentViewController(parent: UIViewController?) {
+        if (parent == nil) {
+            println("back button clicked")
+            AttractionFactViewController.factIterator?.prev()
         }
     }
 

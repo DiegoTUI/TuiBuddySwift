@@ -59,7 +59,7 @@ class Attraction: NSObject, NSCoding, Equatable {
         }
         // add facts if any
         let indexSet = cmsContents?.indexesOfObjectsPassingTest() { (item, index, weirdPointer) in
-            let attractionId = (item as NSDictionary)["id"] as Int
+            let attractionId = (item as NSDictionary)["attractionId"] as Int
             return Int32(attractionId) == self.id
         }
         if indexSet != nil && indexSet?.count > 0 {

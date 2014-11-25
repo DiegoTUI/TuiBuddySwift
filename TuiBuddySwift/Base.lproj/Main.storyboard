@@ -384,7 +384,7 @@
         <!--Fact View Controller-->
         <scene sceneID="UvR-fW-rgI">
             <objects>
-                <viewController title="Fact View Controller" id="AOX-ui-mKc" customClass="AttractionFactViewController" customModule="TuiBuddySwift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="attractionFactViewController" title="Fact View Controller" id="AOX-ui-mKc" customClass="AttractionFactViewController" customModule="TuiBuddySwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ggd-hC-ZhT"/>
                         <viewControllerLayoutGuide type="bottom" id="xqA-J7-cfo"/>

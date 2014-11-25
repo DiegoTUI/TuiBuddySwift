@@ -72,7 +72,7 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
     // MARK: - Notification Handler
     
     func handleNotificationForAttraction(attraction: Attraction) {
-        performSegueWithIdentifier("showInfo", sender: attraction.name)
+        performSegueWithIdentifier(config.notificationSegueName, sender: attraction.name)
     }
     
     // MARK: - AddEditAttractionViewControllerDelegate
@@ -93,6 +93,11 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
             let attraction = attractions.filter({$0.name == (sender as String)})[0]
             (segue.destinationViewController as AttractionInfoViewController).url = attraction.url
             (segue.destinationViewController as AttractionInfoViewController).navigationTitle = (sender as String)
+        } else if segue.identifier == "showFacts" {
+            // sender is the title of the cell
+            let attraction = attractions.filter({$0.name == (sender as String)})[0]
+            let attractionFactViewController = (segue.destinationViewController as UINavigationController).viewControllers[0] as AttractionFactViewController
+            AttractionFactViewController.factIterator = attraction.iterator()
         } else if segue.identifier == "addAttraction" {
             // stop updating locations
             RegionManager.sharedInstance.stopMonitoringRegions()
@@ -129,7 +134,7 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("showFacts", sender: tableView.cellForRowAtIndexPath(indexPath)?.textLabel.text)
+        performSegueWithIdentifier(config.notificationSegueName, sender: tableView.cellForRowAtIndexPath(indexPath)?.textLabel.text)
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {}
