@@ -402,8 +402,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shake the phone for more facts!!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKj-yW-Tou">
-                                <rect key="frame" x="175" y="571" width="251" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Swipe screen for more facts!!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKj-yW-Tou">
+                                <rect key="frame" x="189" y="571" width="224" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -426,8 +426,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="actionLabel" destination="vKj-yW-Tou" id="E9T-t4-xfn"/>
                         <outlet property="descriptionLabel" destination="6yj-dw-GaA" id="avG-t6-g9p"/>
-                        <outlet property="shakeLabel" destination="vKj-yW-Tou" id="Xm4-gf-gRG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dEN-72-msM" userLabel="First Responder" sceneMemberID="firstResponder"/>

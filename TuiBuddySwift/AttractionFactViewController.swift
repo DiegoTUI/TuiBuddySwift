@@ -18,11 +18,12 @@ class AttractionFactViewController: UIViewController {
     }
     
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var shakeLabel: UILabel!
+    @IBOutlet weak var actionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
+        self.addSwipeGestureRecognizers()
     }
     
     func setupView() {
@@ -34,24 +35,34 @@ class AttractionFactViewController: UIViewController {
         // set description
         descriptionLabel.text = description
         // show/hide shakeLabel
-        shakeLabel.hidden = AttractionFactViewController.factIterator == nil || !AttractionFactViewController.factIterator!.isNext()
+        actionLabel.hidden = AttractionFactViewController.factIterator == nil || !AttractionFactViewController.factIterator!.isNext()
     }
     
-    // MARK: - Shaking -
-    
-    override func canBecomeFirstResponder() -> Bool {
-        return true
+    func addSwipeGestureRecognizers() {
+        var rightSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: "handleRightSwipe")
+        rightSwipeRecognizer.direction = .Left
+        var leftSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: "handleLeftSwipe")
+        leftSwipeRecognizer.direction = .Right
+        
+        self.view.addGestureRecognizer(rightSwipeRecognizer)
+        self.view.addGestureRecognizer(leftSwipeRecognizer)
     }
     
-    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
-        if motion == .MotionShake {
-            // push a new view controller into the Navigation View Controller if there is a nextFact
-            if let nextFact = AttractionFactViewController.factIterator?.next() {
-                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-                var destinationViewController = storyBoard.instantiateViewControllerWithIdentifier("attractionFactViewController") as AttractionFactViewController
-                self.navigationController?.pushViewController(destinationViewController, animated: true)
-            }
+    // MARK: - Swiping -
+    
+    func handleRightSwipe() {
+        println("right swipe")
+        // push a new view controller into the Navigation View Controller if there is a nextFact
+        if let nextFact = AttractionFactViewController.factIterator?.next() {
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            var destinationViewController = storyBoard.instantiateViewControllerWithIdentifier("attractionFactViewController") as AttractionFactViewController
+            self.navigationController?.pushViewController(destinationViewController, animated: true)
         }
+    }
+    
+    func handleLeftSwipe() {
+        println("left swipe")
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     // MARK: - Back button -
