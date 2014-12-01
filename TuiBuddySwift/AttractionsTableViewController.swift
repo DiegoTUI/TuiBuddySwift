@@ -42,7 +42,7 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
             let debugButton = UIBarButtonItem(title: "Debug", style: .Plain, target: self, action: Selector("debugButtonClicked"))
             self.navigationItem.leftBarButtonItem = debugButton
         }
-        //Delegate and data source
+        // Delegate and data source
         self.tableView.dataSource = self
         self.tableView.delegate = self
         // Become delegate of RegionManager

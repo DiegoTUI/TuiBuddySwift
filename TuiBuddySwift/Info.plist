@@ -50,5 +50,16 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>TUIType.otf</string>
+		<string>TUITypeBd.otf</string>
+		<string>TUITypeBdIt.otf</string>
+		<string>TUITypeIt.otf</string>
+		<string>TUITypeLt.otf</string>
+		<string>TUITypeLtBd.otf</string>
+		<string>TUITypeLtBI.otf</string>
+		<string>TUITypeLtIt.otf</string>
+	</array>
 </dict>
 </plist>

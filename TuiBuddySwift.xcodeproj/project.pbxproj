@@ -16,6 +16,17 @@
 		760CB3721A16189200789A55 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760CB3711A16189200789A55 /* DebugViewController.swift */; };
 		761F2AF21A14D936007ECC6D /* RegionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761F2AF11A14D936007ECC6D /* RegionManagerTests.swift */; };
 		761F2AF31A14D99D007ECC6D /* RegionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EBF36E1A122B5200D7E3F8 /* RegionManager.swift */; };
+		7623B60A1A2C819F00390EEE /* TUIType.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7623B6021A2C819F00390EEE /* TUIType.otf */; };
+		7623B60B1A2C819F00390EEE /* TUITypeBd.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7623B6031A2C819F00390EEE /* TUITypeBd.otf */; };
+		7623B60C1A2C819F00390EEE /* TUITypeBdIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7623B6041A2C819F00390EEE /* TUITypeBdIt.otf */; };
+		7623B60D1A2C819F00390EEE /* TUITypeIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7623B6051A2C819F00390EEE /* TUITypeIt.otf */; };
+		7623B60E1A2C819F00390EEE /* TUITypeLt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7623B6061A2C819F00390EEE /* TUITypeLt.otf */; };
+		7623B60F1A2C819F00390EEE /* TUITypeLtBd.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7623B6071A2C819F00390EEE /* TUITypeLtBd.otf */; };
+		7623B6101A2C819F00390EEE /* TUITypeLtBI.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7623B6081A2C819F00390EEE /* TUITypeLtBI.otf */; };
+		7623B6111A2C819F00390EEE /* TUITypeLtIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7623B6091A2C819F00390EEE /* TUITypeLtIt.otf */; };
+		7623B6171A2CA2CE00390EEE /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7623B6161A2CA2CE00390EEE /* Fonts.swift */; };
+		7623B6191A2CAF2A00390EEE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7623B6181A2CAF2A00390EEE /* Colors.swift */; };
+		7623B61B1A2CB79000390EEE /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7623B61A1A2CB79000390EEE /* Layout.swift */; };
 		765B84181A1B589A00C84DAC /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765B84171A1B589A00C84DAC /* ReachabilityManager.swift */; };
 		765B841C1A1B954500C84DAC /* RNCachingURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 765B841B1A1B954500C84DAC /* RNCachingURLProtocol.m */; };
 		765B841E1A1C996900C84DAC /* AttractionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765B841D1A1C996900C84DAC /* AttractionTests.swift */; };
@@ -64,6 +75,17 @@
 		760CB36F1A1511ED00789A55 /* NotificationManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManagerTests.swift; sourceTree = "<group>"; };
 		760CB3711A16189200789A55 /* DebugViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
 		761F2AF11A14D936007ECC6D /* RegionManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionManagerTests.swift; sourceTree = "<group>"; };
+		7623B6021A2C819F00390EEE /* TUIType.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = TUIType.otf; path = Resources/Fonts/TUIType.otf; sourceTree = "<group>"; };
+		7623B6031A2C819F00390EEE /* TUITypeBd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = TUITypeBd.otf; path = Resources/Fonts/TUITypeBd.otf; sourceTree = "<group>"; };
+		7623B6041A2C819F00390EEE /* TUITypeBdIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = TUITypeBdIt.otf; path = Resources/Fonts/TUITypeBdIt.otf; sourceTree = "<group>"; };
+		7623B6051A2C819F00390EEE /* TUITypeIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = TUITypeIt.otf; path = Resources/Fonts/TUITypeIt.otf; sourceTree = "<group>"; };
+		7623B6061A2C819F00390EEE /* TUITypeLt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = TUITypeLt.otf; path = Resources/Fonts/TUITypeLt.otf; sourceTree = "<group>"; };
+		7623B6071A2C819F00390EEE /* TUITypeLtBd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = TUITypeLtBd.otf; path = Resources/Fonts/TUITypeLtBd.otf; sourceTree = "<group>"; };
+		7623B6081A2C819F00390EEE /* TUITypeLtBI.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = TUITypeLtBI.otf; path = Resources/Fonts/TUITypeLtBI.otf; sourceTree = "<group>"; };
+		7623B6091A2C819F00390EEE /* TUITypeLtIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = TUITypeLtIt.otf; path = Resources/Fonts/TUITypeLtIt.otf; sourceTree = "<group>"; };
+		7623B6161A2CA2CE00390EEE /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		7623B6181A2CAF2A00390EEE /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		7623B61A1A2CB79000390EEE /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		765B84171A1B589A00C84DAC /* ReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		765B841A1A1B954500C84DAC /* RNCachingURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNCachingURLProtocol.h; path = External/RNCachingURLProtocol.h; sourceTree = "<group>"; };
 		765B841B1A1B954500C84DAC /* RNCachingURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNCachingURLProtocol.m; path = External/RNCachingURLProtocol.m; sourceTree = "<group>"; };
@@ -128,6 +150,64 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7623B6011A2C817A00390EEE /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7623B6021A2C819F00390EEE /* TUIType.otf */,
+				7623B6031A2C819F00390EEE /* TUITypeBd.otf */,
+				7623B6041A2C819F00390EEE /* TUITypeBdIt.otf */,
+				7623B6051A2C819F00390EEE /* TUITypeIt.otf */,
+				7623B6061A2C819F00390EEE /* TUITypeLt.otf */,
+				7623B6071A2C819F00390EEE /* TUITypeLtBd.otf */,
+				7623B6081A2C819F00390EEE /* TUITypeLtBI.otf */,
+				7623B6091A2C819F00390EEE /* TUITypeLtIt.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		7623B6121A2C951700390EEE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				76BF414E1A10FA980042966D /* Attraction.swift */,
+				76D41FA71A2328E10053F687 /* Fact.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		7623B6131A2C952100390EEE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				76A2DBD81A1635A400341118 /* DebugRegionStatusView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		7623B6141A2C953000390EEE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				76BF41411A0CD02E0042966D /* AttractionsTableViewController.swift */,
+				76BF41451A0CE4700042966D /* AddEditAttractionViewController.swift */,
+				76BF414C1A10DDA80042966D /* AttractionManager.swift */,
+				76EBF36E1A122B5200D7E3F8 /* RegionManager.swift */,
+				76EBF3721A1344E400D7E3F8 /* AttractionInfoViewController.swift */,
+				760CB36C1A15099100789A55 /* NotificationManager.swift */,
+				760CB3711A16189200789A55 /* DebugViewController.swift */,
+				765B84171A1B589A00C84DAC /* ReachabilityManager.swift */,
+				76D41FA01A23219F0053F687 /* AttractionFactViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		7623B6151A2C954200390EEE /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				7623B6161A2CA2CE00390EEE /* Fonts.swift */,
+				7623B6181A2CAF2A00390EEE /* Colors.swift */,
+				7623B61A1A2CB79000390EEE /* Layout.swift */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
 		765B84191A1B952700C84DAC /* External */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,28 +240,21 @@
 		76BF411A1A0CCCE60042966D /* TuiBuddySwift */ = {
 			isa = PBXGroup;
 			children = (
+				7623B6151A2C954200390EEE /* Constants */,
+				7623B6141A2C953000390EEE /* Controllers */,
+				7623B6131A2C952100390EEE /* Views */,
+				7623B6121A2C951700390EEE /* Models */,
+				7623B6011A2C817A00390EEE /* Fonts */,
 				76D41FA21A23239A0053F687 /* CMS */,
 				765B84191A1B952700C84DAC /* External */,
 				76BF41471A10D9B10042966D /* attractions.sqlite */,
+				76BF41491A10DB570042966D /* BridgingHeader.h */,
+				760CB3691A14FCB000789A55 /* Config.swift */,
 				76BF411D1A0CCCE60042966D /* AppDelegate.swift */,
 				76BF41231A0CCCE60042966D /* Main.storyboard */,
 				76BF41261A0CCCE60042966D /* Images.xcassets */,
 				76BF41281A0CCCE60042966D /* LaunchScreen.xib */,
 				76BF411B1A0CCCE60042966D /* Supporting Files */,
-				76BF41411A0CD02E0042966D /* AttractionsTableViewController.swift */,
-				76BF41451A0CE4700042966D /* AddEditAttractionViewController.swift */,
-				76BF41491A10DB570042966D /* BridgingHeader.h */,
-				76BF414C1A10DDA80042966D /* AttractionManager.swift */,
-				76BF414E1A10FA980042966D /* Attraction.swift */,
-				76EBF36E1A122B5200D7E3F8 /* RegionManager.swift */,
-				76EBF3721A1344E400D7E3F8 /* AttractionInfoViewController.swift */,
-				760CB3691A14FCB000789A55 /* Config.swift */,
-				760CB36C1A15099100789A55 /* NotificationManager.swift */,
-				760CB3711A16189200789A55 /* DebugViewController.swift */,
-				76A2DBD81A1635A400341118 /* DebugRegionStatusView.swift */,
-				765B84171A1B589A00C84DAC /* ReachabilityManager.swift */,
-				76D41FA01A23219F0053F687 /* AttractionFactViewController.swift */,
-				76D41FA71A2328E10053F687 /* Fact.swift */,
 			);
 			path = TuiBuddySwift;
 			sourceTree = "<group>";
@@ -317,12 +390,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7623B60A1A2C819F00390EEE /* TUIType.otf in Resources */,
 				76BF41251A0CCCE60042966D /* Main.storyboard in Resources */,
 				76BF412A1A0CCCE60042966D /* LaunchScreen.xib in Resources */,
 				76BF41481A10D9B10042966D /* attractions.sqlite in Resources */,
+				7623B60F1A2C819F00390EEE /* TUITypeLtBd.otf in Resources */,
 				76D41FB31A237A810053F687 /* attractions_test.plist in Resources */,
+				7623B60C1A2C819F00390EEE /* TUITypeBdIt.otf in Resources */,
 				76BF41271A0CCCE60042966D /* Images.xcassets in Resources */,
+				7623B60D1A2C819F00390EEE /* TUITypeIt.otf in Resources */,
+				7623B60E1A2C819F00390EEE /* TUITypeLt.otf in Resources */,
+				7623B60B1A2C819F00390EEE /* TUITypeBd.otf in Resources */,
+				7623B6101A2C819F00390EEE /* TUITypeLtBI.otf in Resources */,
 				76D41FAF1A2359720053F687 /* attractions.plist in Resources */,
+				7623B6111A2C819F00390EEE /* TUITypeLtIt.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,9 +455,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7623B6171A2CA2CE00390EEE /* Fonts.swift in Sources */,
 				76BF411E1A0CCCE60042966D /* AppDelegate.swift in Sources */,
 				76BF414D1A10DDA80042966D /* AttractionManager.swift in Sources */,
+				7623B6191A2CAF2A00390EEE /* Colors.swift in Sources */,
 				76BF41421A0CD02E0042966D /* AttractionsTableViewController.swift in Sources */,
+				7623B61B1A2CB79000390EEE /* Layout.swift in Sources */,
 				76EBF36F1A122B5200D7E3F8 /* RegionManager.swift in Sources */,
 				765B84181A1B589A00C84DAC /* ReachabilityManager.swift in Sources */,
 				760CB36D1A15099100789A55 /* NotificationManager.swift in Sources */,
