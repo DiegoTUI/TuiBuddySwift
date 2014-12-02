@@ -133,6 +133,7 @@
                         <segue destination="tab-xE-gHx" kind="presentation" identifier="editAttraction" id="q7z-pG-xiJ"/>
                         <segue destination="tab-xE-gHx" kind="presentation" identifier="addAttraction" id="xzB-bM-eTb"/>
                         <segue destination="UVb-2H-l1y" kind="presentation" identifier="showDebug" id="YV9-9t-0Kn"/>
+                        <segue destination="K5T-EV-toN" kind="presentation" identifier="showFacts" id="JDr-ZL-i8D"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lPL-v9-hZZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -486,6 +487,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="JDr-ZL-i8D"/>
         <segue reference="YV9-9t-0Kn"/>
         <segue reference="q7z-pG-xiJ"/>
     </inferredMetricsTieBreakers>

@@ -10,7 +10,7 @@ import UIKit
 
 let reuseIdentifier = "AttractionCell"
 
-class AttractionsCollectionViewController: UICollectionViewController, AttractionViewCellDelegate, AddEditAttractionViewControllerDelegate {
+class AttractionsCollectionViewController: UICollectionViewController, AttractionViewCellDelegate, AddEditAttractionViewControllerDelegate, NotificationHandler {
     
     // should the controller show alerts?
     var shouldShow = true
@@ -59,10 +59,9 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == kShowFactsSegue {
-            // sender is the title of the cell
-            /*let attraction = attractions.filter({$0.name == (sender as String)})[0]
+            let attraction = sender as Attraction
             let attractionFactViewController = (segue.destinationViewController as UINavigationController).viewControllers[0] as AttractionFactViewController
-            AttractionFactViewController.factIterator = attraction.iterator()*/
+            AttractionFactViewController.factIterator = attraction.iterator()
         } else if segue.identifier == kAddAttractionSegue {
             // stop updating locations
             RegionManager.sharedInstance.stopMonitoringRegions()
@@ -134,6 +133,10 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
         let cell = collectionView.cellForItemAtIndexPath(indexPath)
         cell?.contentView.backgroundColor = kWhiteColor
     }
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier(kShowFactsSegue, sender: (collectionView.cellForItemAtIndexPath(indexPath) as AttractionViewCell).attraction)
+    }
 
     
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
@@ -177,6 +180,12 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
             let indexPaths = indexPath == nil ? [] : [indexPath!]
             collectionView.reloadItemsAtIndexPaths(indexPaths)
         }
+    }
+    
+    // MARK: - Notification Handler
+    
+    func handleNotificationForAttraction(attraction: Attraction) {
+        performSegueWithIdentifier(kShowFactsSegue, sender: attraction)
     }
     
     // MARK: find cell with attraction
