@@ -7,63 +7,6 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Master-->
-        <scene sceneID="cUi-kZ-frf">
-            <objects>
-                <navigationController title="Master" id="rS3-R9-Ivy" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="yXu-0R-QUA">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="pGg-6v-bdr" kind="relationship" relationship="rootViewController" id="RxB-wf-QIq"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eq9-QA-ai8" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-148" y="64"/>
-        </scene>
-        <!--Attractions Table-->
-        <scene sceneID="VgW-fR-Quf">
-            <objects>
-                <tableViewController title="Attractions Table" id="pGg-6v-bdr" customClass="AttractionsTableViewController" customModule="TuiBuddySwift" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mLL-gJ-YKr">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="2pz-XF-uhl" style="IBUITableViewCellStyleDefault" id="m0d-ak-lc9">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m0d-ak-lc9" id="d3P-M7-ByW">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2pz-XF-uhl">
-                                            <rect key="frame" x="15" y="0.0" width="270" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableViewCell>
-                        </prototypes>
-                        <sections/>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Attractions" id="tQt-TN-PWz"/>
-                    <connections>
-                        <segue destination="tab-xE-gHx" kind="presentation" identifier="addAttraction" id="low-eL-Wt6"/>
-                        <segue destination="tab-xE-gHx" kind="presentation" identifier="editAttraction" id="J8A-1i-Ton"/>
-                        <segue destination="UVb-2H-l1y" kind="presentation" identifier="showDebug" id="aBO-dc-8dK"/>
-                        <segue destination="K5T-EV-toN" kind="presentation" identifier="showFacts" id="8WR-9t-gH3"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Cn-md-YlS" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="615" y="64"/>
-        </scene>
         <!--Attractions Collection-->
         <scene sceneID="mBE-V9-k2Y">
             <objects>
@@ -138,12 +81,12 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lPL-v9-hZZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="390" y="-987"/>
+            <point key="canvasLocation" x="352.5" y="-193.5"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Attractions Navigation-->
         <scene sceneID="cG8-lt-Cp5">
             <objects>
-                <navigationController id="EwV-7S-4Rw" sceneMemberID="viewController">
+                <navigationController title="Attractions Navigation" id="EwV-7S-4Rw" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="v7C-WR-Wyu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -154,7 +97,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XkA-0U-5pw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-327" y="-987"/>
+            <point key="canvasLocation" x="-364.5" y="-193.5"/>
         </scene>
         <!--Debug-->
         <scene sceneID="QNp-8O-iPT">
@@ -259,7 +202,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R6U-t6-mnI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="999" y="-605"/>
+            <point key="canvasLocation" x="352.5" y="-877.5"/>
         </scene>
         <!--Add Edit Attraction View Controller-->
         <scene sceneID="zOV-EL-DvW">
@@ -414,7 +357,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k6L-8i-LdQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1343" y="760"/>
+            <point key="canvasLocation" x="352.5" y="488.25"/>
         </scene>
         <!--Fact Navigation-->
         <scene sceneID="gdg-VA-o68">
@@ -430,7 +373,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="un2-hn-1CB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="615" y="1451"/>
+            <point key="canvasLocation" x="1107" y="-193.5"/>
         </scene>
         <!--Fact View Controller-->
         <scene sceneID="UvR-fW-rgI">
@@ -483,12 +426,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dEN-72-msM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1343" y="1451"/>
+            <point key="canvasLocation" x="1836" y="-193.5"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="JDr-ZL-i8D"/>
-        <segue reference="YV9-9t-0Kn"/>
         <segue reference="q7z-pG-xiJ"/>
     </inferredMetricsTieBreakers>
 </document>
