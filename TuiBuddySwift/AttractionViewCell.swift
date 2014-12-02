@@ -8,24 +8,45 @@
 
 import UIKit
 
-class AttractionViewCell: UICollectionViewCell {
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    
-    /*override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
+protocol AttractionViewCellDelegate {
+    // called when an attraction should be edited
+    func editAttraction(attraction: Attraction)
+    // called when an attraction should be deleted
+    func deleteAttraction(attraction: Attraction)
+}
 
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }*/
+class AttractionViewCell: UICollectionViewCell {
+    // Outlets
+    @IBOutlet weak var titleLabel: UILabel!
+    // delegate
+    var delegate: AttractionViewCellDelegate? = nil
+    // attraction
+    var attraction: Attraction? = nil
     
+    // MARK: Setup
+    func setup() {
+        titleLabel.text = attraction?.name
+    }
     
-    
+    // MARK: Menu actions
     func editMenuOptionClicked(sender: AnyObject?) {
+        if let currentAttraction = attraction {
+            delegate?.editAttraction(currentAttraction)
+        }
     }
     
     func deleteMenuOptionClicked(sender: AnyObject?) {
+        if let currentAttraction = attraction {
+            delegate?.deleteAttraction(currentAttraction)
+        }
+    }
+    
+    // MARK: Contains attraction
+    func containsAttraction(attraction: Attraction) -> Bool {
+        if attraction.id == self.attraction?.id {
+            return true
+        }
+        return false
     }
     
 }

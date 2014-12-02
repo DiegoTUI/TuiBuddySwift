@@ -72,16 +72,20 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
     // MARK: - Notification Handler
     
     func handleNotificationForAttraction(attraction: Attraction) {
-        performSegueWithIdentifier(config.notificationSegueName, sender: attraction.name)
+        performSegueWithIdentifier(kShowFactsSegue, sender: attraction.name)
     }
     
     // MARK: - AddEditAttractionViewControllerDelegate
     
-    func attractionAdded (attractionRow: Int?) {
-        attractions = AttractionManager.sharedInstance.readAttractions()
+    func attractionAdded (attraction: Attraction) {
+        /*attractions = AttractionManager.sharedInstance.readAttractions()
         let action = (attractionRow == nil) ? self.tableView.insertRowsAtIndexPaths : self.tableView.reloadRowsAtIndexPaths
         let row = (attractionRow == nil) ? countElements(attractions) - 1 : attractionRow!
-        action([NSIndexPath(forRow: row, inSection: 0)], withRowAnimation: .Automatic)
+        action([NSIndexPath(forRow: row, inSection: 0)], withRowAnimation: .Automatic)*/
+    }
+    
+    func attractionEdited(attraction: Attraction) {
+        
     }
     
     // MARK: - Segues
@@ -129,7 +133,7 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier(config.notificationSegueName, sender: tableView.cellForRowAtIndexPath(indexPath)?.textLabel.text)
+        performSegueWithIdentifier(kShowFactsSegue, sender: tableView.cellForRowAtIndexPath(indexPath)?.textLabel.text)
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {}

@@ -29,6 +29,7 @@
 		7623B61B1A2CB79000390EEE /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7623B61A1A2CB79000390EEE /* Layout.swift */; };
 		7623B61D1A2DAB3A00390EEE /* AttractionsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7623B61C1A2DAB3A00390EEE /* AttractionsCollectionViewController.swift */; };
 		7623B61F1A2DAC4900390EEE /* AttractionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7623B61E1A2DAC4900390EEE /* AttractionViewCell.swift */; };
+		7640DEE11A2DE5D5005DD518 /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7640DEE01A2DE5D5005DD518 /* Segues.swift */; };
 		765B84181A1B589A00C84DAC /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765B84171A1B589A00C84DAC /* ReachabilityManager.swift */; };
 		765B841C1A1B954500C84DAC /* RNCachingURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 765B841B1A1B954500C84DAC /* RNCachingURLProtocol.m */; };
 		765B841E1A1C996900C84DAC /* AttractionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765B841D1A1C996900C84DAC /* AttractionTests.swift */; };
@@ -89,6 +90,7 @@
 		7623B61A1A2CB79000390EEE /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		7623B61C1A2DAB3A00390EEE /* AttractionsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionsCollectionViewController.swift; sourceTree = "<group>"; };
 		7623B61E1A2DAC4900390EEE /* AttractionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionViewCell.swift; sourceTree = "<group>"; };
+		7640DEE01A2DE5D5005DD518 /* Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
 		765B84171A1B589A00C84DAC /* ReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		765B841A1A1B954500C84DAC /* RNCachingURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNCachingURLProtocol.h; path = External/RNCachingURLProtocol.h; sourceTree = "<group>"; };
 		765B841B1A1B954500C84DAC /* RNCachingURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNCachingURLProtocol.m; path = External/RNCachingURLProtocol.m; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				7623B6161A2CA2CE00390EEE /* Fonts.swift */,
 				7623B6181A2CAF2A00390EEE /* Colors.swift */,
 				7623B61A1A2CB79000390EEE /* Layout.swift */,
+				7640DEE01A2DE5D5005DD518 /* Segues.swift */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				76BF41421A0CD02E0042966D /* AttractionsTableViewController.swift in Sources */,
 				7623B61B1A2CB79000390EEE /* Layout.swift in Sources */,
 				76EBF36F1A122B5200D7E3F8 /* RegionManager.swift in Sources */,
+				7640DEE11A2DE5D5005DD518 /* Segues.swift in Sources */,
 				7623B61D1A2DAB3A00390EEE /* AttractionsCollectionViewController.swift in Sources */,
 				765B84181A1B589A00C84DAC /* ReachabilityManager.swift in Sources */,
 				760CB36D1A15099100789A55 /* NotificationManager.swift in Sources */,

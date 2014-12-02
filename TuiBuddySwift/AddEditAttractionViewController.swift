@@ -22,7 +22,8 @@ extension String {
 }
 
 protocol AddEditAttractionViewControllerDelegate {
-    func attractionAdded(attractionRow: Int?)
+    func attractionAdded(attraction: Attraction)
+    func attractionEdited(attraction: Attraction)
 }
 
 class AddEditAttractionViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate {
@@ -30,8 +31,9 @@ class AddEditAttractionViewController: UIViewController, UITextFieldDelegate, CL
     var titleText: String? = nil
     var attraction: Attraction? = nil
     var attractionRow: Int? = nil
-    var delegate:AddEditAttractionViewControllerDelegate? = nil
+    var delegate: AddEditAttractionViewControllerDelegate? = nil
     var _locationManager = CLLocationManager()
+    var _isEditing = false
     
 
     @IBOutlet weak var titleLabel: UILabel!
@@ -52,6 +54,7 @@ class AddEditAttractionViewController: UIViewController, UITextFieldDelegate, CL
             longitudeTextField.text = "\(attraction!.longitude)"
             radiusTextField.text = "\(attraction!.radius)"
             linkTextField.text = attraction!.url
+            _isEditing = true
         }
         // delegates to hide keyboard
         nameTextField.delegate = self
@@ -132,7 +135,11 @@ class AddEditAttractionViewController: UIViewController, UITextFieldDelegate, CL
             RegionManager.sharedInstance.updateRegions()
             // dismiss view controller and tell delegate
             self.dismissViewControllerAnimated(true, completion: {RegionManager.sharedInstance.startMonitoringRegions()})
-            delegate?.attractionAdded(attractionRow)
+            if _isEditing {
+                delegate?.attractionEdited(attraction!)
+                return
+            }
+            delegate?.attractionAdded(attraction!)
         }
         else {
             var alert = UIAlertController(title: "Alert", message: "Some of the fields are incorrect. Please check.", preferredStyle: UIAlertControllerStyle.Alert)
