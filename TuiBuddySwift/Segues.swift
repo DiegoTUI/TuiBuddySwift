@@ -9,3 +9,4 @@
 let kEditAttractionSegue = "editAttraction"
 let kAddAttractionSegue = "addAttraction"
 let kShowFactsSegue = "showFacts"
+let kShowDebugSegue = "showDebug"

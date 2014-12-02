@@ -12,8 +12,6 @@ let reuseIdentifier = "AttractionCell"
 
 class AttractionsCollectionViewController: UICollectionViewController, AttractionViewCellDelegate, AddEditAttractionViewControllerDelegate {
     
-    // attractions in the collection view
-    var _attractions = AttractionManager.sharedInstance.readAttractions()
     // should the controller show alerts?
     var shouldShow = true
     // is there an alert view showing?
@@ -42,6 +40,14 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
         let editMenuItem = UIMenuItem(title: "Edit", action: "editMenuOptionClicked:")
         let deleteMenuItem = UIMenuItem(title: "Delete", action: "deleteMenuOptionClicked:")
         UIMenuController.sharedMenuController().menuItems = [editMenuItem, deleteMenuItem]
+        // add "add button"
+        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addNewAttraction:")
+        self.navigationItem.rightBarButtonItem = addButton
+        // add "debug" button
+        if config.debug {
+            let debugButton = UIBarButtonItem(title: "Debug", style: .Plain, target: self, action: Selector("debugButtonClicked"))
+            self.navigationItem.leftBarButtonItem = debugButton
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,9 +66,9 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
         } else if segue.identifier == kAddAttractionSegue {
             // stop updating locations
             RegionManager.sharedInstance.stopMonitoringRegions()
-            /*let destinationViewController = segue.destinationViewController as AddEditAttractionViewController
+            let destinationViewController = segue.destinationViewController as AddEditAttractionViewController
             destinationViewController.titleText = "Add Attraction"
-            destinationViewController.delegate = self*/
+            destinationViewController.delegate = self
         } else if segue.identifier == kEditAttractionSegue {
             // stop updating locations
             RegionManager.sharedInstance.stopMonitoringRegions()
@@ -83,14 +89,14 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //#warning Incomplete method implementation -- Return the number of items in the section
-        return _attractions.count
+        return AttractionManager.sharedInstance.readAttractions().count
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as AttractionViewCell
     
         // Configure the cell
-        cell.attraction = _attractions[indexPath.row] as Attraction
+        cell.attraction = AttractionManager.sharedInstance.readAttractions()[indexPath.row] as Attraction
         cell.setup()
         cell.delegate = self
     
@@ -151,12 +157,18 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
         performSegueWithIdentifier(kEditAttractionSegue, sender: attraction)
     }
     func deleteAttraction(attraction: Attraction) {
-        
+        AttractionManager.sharedInstance.deleteAttraction(attraction)
+        if let cellToRemove = cellForAttraction(attraction) {
+            let indexPath: NSIndexPath? = collectionView.indexPathForCell(cellToRemove)
+            let indexPaths = indexPath == nil ? [] : [indexPath!]
+            collectionView.deleteItemsAtIndexPaths(indexPaths)
+        }
     }
     
     // MARK: AddEditAttractionViewControllerDelegate
+    
     func attractionAdded(attraction: Attraction) {
-        
+        collectionView.insertItemsAtIndexPaths([NSIndexPath(forRow: (AttractionManager.sharedInstance.readAttractions().count - 1), inSection: 0)])
     }
     
     func attractionEdited(attraction: Attraction) {
@@ -165,10 +177,10 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
             let indexPaths = indexPath == nil ? [] : [indexPath!]
             collectionView.reloadItemsAtIndexPaths(indexPaths)
         }
-        
     }
     
     // MARK: find cell with attraction
+    
     func cellForAttraction(attraction: Attraction) -> AttractionViewCell? {
         for cell in collectionView.visibleCells() {
             if (cell as AttractionViewCell).containsAttraction(attraction) {
@@ -176,6 +188,16 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
             }
         }
         return nil
+    }
+    
+    // MARK: Navigation bar buttons
+    
+    func addNewAttraction(sender: AnyObject) {
+        self.performSegueWithIdentifier(kAddAttractionSegue, sender: nil)
+    }
+    
+    func debugButtonClicked () {
+        performSegueWithIdentifier(kShowDebugSegue, sender: nil)
     }
 
 }

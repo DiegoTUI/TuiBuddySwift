@@ -131,6 +131,8 @@
                     <navigationItem key="navigationItem" title="Attractions" id="gws-7D-eYk"/>
                     <connections>
                         <segue destination="tab-xE-gHx" kind="presentation" identifier="editAttraction" id="q7z-pG-xiJ"/>
+                        <segue destination="tab-xE-gHx" kind="presentation" identifier="addAttraction" id="xzB-bM-eTb"/>
+                        <segue destination="UVb-2H-l1y" kind="presentation" identifier="showDebug" id="YV9-9t-0Kn"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lPL-v9-hZZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -484,6 +486,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="YV9-9t-0Kn"/>
         <segue reference="q7z-pG-xiJ"/>
     </inferredMetricsTieBreakers>
 </document>

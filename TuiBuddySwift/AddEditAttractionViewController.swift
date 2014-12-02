@@ -133,13 +133,13 @@ class AddEditAttractionViewController: UIViewController, UITextFieldDelegate, CL
             action(attraction!)
             // update regions in RegionManager
             RegionManager.sharedInstance.updateRegions()
-            // dismiss view controller and tell delegate
-            self.dismissViewControllerAnimated(true, completion: {RegionManager.sharedInstance.startMonitoringRegions()})
+            // tell delegate and dismiss view controller
             if _isEditing {
                 delegate?.attractionEdited(attraction!)
-                return
+            } else {
+                delegate?.attractionAdded(attraction!)
             }
-            delegate?.attractionAdded(attraction!)
+            self.dismissViewControllerAnimated(true, completion: {RegionManager.sharedInstance.startMonitoringRegions()})
         }
         else {
             var alert = UIAlertController(title: "Alert", message: "Some of the fields are incorrect. Please check.", preferredStyle: UIAlertControllerStyle.Alert)
