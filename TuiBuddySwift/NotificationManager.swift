@@ -65,6 +65,7 @@ class NotificationManager: RegionManagerDelegate {
         // only trigger the alert if the viewController can handle it
         if let notificationHandler = visibleViewController as? NotificationHandler {
             if notificationHandler.shouldShow {
+                println("triggering alert with message: \(message)")
                 var alert = UIAlertController(title: "Hey!!", message: message, preferredStyle: .Alert)
                 alert.addAction(UIAlertAction(title: "No, thanks", style: .Cancel, handler: {action in
                     notificationHandler.shouldShow = true}))
