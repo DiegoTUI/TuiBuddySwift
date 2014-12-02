@@ -11,7 +11,7 @@ struct _Config {
     let showAlerts = true
     // are we in debug mode?
     let debug = true
-    // notification Segue name ("showInfo" or "showFacts")
+    // notification Segue name
     let notificationSegueName = "showFacts"
     // fakeCMS
     var fakeCMS = "attractions"

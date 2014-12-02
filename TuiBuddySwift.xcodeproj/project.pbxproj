@@ -27,6 +27,8 @@
 		7623B6171A2CA2CE00390EEE /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7623B6161A2CA2CE00390EEE /* Fonts.swift */; };
 		7623B6191A2CAF2A00390EEE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7623B6181A2CAF2A00390EEE /* Colors.swift */; };
 		7623B61B1A2CB79000390EEE /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7623B61A1A2CB79000390EEE /* Layout.swift */; };
+		7623B61D1A2DAB3A00390EEE /* AttractionsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7623B61C1A2DAB3A00390EEE /* AttractionsCollectionViewController.swift */; };
+		7623B61F1A2DAC4900390EEE /* AttractionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7623B61E1A2DAC4900390EEE /* AttractionViewCell.swift */; };
 		765B84181A1B589A00C84DAC /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765B84171A1B589A00C84DAC /* ReachabilityManager.swift */; };
 		765B841C1A1B954500C84DAC /* RNCachingURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 765B841B1A1B954500C84DAC /* RNCachingURLProtocol.m */; };
 		765B841E1A1C996900C84DAC /* AttractionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765B841D1A1C996900C84DAC /* AttractionTests.swift */; };
@@ -49,7 +51,6 @@
 		76D41FB31A237A810053F687 /* attractions_test.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76D41FB21A237A810053F687 /* attractions_test.plist */; };
 		76EBF36F1A122B5200D7E3F8 /* RegionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EBF36E1A122B5200D7E3F8 /* RegionManager.swift */; };
 		76EBF3711A122C1E00D7E3F8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EBF3701A122C1E00D7E3F8 /* CoreLocation.framework */; };
-		76EBF3731A1344E400D7E3F8 /* AttractionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EBF3721A1344E400D7E3F8 /* AttractionInfoViewController.swift */; };
 		76EBF38E1A14B1FF00D7E3F8 /* AttractionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EBF38D1A14B1FF00D7E3F8 /* AttractionManagerTests.swift */; };
 		76EBF38F1A14B3BA00D7E3F8 /* AttractionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BF414C1A10DDA80042966D /* AttractionManager.swift */; };
 		76EBF3901A14B50D00D7E3F8 /* attractions.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 76BF41471A10D9B10042966D /* attractions.sqlite */; };
@@ -86,6 +87,8 @@
 		7623B6161A2CA2CE00390EEE /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		7623B6181A2CAF2A00390EEE /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		7623B61A1A2CB79000390EEE /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		7623B61C1A2DAB3A00390EEE /* AttractionsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionsCollectionViewController.swift; sourceTree = "<group>"; };
+		7623B61E1A2DAC4900390EEE /* AttractionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionViewCell.swift; sourceTree = "<group>"; };
 		765B84171A1B589A00C84DAC /* ReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		765B841A1A1B954500C84DAC /* RNCachingURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNCachingURLProtocol.h; path = External/RNCachingURLProtocol.h; sourceTree = "<group>"; };
 		765B841B1A1B954500C84DAC /* RNCachingURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNCachingURLProtocol.m; path = External/RNCachingURLProtocol.m; sourceTree = "<group>"; };
@@ -113,7 +116,6 @@
 		76D41FB21A237A810053F687 /* attractions_test.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = attractions_test.plist; path = CMS/attractions_test.plist; sourceTree = "<group>"; };
 		76EBF36E1A122B5200D7E3F8 /* RegionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionManager.swift; sourceTree = "<group>"; };
 		76EBF3701A122C1E00D7E3F8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		76EBF3721A1344E400D7E3F8 /* AttractionInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionInfoViewController.swift; sourceTree = "<group>"; };
 		76EBF38D1A14B1FF00D7E3F8 /* AttractionManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionManagerTests.swift; sourceTree = "<group>"; };
 		76EBF3921A14B54800D7E3F8 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		BB38AA62E3007C5D44CCD618 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				76A2DBD81A1635A400341118 /* DebugRegionStatusView.swift */,
+				7623B61E1A2DAC4900390EEE /* AttractionViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -189,11 +192,11 @@
 				76BF41451A0CE4700042966D /* AddEditAttractionViewController.swift */,
 				76BF414C1A10DDA80042966D /* AttractionManager.swift */,
 				76EBF36E1A122B5200D7E3F8 /* RegionManager.swift */,
-				76EBF3721A1344E400D7E3F8 /* AttractionInfoViewController.swift */,
 				760CB36C1A15099100789A55 /* NotificationManager.swift */,
 				760CB3711A16189200789A55 /* DebugViewController.swift */,
 				765B84171A1B589A00C84DAC /* ReachabilityManager.swift */,
 				76D41FA01A23219F0053F687 /* AttractionFactViewController.swift */,
+				7623B61C1A2DAB3A00390EEE /* AttractionsCollectionViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -462,16 +465,17 @@
 				76BF41421A0CD02E0042966D /* AttractionsTableViewController.swift in Sources */,
 				7623B61B1A2CB79000390EEE /* Layout.swift in Sources */,
 				76EBF36F1A122B5200D7E3F8 /* RegionManager.swift in Sources */,
+				7623B61D1A2DAB3A00390EEE /* AttractionsCollectionViewController.swift in Sources */,
 				765B84181A1B589A00C84DAC /* ReachabilityManager.swift in Sources */,
 				760CB36D1A15099100789A55 /* NotificationManager.swift in Sources */,
 				760CB3721A16189200789A55 /* DebugViewController.swift in Sources */,
 				76D41FA81A2328E10053F687 /* Fact.swift in Sources */,
-				76EBF3731A1344E400D7E3F8 /* AttractionInfoViewController.swift in Sources */,
 				76A2DBD91A1635A400341118 /* DebugRegionStatusView.swift in Sources */,
 				760CB36A1A14FCB000789A55 /* Config.swift in Sources */,
 				765B841C1A1B954500C84DAC /* RNCachingURLProtocol.m in Sources */,
 				76BF414F1A10FA980042966D /* Attraction.swift in Sources */,
 				76BF41461A0CE4700042966D /* AddEditAttractionViewController.swift in Sources */,
+				7623B61F1A2DAC4900390EEE /* AttractionViewCell.swift in Sources */,
 				76D41FA11A23219F0053F687 /* AttractionFactViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

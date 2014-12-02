@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rS3-R9-Ivy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EwV-7S-4Rw">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -55,7 +56,6 @@
                     <connections>
                         <segue destination="tab-xE-gHx" kind="presentation" identifier="addAttraction" id="low-eL-Wt6"/>
                         <segue destination="tab-xE-gHx" kind="presentation" identifier="editAttraction" id="J8A-1i-Ton"/>
-                        <segue destination="tLe-Ap-R7V" kind="show" identifier="showInfo" id="9jA-3I-3iH"/>
                         <segue destination="UVb-2H-l1y" kind="presentation" identifier="showDebug" id="aBO-dc-8dK"/>
                         <segue destination="K5T-EV-toN" kind="presentation" identifier="showFacts" id="8WR-9t-gH3"/>
                     </connections>
@@ -64,46 +64,91 @@
             </objects>
             <point key="canvasLocation" x="615" y="64"/>
         </scene>
-        <!--Attraction Info-->
-        <scene sceneID="HKA-Aw-NPl">
+        <!--Attractions-->
+        <scene sceneID="mBE-V9-k2Y">
             <objects>
-                <viewController storyboardIdentifier="attractionInfo" title="Attraction Info" id="tLe-Ap-R7V" customClass="AttractionInfoViewController" customModule="TuiBuddySwift" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ihL-Yb-hkI"/>
-                        <viewControllerLayoutGuide type="bottom" id="UJv-TF-d1Z"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="UfM-WX-ZrL">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                <collectionViewController id="lab-e7-ufH" customClass="AttractionsCollectionViewController" customModule="TuiBuddySwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" delaysContentTouches="NO" dataMode="prototypes" id="Br7-bX-RAx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kKW-wO-s37">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FyU-Qg-DHm">
+                            <size key="itemSize" width="376" height="96"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AttractionCell" id="iEY-CB-HuC" customClass="AttractionViewCell" customModule="TuiBuddySwift" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="96"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attraction Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ljX-FT-qpW">
+                                            <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </webView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Eae-w0-aSk">
-                                <rect key="frame" x="290" y="290" width="20" height="20"/>
-                            </activityIndicatorView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="kKW-wO-s37" firstAttribute="leading" secondItem="UfM-WX-ZrL" secondAttribute="leading" id="3rO-ez-jgg"/>
-                            <constraint firstItem="Eae-w0-aSk" firstAttribute="centerX" secondItem="kKW-wO-s37" secondAttribute="centerX" id="HF8-W7-tR1"/>
-                            <constraint firstItem="kKW-wO-s37" firstAttribute="top" secondItem="UfM-WX-ZrL" secondAttribute="top" id="Hoc-YG-6hE"/>
-                            <constraint firstItem="kKW-wO-s37" firstAttribute="bottom" secondItem="UJv-TF-d1Z" secondAttribute="top" id="Jwa-oL-Hrs"/>
-                            <constraint firstAttribute="trailing" secondItem="kKW-wO-s37" secondAttribute="trailing" id="aXW-Hx-lDQ"/>
-                            <constraint firstItem="Eae-w0-aSk" firstAttribute="centerY" secondItem="kKW-wO-s37" secondAttribute="centerY" id="jqk-BS-vsJ"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Attraction Info" id="S2h-Vx-IKE"/>
-                    <connections>
-                        <outlet property="_activityIndicator" destination="Eae-w0-aSk" id="Itq-AL-LRE"/>
-                        <outlet property="_webView" destination="kKW-wO-s37" id="sQ0-bV-qSl"/>
-                        <segue destination="UVb-2H-l1y" kind="presentation" identifier="showDebug" id="roV-KH-K1n"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="m3y-N3-C4A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                                <constraints>
+                                    <constraint firstItem="ljX-FT-qpW" firstAttribute="centerX" secondItem="iEY-CB-HuC" secondAttribute="centerX" id="7Nu-No-jRI"/>
+                                    <constraint firstItem="ljX-FT-qpW" firstAttribute="top" secondItem="iEY-CB-HuC" secondAttribute="topMargin" constant="29" id="eJh-F6-adX"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="ljX-FT-qpW"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="7Nu-No-jRI"/>
+                                        <exclude reference="eJh-F6-adX"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="ljX-FT-qpW"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="7Nu-No-jRI"/>
+                                        <include reference="eJh-F6-adX"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="titleLabel" destination="ljX-FT-qpW" id="PJm-Kq-NYS"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="lab-e7-ufH" id="ENG-Za-9Uf"/>
+                            <outlet property="delegate" destination="lab-e7-ufH" id="4IZ-GA-F6A"/>
+                        </connections>
+                    </collectionView>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" title="Attractions" id="gws-7D-eYk"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lPL-v9-hZZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1384" y="64"/>
+            <point key="canvasLocation" x="390" y="-987"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cG8-lt-Cp5">
+            <objects>
+                <navigationController id="EwV-7S-4Rw" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="v7C-WR-Wyu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="lab-e7-ufH" kind="relationship" relationship="rootViewController" id="RNM-FF-OGl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XkA-0U-5pw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-327" y="-987"/>
         </scene>
         <!--Debug-->
         <scene sceneID="QNp-8O-iPT">
@@ -437,6 +482,5 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="J8A-1i-Ton"/>
-        <segue reference="roV-KH-K1n"/>
     </inferredMetricsTieBreakers>
 </document>

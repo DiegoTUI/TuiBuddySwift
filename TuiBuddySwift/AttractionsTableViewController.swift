@@ -88,12 +88,7 @@ class AttractionsTableViewController: UITableViewController, AddEditAttractionVi
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // deal with segue
-        if segue.identifier == "showInfo" {
-            // sender is the title of the cell
-            let attraction = attractions.filter({$0.name == (sender as String)})[0]
-            (segue.destinationViewController as AttractionInfoViewController).url = attraction.url
-            (segue.destinationViewController as AttractionInfoViewController).navigationTitle = (sender as String)
-        } else if segue.identifier == "showFacts" {
+        if segue.identifier == "showFacts" {
             // sender is the title of the cell
             let attraction = attractions.filter({$0.name == (sender as String)})[0]
             let attractionFactViewController = (segue.destinationViewController as UINavigationController).viewControllers[0] as AttractionFactViewController
