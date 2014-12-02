@@ -40,14 +40,18 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
         let editMenuItem = UIMenuItem(title: "Edit", action: "editMenuOptionClicked:")
         let deleteMenuItem = UIMenuItem(title: "Delete", action: "deleteMenuOptionClicked:")
         UIMenuController.sharedMenuController().menuItems = [editMenuItem, deleteMenuItem]
-        // add "add button"
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addNewAttraction:")
-        self.navigationItem.rightBarButtonItem = addButton
-        // add "debug" button
+        // add "add" and "debug" buttons
         if config.debug {
+            let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addNewAttraction:")
+            self.navigationItem.rightBarButtonItem = addButton
             let debugButton = UIBarButtonItem(title: "Debug", style: .Plain, target: self, action: Selector("debugButtonClicked"))
             self.navigationItem.leftBarButtonItem = debugButton
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = "Attractions"
     }
 
     override func didReceiveMemoryWarning() {

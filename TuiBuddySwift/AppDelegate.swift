@@ -27,9 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
         }
         // change NavigationBar style for all navigation bars
+        UINavigationBar.appearance().barTintColor = kSandColor
+        UINavigationBar.appearance().tintColor = kDarkBlueColor
         UINavigationBar.appearance().titleTextAttributes = [
-            "NSFontAttributeName": UIFont(name: kBoldFont, size: CGFloat(kH1FontSize))!,
-            "NSForegroundColorAttributeName": kDarkBlueColor
+            NSFontAttributeName: UIFont(name: kBoldFont, size: CGFloat(kH1FontSize))!,
+            NSForegroundColorAttributeName: kDarkBlueColor
         ]
         return true
     }

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Tui Travel A&D. All rights reserved.
 //
 
-let kH1FontSize = 18.0
+let kH1FontSize = 22.0
 let kH2FontSize = 16.0
 let kH3FontSize = 14.0
 

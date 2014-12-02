@@ -71,7 +71,7 @@
                         </connections>
                     </collectionView>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="Attractions" id="gws-7D-eYk"/>
+                    <navigationItem key="navigationItem" id="gws-7D-eYk"/>
                     <connections>
                         <segue destination="tab-xE-gHx" kind="presentation" identifier="editAttraction" id="q7z-pG-xiJ"/>
                         <segue destination="tab-xE-gHx" kind="presentation" identifier="addAttraction" id="xzB-bM-eTb"/>
