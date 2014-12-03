@@ -3,50 +3,45 @@
 <plist version="1.0">
 <array>
 	<dict>
-		<key>thumb</key>
-		<string>1.jpg</string>
 		<key>attractionId</key>
-		<integer>1</integer>
+		<string>1</string>
+		<key>attractionName</key>
+		<string>Palma Cathedral</string>
+		<key>attractionDescription</key>
+		<string>The most prominent building on the skyline, set besides the sea.</string>
 		<key>facts</key>
 		<array>
 			<dict>
-				<key>id</key>
-				<integer>1</integer>
-				<key>text</key>
-				<string>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec consectetur magna sit amet sapien laoreet, vel pellentesque arcu efficitur. Nunc vitae luctus velit. Nulla quis tellus a arcu rhoncus tincidunt vel faucibus nisl. Aliquam nec mi eget dui iaculis ultrices sed non sem. Duis congue tortor id dolor pretium, nec scelerisque justo consequat. Donec tempor pulvinar elit vitae dignissim. Donec viverra ultrices magna, id eleifend ligula molestie vel.</string>
-				<key>media</key>
-				<dict>
-					<key>type</key>
-					<string>video</string>
-					<key>resource</key>
-					<string>1.1.mp4</string>
-				</dict>
+				<key>factId</key>
+				<string>1</string>
+				<key>factTitle</key>
+				<string>Palma Cathedral</string>
+				<key>factText</key>
+				<string>The Cathedral is know locally as Le Seu. It is 121 metres long and 40 metres wide.</string>
 			</dict>
 			<dict>
-				<key>id</key>
-				<integer>2</integer>
-				<key>text</key>
-				<string>Nam nec lacus scelerisque, semper ligula sit amet, gravida mi. Etiam ac magna sapien. Maecenas lacinia arcu vel augue semper, eget dignissim arcu dignissim. Integer scelerisque porta ultrices. Phasellus at justo nunc. Proin iaculis pretium commodo. Nam nec blandit orci. Etiam placerat lorem ac ex sagittis condimentum a quis dolor. Ut vulputate massa ante, vel gravida elit porttitor id. Donec volutpat faucibus diam, ut scelerisque metus.</string>
-				<key>media</key>
-				<dict>
-					<key>type</key>
-					<string>image</string>
-					<key>resource</key>
-					<string>1.2.jpg</string>
-				</dict>
+				<key>factId</key>
+				<string>2</string>
+				<key>factTitle</key>
+				<string>The Canopy</string>
+				<key>factText</key>
+				<string>Twice a year at about 9 AM the sunlight through the major rose window illuminates the top of the rose window in the main façade.</string>
 			</dict>
 			<dict>
-				<key>id</key>
-				<integer>3</integer>
-				<key>text</key>
-				<string>Aliquam fringilla quam sit amet libero suscipit, vel euismod eros euismod. Sed rutrum felis enim, ut ullamcorper tortor elementum interdum. Proin in efficitur tellus. Nulla suscipit ex sit amet egestas feugiat. Morbi venenatis enim nec mauris feugiat dignissim. Donec gravida turpis vel nunc ultricies vestibulum. Curabitur non ullamcorper felis. Suspendisse pharetra, arcu sagittis.</string>
-				<key>media</key>
-				<dict>
-					<key>type</key>
-					<string>video</string>
-					<key>resource</key>
-					<string>1.3.mp4</string>
-				</dict>
+				<key>factId</key>
+				<string>3</string>
+				<key>factTitle</key>
+				<string>Fact 3</string>
+				<key>factText</key>
+				<string>The Cathedral was started in the 13th century and is built on the site that was previously a Mosque.</string>
+			</dict>
+			<dict>
+				<key>factId</key>
+				<string>4</string>
+				<key>factTitle</key>
+				<string>Ring a bell?</string>
+				<key>factText</key>
+				<string>The cathedral bells are named Eloi, Bàrbara, Antònia, Sa Nova, Mitja, Tèrcia, Matines, Prima and Picarol</string>
 			</dict>
 		</array>
 	</dict>
