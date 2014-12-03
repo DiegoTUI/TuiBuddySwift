@@ -7,7 +7,7 @@
 		<string>1</string>
 		<key>attractionName</key>
 		<string>Palma Cathedral</string>
-		<key>attractionDescription</key>
+		<key>attractionText</key>
 		<string>The most prominent building on the skyline, set besides the sea.</string>
 		<key>facts</key>
 		<array>
@@ -41,7 +41,50 @@
 				<key>factTitle</key>
 				<string>Ring a bell?</string>
 				<key>factText</key>
-				<string>The cathedral bells are named Eloi, Bàrbara, Antònia, Sa Nova, Mitja, Tèrcia, Matines, Prima and Picarol</string>
+				<string>The cathedral bells are named Eloi, Bàrbara, Antònia, Sa Nova, Mitja, Tèrcia, Matines, Prima and Picarol.</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>attractionId</key>
+		<string>2</string>
+		<key>attractionName</key>
+		<string>Belver Castle</string>
+		<key>attractionText</key>
+		<string>The second most prominent building on the skyline, set besides the sea.</string>
+		<key>facts</key>
+		<array>
+			<dict>
+				<key>factId</key>
+				<string>1</string>
+				<key>factTitle</key>
+				<string>Fact 1</string>
+				<key>factText</key>
+				<string>The Castle was started in 1300 and is the oldest known circular castle.</string>
+			</dict>
+			<dict>
+				<key>factId</key>
+				<string>2</string>
+				<key>factTitle</key>
+				<string>Fact 2</string>
+				<key>factText</key>
+				<string>Parts of the castle are covered in graffiti from the days when it was used as a prison.</string>
+			</dict>
+			<dict>
+				<key>factId</key>
+				<string>3</string>
+				<key>factTitle</key>
+				<string>Fact 3</string>
+				<key>factText</key>
+				<string>The four towers are aligned with the points of the compass, with the Keep facing North.</string>
+			</dict>
+			<dict>
+				<key>factId</key>
+				<string>4</string>
+				<key>Fact 4</key>
+				<string>Ring a bell?</string>
+				<key>factText</key>
+				<string>Most of the sandstone used to build the castle comes from the caves below the castle.</string>
 			</dict>
 		</array>
 	</dict>

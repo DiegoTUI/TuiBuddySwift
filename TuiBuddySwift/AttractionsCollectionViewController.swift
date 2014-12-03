@@ -38,12 +38,9 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
         cellWidth = Double(self.collectionView.frame.size.width) - kLeftOffset - kRightOffset
         // set contextual menu
         let editMenuItem = UIMenuItem(title: "Edit", action: "editMenuOptionClicked:")
-        let deleteMenuItem = UIMenuItem(title: "Delete", action: "deleteMenuOptionClicked:")
-        UIMenuController.sharedMenuController().menuItems = [editMenuItem, deleteMenuItem]
+        UIMenuController.sharedMenuController().menuItems = [editMenuItem]
         // add "add" and "debug" buttons
         if config.debug {
-            let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addNewAttraction:")
-            self.navigationItem.rightBarButtonItem = addButton
             let debugButton = UIBarButtonItem(title: "Debug", style: .Plain, target: self, action: Selector("debugButtonClicked"))
             self.navigationItem.leftBarButtonItem = debugButton
         }
@@ -65,7 +62,7 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
         if segue.identifier == kShowFactsSegue {
             let attraction = sender as Attraction
             let attractionFactViewController = (segue.destinationViewController as UINavigationController).viewControllers[0] as AttractionFactViewController
-            AttractionFactViewController.factIterator = attraction.iterator()
+            AttractionFactViewController.factIterator = attraction.factIterator()
         } else if segue.identifier == kAddAttractionSegue {
             // stop updating locations
             RegionManager.sharedInstance.stopMonitoringRegions()
@@ -149,7 +146,7 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
     }
 
     override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-        if (action == "editMenuOptionClicked:" || action == "deleteMenuOptionClicked:") {
+        if (action == "editMenuOptionClicked:") {
             return true
         }
         return false
@@ -163,20 +160,8 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
     func editAttraction(attraction: Attraction) {
         performSegueWithIdentifier(kEditAttractionSegue, sender: attraction)
     }
-    func deleteAttraction(attraction: Attraction) {
-        AttractionManager.sharedInstance.deleteAttraction(attraction)
-        if let cellToRemove = cellForAttraction(attraction) {
-            let indexPath: NSIndexPath? = collectionView.indexPathForCell(cellToRemove)
-            let indexPaths = indexPath == nil ? [] : [indexPath!]
-            collectionView.deleteItemsAtIndexPaths(indexPaths)
-        }
-    }
     
     // MARK: AddEditAttractionViewControllerDelegate
-    
-    func attractionAdded(attraction: Attraction) {
-        collectionView.insertItemsAtIndexPaths([NSIndexPath(forRow: (AttractionManager.sharedInstance.readAttractions().count - 1), inSection: 0)])
-    }
     
     func attractionEdited(attraction: Attraction) {
         if let cellToRefresh = cellForAttraction(attraction) {
@@ -204,10 +189,6 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
     }
     
     // MARK: Navigation bar buttons
-    
-    func addNewAttraction(sender: AnyObject) {
-        self.performSegueWithIdentifier(kAddAttractionSegue, sender: nil)
-    }
     
     func debugButtonClicked () {
         performSegueWithIdentifier(kShowDebugSegue, sender: nil)

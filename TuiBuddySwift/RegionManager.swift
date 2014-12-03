@@ -11,8 +11,8 @@ import UIKit
 import CoreLocation
 
 @objc protocol RegionManagerDelegate {
-    optional func didEnterRegion(attractionId: Int32)
-    optional func didExitRegion(attractionId: Int32)
+    optional func didEnterRegion(attractionId: String)
+    optional func didExitRegion(attractionId: String)
     optional func didUpdateLocation(location: CLLocation)
 }
 
@@ -60,7 +60,7 @@ class RegionManager: NSObject, CLLocationManagerDelegate {
         for attraction:Attraction in AttractionManager.sharedInstance.readAttractions() {
             let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: attraction.latitude, longitude: attraction.longitude),
                 radius: attraction.radius,
-                identifier: String(attraction.id))
+                identifier: attraction.id)
             _regions.append(region)
         }
     }
@@ -98,13 +98,13 @@ class RegionManager: NSObject, CLLocationManagerDelegate {
             // we only enter a region when we were out of it before
             if !contains(_inRegions, region.identifier) {
                 _inRegions.append(region.identifier)
-                delegate?.didEnterRegion?(Int32(region.identifier.toInt()!))
+                delegate?.didEnterRegion?(region.identifier)
             }
         }
         // find out which regions did we exit and call the delegate method
         let exitRegions = _inRegions.filter() {regionIdentifier in return !contains(newInRegions, regionIdentifier)}
         for regionIdentifier in exitRegions {
-            delegate?.didExitRegion?(Int32(regionIdentifier.toInt()!))
+            delegate?.didExitRegion?(regionIdentifier)
         }
         // update _inRegions
         _inRegions = newInRegions

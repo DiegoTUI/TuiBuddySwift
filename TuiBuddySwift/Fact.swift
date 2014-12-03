@@ -9,11 +9,10 @@
 import Foundation
 
 class Fact: NSObject, NSCoding, Equatable {
-    var id: Int32 = -1
-    var attractionId: Int32 = -1
-    var text: String = ""
-    var type: String = ""
-    var resource: String = ""
+    var id: String = kInvalidString
+    var name: String = kInvalidString
+    var text: String = kInvalidString
+    var imageName: String = kInvalidString
     
     // MARK: - Initialization
     
@@ -21,46 +20,30 @@ class Fact: NSObject, NSCoding, Equatable {
         super.init()
     }
     
-    init(id: Int32 = -1,
-        attractionId: Int32 = -1,
-        text: String,
-        type: String,
-        resource: String) {
+    init(id: String,
+        name: String,
+        text: String) {
             super.init()
             self.id = id
-            self.attractionId = attractionId
+            self.name = name
             self.text = text
-            self.type = type
-            self.resource = resource
-    }
-    
-    init(nsDictionary: NSDictionary, attractionId: Int32) {
-        super.init()
-        self.id = Int32(nsDictionary["id"] as Int)
-        self.attractionId = attractionId
-        self.text = nsDictionary["text"] as String
-        self.type = (nsDictionary["media"] as NSDictionary)["type"] as String
-        self.resource = (nsDictionary["media"] as NSDictionary)["resource"] as String
     }
     
     //MARK: - NSCoding protocol
     
     convenience required init(coder decoder: NSCoder) {
         self.init()
-        id = decoder.decodeInt32ForKey("id")
-        attractionId = decoder.decodeInt32ForKey("attractionId")
+        id = decoder.decodeObjectForKey("id") as String
+        name = decoder.decodeObjectForKey("name") as String
         text = decoder.decodeObjectForKey("text") as String
-        type = decoder.decodeObjectForKey("type") as String
-        resource = decoder.decodeObjectForKey("resource") as String
+        imageName = decoder.decodeObjectForKey("imageName") as String
     }
     
-    
     func encodeWithCoder(encoder: NSCoder) {
-        encoder.encodeInt32(id, forKey:"id")
-        encoder.encodeInt32(attractionId, forKey:"attractionId")
+        encoder.encodeObject(id, forKey:"id")
+        encoder.encodeObject(name, forKey:"name")
         encoder.encodeObject(text, forKey:"text")
-        encoder.encodeObject(type, forKey:"type")
-        encoder.encodeObject(resource, forKey:"resource")
+        encoder.encodeObject(imageName, forKey:"imageName")
     }
 }
 
@@ -68,8 +51,7 @@ class Fact: NSObject, NSCoding, Equatable {
 
 func == (left: Fact, right: Fact) -> Bool {
     return left.id == right.id &&
-        left.attractionId == right.attractionId &&
+        left.name == right.name &&
         left.text == right.text &&
-        left.type == right.type &&
-        left.resource == right.resource
+        left.imageName == right.imageName
 }

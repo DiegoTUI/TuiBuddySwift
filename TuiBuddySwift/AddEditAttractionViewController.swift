@@ -22,7 +22,6 @@ extension String {
 }
 
 protocol AddEditAttractionViewControllerDelegate {
-    func attractionAdded(attraction: Attraction)
     func attractionEdited(attraction: Attraction)
 }
 
@@ -33,15 +32,11 @@ class AddEditAttractionViewController: UIViewController, UITextFieldDelegate, CL
     var attractionRow: Int? = nil
     var delegate: AddEditAttractionViewControllerDelegate? = nil
     var _locationManager = CLLocationManager()
-    var _isEditing = false
-    
 
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var latitudeTextField: UITextField!
     @IBOutlet weak var longitudeTextField: UITextField!
     @IBOutlet weak var radiusTextField: UITextField!
-    @IBOutlet weak var linkTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,19 +44,15 @@ class AddEditAttractionViewController: UIViewController, UITextFieldDelegate, CL
         titleLabel.text = titleText
         // assign text (if attraction)
         if attraction != nil {
-            nameTextField.text = attraction!.name
+            titleLabel.text = attraction!.name
             latitudeTextField.text = "\(attraction!.latitude)"
             longitudeTextField.text = "\(attraction!.longitude)"
             radiusTextField.text = "\(attraction!.radius)"
-            linkTextField.text = attraction!.url
-            _isEditing = true
         }
         // delegates to hide keyboard
-        nameTextField.delegate = self
         latitudeTextField.delegate = self
         longitudeTextField.delegate = self
         radiusTextField.delegate = self
-        linkTextField.delegate = self
         // Tap gesture recognizer
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("hideKeyboard"))
         self.view.addGestureRecognizer(tapGestureRecognizer)
@@ -109,36 +100,22 @@ class AddEditAttractionViewController: UIViewController, UITextFieldDelegate, CL
     
     @IBAction func doneButtonClicked(sender: AnyObject) {
         // check for errors in numeric fields
-        var save:Bool = true
-        save = checkTextFieldForDouble(latitudeTextField) && save
-        save = checkTextFieldForDouble(longitudeTextField) && save
-        save = checkTextFieldForDouble(radiusTextField) && save
-        // check for empty fields
-        save = checkTextFieldForEmpty(nameTextField) && save
-        save = checkTextFieldForEmpty(linkTextField) && save
+        var save:Bool = checkTextFieldForDouble(latitudeTextField) &&
+            checkTextFieldForDouble(longitudeTextField) &&
+            checkTextFieldForDouble(radiusTextField) &&
+            attraction != nil
         
         if save {
-            // update or write?
-            let update: Bool = (attraction != nil)
-            // build the attraction to update/write
-            attraction = update ? attraction : Attraction()
-            attraction!.name = nameTextField.text
             attraction!.latitude = latitudeTextField.text.double
             attraction!.longitude = longitudeTextField.text.double
             attraction!.radius = radiusTextField.text.double
-            attraction!.url = linkTextField.text
-            // choose the action to perform
-            let action = update ? AttractionManager.sharedInstance.updateAttraction : AttractionManager.sharedInstance.writeAttraction
-            // perform the action
-            action(attraction!)
+            // uodate in DB
+            AttractionManager.sharedInstance.updateAttraction(attraction!)
             // update regions in RegionManager
             RegionManager.sharedInstance.updateRegions()
             // tell delegate and dismiss view controller
-            if _isEditing {
-                delegate?.attractionEdited(attraction!)
-            } else {
-                delegate?.attractionAdded(attraction!)
-            }
+            delegate?.attractionEdited(attraction!)
+            
             self.dismissViewControllerAnimated(true, completion: {RegionManager.sharedInstance.startMonitoringRegions()})
         }
         else {

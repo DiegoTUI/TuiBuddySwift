@@ -32,9 +32,9 @@ class AttractionManager {
     
     init() {
         // copy the db to writable file system and open it
-        let dbPath: String! = NSBundle.mainBundle().pathForResource("attractions", ofType: "sqlite")
+        let dbPath: String! = NSBundle.mainBundle().pathForResource(config.sqliteDbName, ofType: "sqlite")
         let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
-        let writableDbPath = "\(documentsPath)/attractions.sqlite"
+        let writableDbPath = "\(documentsPath)/\(config.sqliteDbName).sqlite"
         // copy the db file if it doesn't exist
         if !NSFileManager.defaultManager().fileExistsAtPath(writableDbPath) {
             var error: NSError? = nil
@@ -48,6 +48,7 @@ class AttractionManager {
         else {
             println("Database open")
         }
+        
     }
     
     deinit {
@@ -61,95 +62,69 @@ class AttractionManager {
     
     func readAttractions() -> [Attraction] {
         var result = Array<Attraction>()
-        // define sql query
-        let query = "SELECT rowid,* FROM geofences"
-        var statement:COpaquePointer = nil
-        // prepare statement
-        if sqlite3_prepare_v2(_database, (query as NSString).UTF8String, -1, &statement, nil) == SQLITE_OK {
-            // iterate results
-            while sqlite3_step(statement) == SQLITE_ROW {
-                var attraction = Attraction()
-                attraction.id = sqlite3_column_int(statement, 0)
-                attraction.name = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(statement, 1)))!
-                attraction.latitude = sqlite3_column_double(statement,2)
-                attraction.longitude = sqlite3_column_double(statement,3)
-                attraction.radius = sqlite3_column_double(statement,4)
-                attraction.url = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(statement, 5)))!
-                // refresh facts
-                attraction.refreshFacts()
-                // add to result
-                result.append(attraction)
+        // grab cms contents and complete with latitude/longitude/radius from the DB
+        let cmsItemIterator = CmsManager.sharedInstance.cmsItemIterator()
+        // get first item and iterate
+        var cmsItem: NSDictionary? = cmsItemIterator.current()
+        while let cmsAttraction = cmsItem  {
+            // get the variables to build the attraction
+            let id: String = cmsAttraction["attractionId"] as String
+            let name: String = cmsAttraction["attractionName"] as String
+            let text: String = cmsAttraction["attractionText"] as String
+            // now facts
+            var facts = Array<Fact>()
+            let cmsFacts: NSArray = cmsAttraction["facts"] as NSArray
+            for fact in cmsFacts {
+                let factAsDictionary: NSDictionary = fact as NSDictionary
+                var factToInsert = Fact(id: factAsDictionary["factId"] as String,
+                    name: factAsDictionary["factTitle"] as String,
+                    text: factAsDictionary["factText"] as String)
+                // set fact image
+                factToInsert.imageName = "fact_\(id)_\(factToInsert.id)"
+                facts.append(factToInsert)
             }
+            // get latitude, longitude and radius from sqlite
+            var latitude: Double = kInvalidDouble
+            var longitude: Double = kInvalidDouble
+            var radius: Double = kInvalidDouble
+            
+            let query = "SELECT * FROM \(config.sqliteTableName) WHERE attractionId=?"
+            var statement:COpaquePointer = nil
+            // prepare statement
+            if sqlite3_prepare_v2(_database, (query as NSString).UTF8String, -1, &statement, nil) == SQLITE_OK {
+                sqlite3_bind_text(statement, 1, id, -1, nil)
+                // get the only result
+                if sqlite3_step(statement) == SQLITE_ROW {
+                    latitude = sqlite3_column_double(statement,1)
+                    longitude = sqlite3_column_double(statement,2)
+                    radius = sqlite3_column_double(statement,3)
+                }
+            }
+            else {
+                println("[***ERROR***] Failed to step statement: \(query)")
+            }
+            result.append(Attraction(id: id, name: name, text: text, latitude: latitude, longitude: longitude, radius: radius, facts: facts))
+            // iterate
+            cmsItem = cmsItemIterator.next()
         }
-        else {
-            println("[***ERROR***] Failed to step statement: \(query)")
-        }
-
+        
         return result
     }
     
     
-    // MARK: - Write/Update
-    
-    func writeAttraction(attraction: Attraction) {
-        // define sql query
-        let query = "INSERT INTO geofences(name, latitude, longitude, radius, link) VALUES(?, ?, ?, ?, ?)"
-        var statement:COpaquePointer = nil
-        // prepare statement
-        if sqlite3_prepare_v2(_database, (query as NSString).UTF8String, -1, &statement, nil) == SQLITE_OK {
-            sqlite3_bind_text(statement, 1, (attraction.name as NSString).UTF8String, -1, nil)
-            sqlite3_bind_double(statement, 2, attraction.latitude)
-            sqlite3_bind_double(statement, 3, attraction.longitude)
-            sqlite3_bind_double(statement, 4, attraction.radius)
-            sqlite3_bind_text(statement, 5, (attraction.url as NSString).UTF8String, -1, nil)
-            
-            if sqlite3_step(statement) == SQLITE_DONE {
-                sqlite3_finalize(statement)
-                statement = nil
-            }
-            else {
-                println("[***ERROR***] Failed to step statement: \(query)")
-            }
-        }
-        else {
-            println("[***ERROR***] Failed to prepare statement: \(query)")
-        }
-    }
+    // MARK: - Update - We only update latitude, longitude and radius
     
     func updateAttraction(attraction: Attraction) {
         // define sql query
-        let query = "UPDATE geofences SET name=?, latitude=?, longitude=?, radius=?, link=? WHERE rowid=?"
+        let query = "UPDATE \(config.sqliteTableName) SET latitude=?, longitude=?, radius=? WHERE attractionId=?"
         var statement:COpaquePointer = nil
         // prepare statement
         if sqlite3_prepare_v2(_database, (query as NSString).UTF8String, -1, &statement, nil) == SQLITE_OK {
-            sqlite3_bind_text(statement, 1, (attraction.name as NSString).UTF8String, -1, nil)
-            sqlite3_bind_double(statement, 2, attraction.latitude)
-            sqlite3_bind_double(statement, 3, attraction.longitude)
-            sqlite3_bind_double(statement, 4, attraction.radius)
-            sqlite3_bind_text(statement, 5, (attraction.url as NSString).UTF8String, -1, nil)
-            sqlite3_bind_int(statement, 6, attraction.id)
+            sqlite3_bind_double(statement, 1, attraction.latitude)
+            sqlite3_bind_double(statement, 2, attraction.longitude)
+            sqlite3_bind_double(statement, 3, attraction.radius)
+            sqlite3_bind_text(statement, 4, (attraction.id as NSString).UTF8String, -1, nil)
             
-            if sqlite3_step(statement) == SQLITE_DONE {
-                sqlite3_finalize(statement)
-                statement = nil
-            }
-            else {
-                println("[***ERROR***] Failed to step statement: \(query)")
-            }
-        }
-        else {
-            println("[***ERROR***] Failed to prepare statement: \(query)")
-        }
-    }
-    
-    // MARK: - Delete
-    
-    func deleteAttraction(attraction: Attraction) {
-        // define sql query
-        let query = "DELETE FROM geofences WHERE name=\"\(attraction.name)\""
-        var statement:COpaquePointer = nil
-        // prepare statement
-        if sqlite3_prepare_v2(_database, (query as NSString).UTF8String, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE {
                 sqlite3_finalize(statement)
                 statement = nil

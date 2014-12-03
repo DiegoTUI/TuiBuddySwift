@@ -10,16 +10,16 @@ import Foundation
 import CoreLocation
 import XCTest
 
-var countEnteredRegion = Dictionary<Int32, Int>()
-var countExitedRegion = Dictionary<Int32, Int>()
+var countEnteredRegion = Dictionary<String, Int>()
+var countExitedRegion = Dictionary<String, Int>()
 var countUpdatedLocation = 0
 
 class mockRegionManagerDelegate: RegionManagerDelegate {
-    func didEnterRegion(attractionId: Int32) {
+    func didEnterRegion(attractionId: String) {
         countEnteredRegion[attractionId]!++
     }
     
-    func didExitRegion(attractionId: Int32) {
+    func didExitRegion(attractionId: String) {
         countExitedRegion[attractionId]!++
     }
     
@@ -32,7 +32,7 @@ class RegionManagerTests: XCTestCase {
     
     var regionManagerInstance: RegionManager? = nil
     
-    func assertCountForAttractionId(attractionId: Int32, entries: Int, exits: Int, updates: Int) {
+    func assertCountForAttractionId(attractionId: String, entries: Int, exits: Int, updates: Int) {
         XCTAssertEqual(countEnteredRegion[attractionId]!, entries, "Wrong number of entries for attraction \(attractionId)")
         XCTAssertEqual(countExitedRegion[attractionId]!, exits, "Wrong number of exits for attraction \(attractionId)")
         XCTAssertEqual(countUpdatedLocation, updates, "Wrong number of location updates received")
@@ -41,10 +41,14 @@ class RegionManagerTests: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        config.fakeCMS = "attractions_test"
+        config.sqliteDbName = "attractions_test"
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        config.fakeCMS = "attractions"
+        config.sqliteDbName = "attractions"
         super.tearDown()
     }
     

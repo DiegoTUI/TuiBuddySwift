@@ -20,18 +20,26 @@ class FactTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
+    
+    func testInit() {
+        let fact = Fact(id:"53", name: "testName", text:"testText")
+        XCTAssertEqual(fact.id, "53", "id was not initialized properly")
+        XCTAssertEqual(fact.name, "testName", "name was not initialized properly")
+        XCTAssertEqual(fact.text, "testText", "text was not initialized properly")
+        XCTAssertEqual(fact.imageName, kInvalidString, "text was not initialized properly")
+    }
 
     func testEquatable() {
-        let fact1 = Fact(id:53, attractionId: 32, text:"testText", type:"testType", resource: "testResource")
-        let fact2 = Fact(id:53, attractionId: 32, text:"testText", type:"testType", resource: "testResource")
-        let fact3 = Fact(id:53, attractionId: 32, text:"testTextDifferent", type:"testType", resource: "testResource")
+        let fact1 = Fact(id:"53", name: "testName", text:"testText")
+        let fact2 = Fact(id:"53", name: "testName", text:"testText")
+        let fact3 = Fact(id:"53", name: "testName", text:"testDifferentText")
         XCTAssertEqual(fact1, fact2, "fact1 and fact2 should be equal")
         XCTAssertEqual(fact2, fact1, "fact1 and fact2 should be equal")
         XCTAssertTrue(fact1 != fact3, "fact1 and fact3 should be different")
     }
     
     func testNSCoding() {
-        let fact = Fact(id:53, text:"testText", type:"testType", resource: "testResource")
+        let fact = Fact(id:"53", name: "testName", text:"testDifferentText")
         let archivedFact = NSKeyedArchiver.archivedDataWithRootObject(fact)
         let retrievedFact = NSKeyedUnarchiver.unarchiveObjectWithData(archivedFact) as Fact
         XCTAssertEqual(fact, retrievedFact, "wrong fact archived by NSKeyedArchiver")

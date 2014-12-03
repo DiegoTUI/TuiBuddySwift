@@ -13,6 +13,9 @@ struct _Config {
     let debug = true
     // fakeCMS
     var fakeCMS = "attractions"
+    // sqlite db and table names
+    var sqliteDbName = "attractions"
+    var sqliteTableName = "attractions"
 }
 
 var config = _Config()

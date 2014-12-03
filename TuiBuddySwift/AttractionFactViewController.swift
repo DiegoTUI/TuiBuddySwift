@@ -15,9 +15,9 @@ class AttractionFactViewController: UIViewController {
     let kResourceViewHeight = 100
     let kVerticalOffsetWithDescriptionLabel = 20
     
-    private struct StaticStruct { static var _factIterator: FactIterator? = nil }
+    private struct StaticStruct { static var _factIterator: Iterator<Fact>? = nil }
     
-    class var factIterator: FactIterator? {
+    class var factIterator: Iterator<Fact>? {
         get {return StaticStruct._factIterator}
         set {StaticStruct._factIterator = newValue}
     }
@@ -39,32 +39,8 @@ class AttractionFactViewController: UIViewController {
         navigationItem.title = "Fact #\(title)"
         // set description
         descriptionLabel.text = description
-        // set the view for the given resource
-        setupResourceForFact(currentFact)
         // show/hide shakeLabel
         actionLabel.hidden = AttractionFactViewController.factIterator == nil || !AttractionFactViewController.factIterator!.isNext()
-    }
-    
-    func setupResourceForFact(fact: Fact?) {
-        if let theFact = fact {
-            switch theFact.type {
-            case "video":
-                println("video")
-                /*var player:AVPlayer!
-                var playerItem:AVPlayerItem!;
-                var avPlayerLayer:AVPlayerLayer = AVPlayerLayer(player: player)
-                avPlayerLayer.frame = CGRectMake(20, 300, kResourceViewWidth, kResourceViewHeight)
-                self.view.layer .addSublayer(avPlayerLayer)
-                var steamingURL:NSURL = NSURL(string:playerURL)
-                player = AVPlayer(URL: steamingURL)
-                player.play()*/
-                
-            case "image":
-                println("image")
-            default:
-                break;
-            }
-        }
     }
     
     func addSwipeGestureRecognizers() {

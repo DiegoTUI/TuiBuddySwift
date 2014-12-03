@@ -26,7 +26,7 @@ class DebugViewController: UIViewController, RegionManagerDelegate {
         RegionManager.sharedInstance.delegate = self
         // check _inRegions and update colors of labels
         for regionIdentifier in RegionManager.sharedInstance._inRegions {
-            regionStatusView.labelForAttractionId(Int32(regionIdentifier.toInt()!))?.textColor = UIColor.redColor()
+            regionStatusView.labelForAttractionId(regionIdentifier)?.textColor = UIColor.redColor()
         }
     }
     
@@ -38,12 +38,12 @@ class DebugViewController: UIViewController, RegionManagerDelegate {
     
     // MARK: - RegionManagerDelegate
     
-    func didEnterRegion(attractionId: Int32) {
+    func didEnterRegion(attractionId: String) {
         regionStatusView.labelForAttractionId(attractionId)?.textColor = UIColor.redColor()
         log("entered region: \(attractionId)")
     }
     
-    func didExitRegion(attractionId: Int32) {
+    func didExitRegion(attractionId: String) {
         regionStatusView.labelForAttractionId(attractionId)?.textColor = UIColor.blackColor()
         log("exited region: \(attractionId)")
     }

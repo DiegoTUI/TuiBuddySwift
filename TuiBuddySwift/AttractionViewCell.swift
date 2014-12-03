@@ -11,8 +11,6 @@ import UIKit
 protocol AttractionViewCellDelegate {
     // called when an attraction should be edited
     func editAttraction(attraction: Attraction)
-    // called when an attraction should be deleted
-    func deleteAttraction(attraction: Attraction)
 }
 
 class AttractionViewCell: UICollectionViewCell {
@@ -32,12 +30,6 @@ class AttractionViewCell: UICollectionViewCell {
     func editMenuOptionClicked(sender: AnyObject?) {
         if let currentAttraction = attraction {
             delegate?.editAttraction(currentAttraction)
-        }
-    }
-    
-    func deleteMenuOptionClicked(sender: AnyObject?) {
-        if let currentAttraction = attraction {
-            delegate?.deleteAttraction(currentAttraction)
         }
     }
     

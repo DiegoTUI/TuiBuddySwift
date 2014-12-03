@@ -11,11 +11,11 @@ import XCTest
 
 class NotificationManagerTests: XCTestCase {
     
-    var attraction1 = Attraction()
-    var attraction2 = Attraction()
+    var attraction1 = Attraction(id: "1", name: "name1", text: "text1", latitude: 1.0, longitude: 2.0, radius: 3.0, facts: [])
+    var attraction2 = Attraction(id: "2", name: "name2", text: "text2", latitude: 2.0, longitude: 3.0, radius: 4.0, facts: [])
     var attractionInNotification: Attraction? = nil
     var messageInNotification: String? = nil
-    var notificationsReceived: Dictionary<Int32, Int>? = nil
+    var notificationsReceived: Dictionary<String, Int>? = nil
     var mockNotificationHandler = MockNotificationHandler()
     
     func handleLocalNotification (notification: UILocalNotification) {
@@ -23,12 +23,7 @@ class NotificationManagerTests: XCTestCase {
         // unarchive attraction
         let archivedAttraction = notification.userInfo!["attraction"] as NSData
         let attraction: Attraction = NSKeyedUnarchiver.unarchiveObjectWithData(archivedAttraction) as Attraction
-        XCTAssertEqual(attraction.id, attractionInNotification!.id, "wrong id sent in notification")
-        XCTAssertEqual(attraction.name, attractionInNotification!.name, "wrong name sent in notification")
-        XCTAssertEqual(attraction.latitude, attractionInNotification!.latitude, "wrong latitude sent in notification")
-        XCTAssertEqual(attraction.longitude, attractionInNotification!.longitude, "wrong longitude sent in notification")
-        XCTAssertEqual(attraction.radius, attractionInNotification!.radius, "wrong radius sent in notification")
-        XCTAssertEqual(attraction.url, attractionInNotification!.url, "wrong url sent in notification")
+        XCTAssertEqual(attraction, attractionInNotification!, "wrong attraction sent in notification")
         
         notificationsReceived![attractionInNotification!.id]!++
     }
@@ -49,12 +44,6 @@ class NotificationManagerTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        // init attractions
-        attraction1.name = "name1"
-        attraction1.url = "url1"
-        attraction2.id = -2
-        attraction2.name = "name2"
-        attraction2.url = "url2"
         // init notifications received
         notificationsReceived = [attraction1.id: 0, attraction2.id: 0]
         // Mock scheduleLocalNotification

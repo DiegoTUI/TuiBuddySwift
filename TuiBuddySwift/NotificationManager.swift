@@ -16,7 +16,7 @@ import UIKit
 
 class NotificationManager: RegionManagerDelegate {
     
-    var _localNotifications = Dictionary<Int32, Bool>()
+    var _localNotifications = Dictionary<String, Bool>()
     var _scheduleLocalNotification = UIApplication.sharedApplication().scheduleLocalNotification
     var _visibleViewController = NotificationManager.visibleViewController
     
@@ -37,7 +37,7 @@ class NotificationManager: RegionManagerDelegate {
     
     // MARK: - RegionManagerDelegate
     
-    func didEnterRegion(attractionId: Int32) {
+    func didEnterRegion(attractionId: String) {
         println("Entered region: \(attractionId)")
         // find attraction
         let attraction = AttractionManager.sharedInstance.readAttractions().filter({$0.id == attractionId})[0]
@@ -55,7 +55,7 @@ class NotificationManager: RegionManagerDelegate {
     
     
     func resetLocalNotifications() {
-        _localNotifications = Dictionary<Int32, Bool>()
+        _localNotifications = Dictionary<String, Bool>()
     }
     
     func _triggerAlertViewForAttraction(attraction: Attraction, withMessage message: String) {

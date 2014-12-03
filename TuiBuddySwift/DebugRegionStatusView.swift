@@ -16,7 +16,7 @@ class DebugRegionStatusView: UIView {
     let kRightMargin: Double = 8.0
     let kSpaceBetweenLabels: Double = 8.0
     let kMinimmumLabelHeight: Double = 20.0
-    var _labels = Dictionary<Int32, UILabel>()
+    var _labels = Dictionary<String, UILabel>()
     
     func initWithAttractions(attractions: Array<Attraction>) {
         // Add labels with attractions
@@ -37,7 +37,7 @@ class DebugRegionStatusView: UIView {
         return CGSize(width: width, height: height)
     }
     
-    func labelForAttractionId(attractionId: Int32) -> UILabel? {
+    func labelForAttractionId(attractionId: String) -> UILabel? {
         return _labels[attractionId]
     }
 
