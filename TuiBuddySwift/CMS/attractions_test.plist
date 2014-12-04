@@ -13,7 +13,7 @@
 		<array>
 			<dict>
 				<key>factId</key>
-				<string>factId_1_1</string>
+				<string>1</string>
 				<key>factTitle</key>
 				<string>factTitle_1_1</string>
 				<key>factText</key>
@@ -21,7 +21,7 @@
 			</dict>
 			<dict>
 				<key>factId</key>
-				<string>factId_1_2</string>
+				<string>2</string>
 				<key>factTitle</key>
 				<string>factTitle_1_2</string>
 				<key>factText</key>
@@ -29,7 +29,7 @@
 			</dict>
 			<dict>
 				<key>factId</key>
-				<string>factId_1_3</string>
+				<string>3</string>
 				<key>factTitle</key>
 				<string>factTitle_1_3</string>
 				<key>factText</key>
@@ -48,7 +48,7 @@
 		<array>
 			<dict>
 				<key>factId</key>
-				<string>factId_2_1</string>
+				<string>1</string>
 				<key>factTitle</key>
 				<string>factTitle_2_1</string>
 				<key>factText</key>
@@ -56,7 +56,7 @@
 			</dict>
 			<dict>
 				<key>factId</key>
-				<string>factId_2_2</string>
+				<string>2</string>
 				<key>factTitle</key>
 				<string>factTitle_2_2</string>
 				<key>factText</key>

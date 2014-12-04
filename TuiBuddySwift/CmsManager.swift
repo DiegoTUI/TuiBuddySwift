@@ -30,15 +30,20 @@ class CmsManager {
     // MARK: - Initialization
     
     init() {
-        // load the cms
-        if let path = NSBundle.mainBundle().pathForResource(config.fakeCMS, ofType: "plist") {
-            _cmsContents = NSArray(contentsOfFile: path)
-        }
+        reloadCmsContents()
     }
     
     // MARK: - Iteration
     
     func cmsItemIterator() -> Iterator<NSDictionary> {
         return Iterator<NSDictionary>(items: _cmsContents as [NSDictionary])
+    }
+    
+    // MARK: - Reload cms (only used for test purposes)
+    
+    func reloadCmsContents() {
+        if let path = NSBundle.mainBundle().pathForResource(config.fakeCMS, ofType: "plist") {
+            _cmsContents = NSArray(contentsOfFile: path)
+        }
     }
 }

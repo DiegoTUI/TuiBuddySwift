@@ -31,6 +31,23 @@ class AttractionManager {
     // MARK: - Construction and destruction
     
     init() {
+        openDb()
+    }
+    
+    deinit {
+        closeDb()
+    }
+    
+    // MARK: - Reload database. Only tests purposes
+    
+    func closeDb() {
+        if sqlite3_close(_database) != SQLITE_OK {
+            println("[***ERROR***] Problem closing database")
+        }
+        _database = nil;
+    }
+    
+    func openDb() {
         // copy the db to writable file system and open it
         let dbPath: String! = NSBundle.mainBundle().pathForResource(config.sqliteDbName, ofType: "sqlite")
         let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
@@ -48,14 +65,11 @@ class AttractionManager {
         else {
             println("Database open")
         }
-        
     }
     
-    deinit {
-        if sqlite3_close(_database) != SQLITE_OK {
-            println("[***ERROR***] Problem closing database")
-        }
-        _database = nil;
+    func reloadDb() {
+        closeDb()
+        openDb()
     }
     
     // MARK: - Read

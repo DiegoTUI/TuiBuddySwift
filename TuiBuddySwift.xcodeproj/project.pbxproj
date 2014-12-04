@@ -43,7 +43,12 @@
 		7624F8C41A2F5A05001DA624 /* Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614216C1A2F2D330089198F /* Numbers.swift */; };
 		7624F8C71A2F5D2D001DA624 /* attractions_test.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7624F8C51A2F5D2D001DA624 /* attractions_test.sqlite */; };
 		7624F8C81A2F5D42001DA624 /* attractions_test.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76D41FB21A237A810053F687 /* attractions_test.plist */; };
+		7624F8C91A3058F0001DA624 /* attractions_test.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7624F8C51A2F5D2D001DA624 /* attractions_test.sqlite */; };
+		7624F8CA1A3058F4001DA624 /* attractions.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 76BF41471A10D9B10042966D /* attractions.sqlite */; };
 		7640DEE11A2DE5D5005DD518 /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7640DEE01A2DE5D5005DD518 /* Segues.swift */; };
+		764EC6031A306DF200FE4970 /* CmsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764EC6021A306DF200FE4970 /* CmsManagerTests.swift */; };
+		764EC6041A30719D00FE4970 /* attractions_test.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76D41FB21A237A810053F687 /* attractions_test.plist */; };
+		764EC6051A3071A600FE4970 /* attractions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76D41FAE1A2359720053F687 /* attractions.plist */; };
 		765B84181A1B589A00C84DAC /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765B84171A1B589A00C84DAC /* ReachabilityManager.swift */; };
 		765B841C1A1B954500C84DAC /* RNCachingURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 765B841B1A1B954500C84DAC /* RNCachingURLProtocol.m */; };
 		765B841E1A1C996900C84DAC /* AttractionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765B841D1A1C996900C84DAC /* AttractionTests.swift */; };
@@ -107,6 +112,7 @@
 		7623B61E1A2DAC4900390EEE /* AttractionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionViewCell.swift; sourceTree = "<group>"; };
 		7624F8C51A2F5D2D001DA624 /* attractions_test.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = attractions_test.sqlite; path = Resources/attractions_test.sqlite; sourceTree = "<group>"; };
 		7640DEE01A2DE5D5005DD518 /* Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
+		764EC6021A306DF200FE4970 /* CmsManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CmsManagerTests.swift; sourceTree = "<group>"; };
 		765B84171A1B589A00C84DAC /* ReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		765B841A1A1B954500C84DAC /* RNCachingURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNCachingURLProtocol.h; path = External/RNCachingURLProtocol.h; sourceTree = "<group>"; };
 		765B841B1A1B954500C84DAC /* RNCachingURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNCachingURLProtocol.m; path = External/RNCachingURLProtocol.m; sourceTree = "<group>"; };
@@ -293,6 +299,7 @@
 		76BF41321A0CCCE60042966D /* TuiBuddySwiftTests */ = {
 			isa = PBXGroup;
 			children = (
+				764EC6021A306DF200FE4970 /* CmsManagerTests.swift */,
 				76D41FAA1A232EFE0053F687 /* FactTests.swift */,
 				765B841D1A1C996900C84DAC /* AttractionTests.swift */,
 				760CB36F1A1511ED00789A55 /* NotificationManagerTests.swift */,
@@ -418,7 +425,9 @@
 				7623B60A1A2C819F00390EEE /* TUIType.otf in Resources */,
 				76BF41251A0CCCE60042966D /* Main.storyboard in Resources */,
 				76BF412A1A0CCCE60042966D /* LaunchScreen.xib in Resources */,
+				764EC6041A30719D00FE4970 /* attractions_test.plist in Resources */,
 				76BF41481A10D9B10042966D /* attractions.sqlite in Resources */,
+				7624F8C91A3058F0001DA624 /* attractions_test.sqlite in Resources */,
 				7623B60F1A2C819F00390EEE /* TUITypeLtBd.otf in Resources */,
 				7623B60C1A2C819F00390EEE /* TUITypeBdIt.otf in Resources */,
 				76BF41271A0CCCE60042966D /* Images.xcassets in Resources */,
@@ -436,7 +445,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7624F8C71A2F5D2D001DA624 /* attractions_test.sqlite in Resources */,
+				7624F8CA1A3058F4001DA624 /* attractions.sqlite in Resources */,
 				7624F8C81A2F5D42001DA624 /* attractions_test.plist in Resources */,
+				764EC6051A3071A600FE4970 /* attractions.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,6 +538,7 @@
 				7624F8C41A2F5A05001DA624 /* Numbers.swift in Sources */,
 				76D41FA91A232CCA0053F687 /* Fact.swift in Sources */,
 				760CB3701A1511ED00789A55 /* NotificationManagerTests.swift in Sources */,
+				764EC6031A306DF200FE4970 /* CmsManagerTests.swift in Sources */,
 				761421731A2F3BAF0089198F /* Iterator.swift in Sources */,
 				760CB36B1A14FCB000789A55 /* Config.swift in Sources */,
 			);

@@ -81,8 +81,8 @@
 			<dict>
 				<key>factId</key>
 				<string>4</string>
-				<key>Fact 4</key>
-				<string>Ring a bell?</string>
+				<key>factTitle</key>
+				<string>Fact 4</string>
 				<key>factText</key>
 				<string>Most of the sandstone used to build the castle comes from the caves below the castle.</string>
 			</dict>

@@ -43,6 +43,8 @@ class RegionManagerTests: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         config.fakeCMS = "attractions_test"
         config.sqliteDbName = "attractions_test"
+        CmsManager.sharedInstance.reloadCmsContents()
+        AttractionManager.sharedInstance.reloadDb()
     }
     
     override func tearDown() {
