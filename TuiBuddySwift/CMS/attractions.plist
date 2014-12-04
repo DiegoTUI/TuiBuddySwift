@@ -23,15 +23,15 @@
 				<key>factId</key>
 				<string>2</string>
 				<key>factTitle</key>
-				<string>The Canopy</string>
+				<string>The Rose Windows</string>
 				<key>factText</key>
-				<string>Twice a year at about 9 AM the sunlight through the major rose window illuminates the top of the rose window in the main façade.</string>
+				<string>Twice a year at about 9 AM the sunlight through the major rose window illuminates the top of the rose window in the main facade.</string>
 			</dict>
 			<dict>
 				<key>factId</key>
 				<string>3</string>
 				<key>factTitle</key>
-				<string>Fact 3</string>
+				<string>History</string>
 				<key>factText</key>
 				<string>The Cathedral was started in the 13th century and is built on the site that was previously a Mosque.</string>
 			</dict>
@@ -49,42 +49,257 @@
 		<key>attractionId</key>
 		<string>2</string>
 		<key>attractionName</key>
-		<string>Belver Castle</string>
+		<string>Almudaina palace</string>
 		<key>attractionText</key>
-		<string>The second most prominent building on the skyline, set besides the sea.</string>
+		<string>The Royal Palace right beside the Seu</string>
 		<key>facts</key>
 		<array>
 			<dict>
 				<key>factId</key>
 				<string>1</string>
 				<key>factTitle</key>
-				<string>Fact 1</string>
+				<string>Ancient land</string>
 				<key>factText</key>
-				<string>The Castle was started in 1300 and is the oldest known circular castle.</string>
+				<string>The site of the palace was used by the Romans in the 2nd century BC when they formed the town of "Palmeria".</string>
 			</dict>
 			<dict>
 				<key>factId</key>
 				<string>2</string>
 				<key>factTitle</key>
-				<string>Fact 2</string>
+				<string>History</string>
 				<key>factText</key>
-				<string>Parts of the castle are covered in graffiti from the days when it was used as a prison.</string>
+				<string>The current building was started in 903 by the new governor of Mallorca after the Arab conquest</string>
 			</dict>
 			<dict>
 				<key>factId</key>
 				<string>3</string>
 				<key>factTitle</key>
-				<string>Fact 3</string>
+				<string>On the top</string>
 				<key>factText</key>
-				<string>The four towers are aligned with the points of the compass, with the Keep facing North.</string>
+				<string>The statue of the Archangel Gabriel on the top of the tower is actually a weathervane. It was commissioned in 1310.</string>
 			</dict>
 			<dict>
 				<key>factId</key>
 				<string>4</string>
 				<key>factTitle</key>
-				<string>Fact 4</string>
+				<string>By Royal appointment</string>
 				<key>factText</key>
-				<string>Most of the sandstone used to build the castle comes from the caves below the castle.</string>
+				<string>The Castle is an official residence of the King and Queen of Spain and is used by them for events when they are on the island.</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>attractionId</key>
+		<string>3</string>
+		<key>attractionName</key>
+		<string>Arab Baths</string>
+		<key>attractionText</key>
+		<string>One of the last remaining buildings from the Arab conquest</string>
+		<key>facts</key>
+		<array>
+			<dict>
+				<key>factId</key>
+				<string>1</string>
+				<key>factTitle</key>
+				<string>Indoor plumbing</string>
+				<key>factText</key>
+				<string>The baths were probably part of a nobleman's house and date back to the 11th century.</string>
+			</dict>
+			<dict>
+				<key>factId</key>
+				<string>2</string>
+				<key>factTitle</key>
+				<string>Early recycling</string>
+				<key>factText</key>
+				<string>The 12 columns holding up the roof of the baths are actually Roman and were recycled from an older building.</string>
+			</dict>
+			<dict>
+				<key>factId</key>
+				<string>3</string>
+				<key>factTitle</key>
+				<string>Illuminating</string>
+				<key>factText</key>
+				<string>The domed roof has 25 shafts to allow sunlight into the baths.</string>
+			</dict>
+			<dict>
+				<key>factId</key>
+				<string>4</string>
+				<key>factTitle</key>
+				<string>Warm feet</string>
+				<key>factText</key>
+				<string>The building has a double floor and steam was directed into the hot bath house between the floors.</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>attractionId</key>
+		<string>4</string>
+		<key>attractionName</key>
+		<string>Parc de la Mar</string>
+		<key>attractionText</key>
+		<string>Between the Seu and the sea</string>
+		<key>facts</key>
+		<array>
+			<dict>
+				<key>factId</key>
+				<string>1</string>
+				<key>factTitle</key>
+				<string>Where´s the beach?</string>
+				<key>factText</key>
+				<string>Until the 1960´s the sea came up to the walls below the Cathedral.</string>
+			</dict>
+			<dict>
+				<key>factId</key>
+				<string>2</string>
+				<key>factTitle</key>
+				<string>Fun in the sun</string>
+				<key>factText</key>
+				<string>The park is used for many events including a popular beer festival in the spring and a free open air cinema during the summer.</string>
+			</dict>
+			<dict>
+				<key>factId</key>
+				<string>3</string>
+				<key>factTitle</key>
+				<string>Miro mural</string>
+				<key>factText</key>
+				<string>The large mural on the opposite side of the lake from the Cathedral was donated my Miro.</string>
+			</dict>
+			<dict>
+				<key>factId</key>
+				<string>4</string>
+				<key>factTitle</key>
+				<string>Beneath your feet</string>
+				<key>factText</key>
+				<string>Hidden under the park is a large car park with space for 325 cars.</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>attractionId</key>
+		<string>5</string>
+		<key>attractionName</key>
+		<string>Cort - the town hall</string>
+		<key>attractionText</key>
+		<string>A gothic building in the heart of Palma</string>
+		<key>facts</key>
+		<array>
+			<dict>
+				<key>factId</key>
+				<string>1</string>
+				<key>factTitle</key>
+				<string>Old or new?</string>
+				<key>factText</key>
+				<string>The original town hall was built in 1515, but burned down in 1842. This building is its replacement.</string>
+			</dict>
+			<dict>
+				<key>factId</key>
+				<string>2</string>
+				<key>factTitle</key>
+				<string>Stuck in the middle with you</string>
+				<key>factText</key>
+				<string>The area in front of the hall is called Plaça de Cort and used to be regarded as the centre of the town.</string>
+			</dict>
+			<dict>
+				<key>factId</key>
+				<string>3</string>
+				<key>factTitle</key>
+				<string>Heavy plant</string>
+				<key>factText</key>
+				<string>The ancient Olive Tree in the square is between 500 and 600 years old, but it didn't grow here. It was actually transported to the square in 1999 from the local village of Pedruixella.</string>
+			</dict>
+			<dict>
+				<key>factId</key>
+				<string>4</string>
+				<key>factTitle</key>
+				<string>Fee-fi-fo-fum</string>
+				<key>factText</key>
+				<string>If the doors of the town hall are open you may catch a glimpse of the giants, used in local festivals.</string>
+			</dict>
+		</array>
+	</dict>	
+	<dict>
+		<key>attractionId</key>
+		<string>6</string>
+		<key>attractionName</key>
+		<string>Paseo Maritimo</string>
+		<key>attractionText</key>
+		<string>A walk along the seafront</string>
+		<key>facts</key>
+		<array>
+			<dict>
+				<key>factId</key>
+				<string>1</string>
+				<key>factTitle</key>
+				<string>Palma´s Hollywood sign</string>
+				<key>factText</key>
+				<string>Don´t miss your chance to take a photo beside the large Palma sign, set amongst Palm Trees on the Paseo Maritimo.</string>
+			</dict>
+			<dict>
+				<key>factId</key>
+				<string>2</string>
+				<key>factTitle</key>
+				<string>Nom de plume</string>
+				<key>factText</key>
+				<string>The Paseo Maritimo is really called the "Avenida de Gabriel Roca" after the man in charge of engineering the city between 1940 and 1962.</string>
+			</dict>
+			<dict>
+				<key>factId</key>
+				<string>3</string>
+				<key>factTitle</key>
+				<string>Market time</string>
+				<key>factText</key>
+				<string>During the summer there is often a craft market where the Paseo starts, across the road from the Cathedral.</string>
+			</dict>
+			<dict>
+				<key>factId</key>
+				<string>4</string>
+				<key>factTitle</key>
+				<string>A long walk</string>
+				<key>factText</key>
+				<string>The paseo is 5500 metres long and was reclaimed from the sea when the port was built in the 1950´s.</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>attractionId</key>
+		<string>7</string>
+		<key>attractionName</key>
+		<string>Passeig des Born</string>
+		<key>attractionText</key>
+		<string>One of the most elegant streets in Palma</string>
+		<key>facts</key>
+		<array>
+			<dict>
+				<key>factId</key>
+				<string>1</string>
+				<key>factTitle</key>
+				<string>Not Ninjas</string>
+				<key>factText</key>
+				<string>At one end of the street is the "Plaza de Juan Carlos I" commonly known as Turtle square (Plaza de las tortugas)</string>
+			</dict>
+			<dict>
+				<key>factId</key>
+				<string>2</string>
+				<key>factTitle</key>
+				<string>Not so old</string>
+				<key>factText</key>
+				<string>The street was created at the start of the 19th century.</string>
+			</dict>
+			<dict>
+				<key>factId</key>
+				<string>3</string>
+				<key>factTitle</key>
+				<string>Arty</string>
+				<key>factText</key>
+				<string>There is a free art gallery called  Ca'n Solleric on the street. Don´t miss a visit to the traditional courtyard inside.</string>
+			</dict>
+			<dict>
+				<key>factId</key>
+				<string>4</string>
+				<key>factTitle</key>
+				<string>Party time</string>
+				<key>factText</key>
+				<string>The boulevard is often used for events and local celebrations.</string>
 			</dict>
 		</array>
 	</dict>
