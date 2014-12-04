@@ -62,7 +62,6 @@ class IteratorTests: XCTestCase {
         XCTAssertTrue(iterator.isNext(), "isNext is true in the first item of this iterator")
         XCTAssertFalse(iterator.isPrev(), "isPrev is false in the first item of this iterator")
         XCTAssertNil(iterator.prev(), "first element: no prev element")
-        
     }
 
 }
