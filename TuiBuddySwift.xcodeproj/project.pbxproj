@@ -92,6 +92,8 @@
 		764EC65C1A3093D600FE4970 /* thumb_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 764EC6551A3093D600FE4970 /* thumb_5.png */; };
 		764EC65D1A3093D600FE4970 /* thumb_6.png in Resources */ = {isa = PBXBuildFile; fileRef = 764EC6561A3093D600FE4970 /* thumb_6.png */; };
 		764EC65E1A3093D600FE4970 /* thumb_7.png in Resources */ = {isa = PBXBuildFile; fileRef = 764EC6571A3093D600FE4970 /* thumb_7.png */; };
+		764EC6601A30A3A600FE4970 /* Splash_Screen_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 764EC65F1A30A3A600FE4970 /* Splash_Screen_logo.png */; };
+		764EC6611A30A3A600FE4970 /* Splash_Screen_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 764EC65F1A30A3A600FE4970 /* Splash_Screen_logo.png */; };
 		765B84181A1B589A00C84DAC /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765B84171A1B589A00C84DAC /* ReachabilityManager.swift */; };
 		765B841C1A1B954500C84DAC /* RNCachingURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 765B841B1A1B954500C84DAC /* RNCachingURLProtocol.m */; };
 		765B841E1A1C996900C84DAC /* AttractionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765B841D1A1C996900C84DAC /* AttractionTests.swift */; };
@@ -199,6 +201,7 @@
 		764EC6551A3093D600FE4970 /* thumb_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thumb_5.png; path = CMS/Images/Thumbs/thumb_5.png; sourceTree = "<group>"; };
 		764EC6561A3093D600FE4970 /* thumb_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thumb_6.png; path = CMS/Images/Thumbs/thumb_6.png; sourceTree = "<group>"; };
 		764EC6571A3093D600FE4970 /* thumb_7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thumb_7.png; path = CMS/Images/Thumbs/thumb_7.png; sourceTree = "<group>"; };
+		764EC65F1A30A3A600FE4970 /* Splash_Screen_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Splash_Screen_logo.png; sourceTree = SOURCE_ROOT; };
 		765B84171A1B589A00C84DAC /* ReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		765B841A1A1B954500C84DAC /* RNCachingURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNCachingURLProtocol.h; path = External/RNCachingURLProtocol.h; sourceTree = "<group>"; };
 		765B841B1A1B954500C84DAC /* RNCachingURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNCachingURLProtocol.m; path = External/RNCachingURLProtocol.m; sourceTree = "<group>"; };
@@ -429,6 +432,7 @@
 				76BF41491A10DB570042966D /* BridgingHeader.h */,
 				760CB3691A14FCB000789A55 /* Config.swift */,
 				76BF411D1A0CCCE60042966D /* AppDelegate.swift */,
+				764EC65F1A30A3A600FE4970 /* Splash_Screen_logo.png */,
 				76BF41231A0CCCE60042966D /* Main.storyboard */,
 				76BF41261A0CCCE60042966D /* Images.xcassets */,
 				76BF41281A0CCCE60042966D /* LaunchScreen.xib */,
@@ -624,6 +628,7 @@
 				764EC64D1A3093B900FE4970 /* fact_7_1.png in Resources */,
 				7623B6101A2C819F00390EEE /* TUITypeLtBI.otf in Resources */,
 				764EC6441A3093B900FE4970 /* fact_4_4.png in Resources */,
+				764EC6601A30A3A600FE4970 /* Splash_Screen_logo.png in Resources */,
 				76D41FAF1A2359720053F687 /* attractions.plist in Resources */,
 				764EC64A1A3093B900FE4970 /* fact_6_2.png in Resources */,
 				764EC6351A3093B900FE4970 /* fact_1_1.png in Resources */,
@@ -642,6 +647,7 @@
 				7624F8C71A2F5D2D001DA624 /* attractions_test.sqlite in Resources */,
 				7624F8CA1A3058F4001DA624 /* attractions.sqlite in Resources */,
 				7624F8C81A2F5D42001DA624 /* attractions_test.plist in Resources */,
+				764EC6611A30A3A600FE4970 /* Splash_Screen_logo.png in Resources */,
 				764EC6051A3071A600FE4970 /* attractions.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
