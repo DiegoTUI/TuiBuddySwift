@@ -13,7 +13,7 @@ protocol AttractionViewCellDelegate {
     func editAttraction(attraction: Attraction)
 }
 
-class AttractionViewCell: UICollectionViewCell {
+class AttractionViewCell: BaseCollectionViewCell {
     // Views
     var _titleLabel: UILabel? = nil
     var _textLabel: UILabel? = nil
@@ -30,30 +30,8 @@ class AttractionViewCell: UICollectionViewCell {
     var attraction: Attraction? = nil
     
     // MARK: Setup
-    func setup() {
-        layout()
-        // title label
-        _titleLabel?.font = UIFont(name: kBoldFont, size: CGFloat(kH2FontSize))!
-        _titleLabel?.textColor = kDarkBlueColor
-        _titleLabel?.text = attraction?.name
-        // text label
-        _textLabel?.font = UIFont(name: kRegularFont, size: CGFloat(kH3FontSize))!
-        _textLabel?.textColor = kDarkBlueColor
-        _textLabel?.lineBreakMode = .ByWordWrapping
-        _textLabel?.numberOfLines = 0
-        _textLabel?.text = attraction?.text
-        _textLabel?.sizeToFit()
-        // image
-        var mainImage = UIImage(named: attraction!.thumbImageName)
-        _mainImageView?.image = UIImage(named: attraction!.thumbImageName)
-        // make it circular
-        var imageLayer = _mainImageView?.layer
-        imageLayer?.cornerRadius = _mainImageView == nil ? 40.0 : _mainImageView!.frame.size.width/2.0
-        imageLayer?.masksToBounds = true
-        _mainImageView?.clipsToBounds = true
-    }
     
-    func layout() {
+    override func setup() {
         // main image
         _mainImageView = UIImageView(frame: CGRect(x: kDefaultMargin, y: kDefaultMargin, width: kImageViewWidth, height: kImageViewHeight))
         // Title and text labels
@@ -61,11 +39,37 @@ class AttractionViewCell: UICollectionViewCell {
         let kLabelWidth = Double(self.frame.width) - kLabelX - kDefaultMargin
         let kTextLabelY = kDefaultMargin + kBetweenLabelsOffset + kLabelHeight
         _titleLabel = UILabel(frame: CGRect(x: kLabelX, y: kDefaultMargin, width: kLabelWidth, height: kLabelHeight))
+        _titleLabel!.font = UIFont(name: kBoldFont, size: CGFloat(kH2FontSize))!
+        _titleLabel!.textColor = kDarkBlueColor
         _textLabel = UILabel(frame: CGRect(x: kLabelX, y: kTextLabelY, width: kLabelWidth, height: kLabelHeight))
+        _textLabel!.font = UIFont(name: kRegularFont, size: CGFloat(kH3FontSize))!
+        _textLabel!.textColor = kDarkBlueColor
+        _textLabel!.lineBreakMode = .ByWordWrapping
+        _textLabel!.numberOfLines = 0
         // add subviews
         addSubview(_mainImageView!)
         addSubview(_titleLabel!)
         addSubview(_textLabel!)
+        // Refresh contants (if there if a valid attraction)
+        if (attraction != nil) {
+            refreshContents()
+        }
+    }
+    
+    func refreshContents() {
+        // title label
+        _titleLabel!.text = attraction!.name
+        // text label
+        _textLabel!.text = attraction!.text
+        _textLabel!.sizeToFit()
+        // image
+        var mainImage = UIImage(named: attraction!.thumbImageName)
+        _mainImageView!.image = UIImage(named: attraction!.thumbImageName)
+        // make it circular
+        var imageLayer = _mainImageView!.layer
+        imageLayer.cornerRadius = _mainImageView == nil ? 40.0 : _mainImageView!.frame.size.width/2.0
+        imageLayer.masksToBounds = true
+        _mainImageView!.clipsToBounds = true
     }
     
     // MARK: Menu actions
