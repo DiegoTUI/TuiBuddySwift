@@ -97,6 +97,8 @@
 		764EC6651A31B5BB00FE4970 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764EC6641A31B5BB00FE4970 /* BaseCollectionViewCell.swift */; };
 		764EC6661A31B5BB00FE4970 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764EC6641A31B5BB00FE4970 /* BaseCollectionViewCell.swift */; };
 		764EC6681A31CB6000FE4970 /* FactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764EC6671A31CB6000FE4970 /* FactViewController.swift */; };
+		764EC66A1A31CF4D00FE4970 /* FactPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764EC6691A31CF4D00FE4970 /* FactPageViewController.swift */; };
+		764EC66C1A31DE1B00FE4970 /* FactPageViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764EC66B1A31DE1B00FE4970 /* FactPageViewControllerDataSource.swift */; };
 		765B84181A1B589A00C84DAC /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765B84171A1B589A00C84DAC /* ReachabilityManager.swift */; };
 		765B841C1A1B954500C84DAC /* RNCachingURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 765B841B1A1B954500C84DAC /* RNCachingURLProtocol.m */; };
 		765B841E1A1C996900C84DAC /* AttractionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765B841D1A1C996900C84DAC /* AttractionTests.swift */; };
@@ -207,6 +209,8 @@
 		764EC65F1A30A3A600FE4970 /* Splash_Screen_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Splash_Screen_logo.png; sourceTree = SOURCE_ROOT; };
 		764EC6641A31B5BB00FE4970 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		764EC6671A31CB6000FE4970 /* FactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactViewController.swift; sourceTree = "<group>"; };
+		764EC6691A31CF4D00FE4970 /* FactPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactPageViewController.swift; sourceTree = "<group>"; };
+		764EC66B1A31DE1B00FE4970 /* FactPageViewControllerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactPageViewControllerDataSource.swift; sourceTree = "<group>"; };
 		765B84171A1B589A00C84DAC /* ReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		765B841A1A1B954500C84DAC /* RNCachingURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNCachingURLProtocol.h; path = External/RNCachingURLProtocol.h; sourceTree = "<group>"; };
 		765B841B1A1B954500C84DAC /* RNCachingURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNCachingURLProtocol.m; path = External/RNCachingURLProtocol.m; sourceTree = "<group>"; };
@@ -317,6 +321,8 @@
 				7623B61C1A2DAB3A00390EEE /* AttractionsCollectionViewController.swift */,
 				7614216E1A2F39E70089198F /* CmsManager.swift */,
 				764EC6671A31CB6000FE4970 /* FactViewController.swift */,
+				764EC6691A31CF4D00FE4970 /* FactPageViewController.swift */,
+				764EC66B1A31DE1B00FE4970 /* FactPageViewControllerDataSource.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -703,6 +709,7 @@
 				761421721A2F3BAF0089198F /* Iterator.swift in Sources */,
 				76BF411E1A0CCCE60042966D /* AppDelegate.swift in Sources */,
 				7614216D1A2F2D330089198F /* Numbers.swift in Sources */,
+				764EC66C1A31DE1B00FE4970 /* FactPageViewControllerDataSource.swift in Sources */,
 				7614216B1A2F2C870089198F /* Strings.swift in Sources */,
 				76BF414D1A10DDA80042966D /* AttractionManager.swift in Sources */,
 				764EC6681A31CB6000FE4970 /* FactViewController.swift in Sources */,
@@ -716,6 +723,7 @@
 				760CB36D1A15099100789A55 /* NotificationManager.swift in Sources */,
 				760CB3721A16189200789A55 /* DebugViewController.swift in Sources */,
 				764EC6651A31B5BB00FE4970 /* BaseCollectionViewCell.swift in Sources */,
+				764EC66A1A31CF4D00FE4970 /* FactPageViewController.swift in Sources */,
 				76D41FA81A2328E10053F687 /* Fact.swift in Sources */,
 				76A2DBD91A1635A400341118 /* DebugRegionStatusView.swift in Sources */,
 				760CB36A1A14FCB000789A55 /* Config.swift in Sources */,

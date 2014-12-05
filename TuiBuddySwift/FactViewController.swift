@@ -46,3 +46,9 @@ class FactViewController: UIViewController {
     @IBAction func closeButtonClicked(sender: AnyObject) {
     }
 }
+
+//MARK: - Equatable protocol
+
+func == (left: FactViewController, right: FactViewController) -> Bool {
+    return left.fact == right.fact 
+}

@@ -63,8 +63,10 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == kShowFactsSegue {
             let attraction = sender as Attraction
-            let attractionFactViewController = (segue.destinationViewController as UINavigationController).viewControllers[0] as AttractionFactViewController
-            AttractionFactViewController.factIterator = attraction.factIterator()
+            let factPageViewController = segue.destinationViewController as FactPageViewController
+            let factPageViewControllerDataSource = FactPageViewControllerDataSource(attraction: attraction)
+            factPageViewController.dataSource = factPageViewControllerDataSource
+            factPageViewController.setViewControllers([initialViewController], direction: .Forward, animated: true, completion: nil)
         } else if segue.identifier == kAddAttractionSegue {
             // stop updating locations
             RegionManager.sharedInstance.stopMonitoringRegions()

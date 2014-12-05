@@ -41,7 +41,7 @@
                     <connections>
                         <segue destination="tab-xE-gHx" kind="presentation" identifier="editAttraction" id="q7z-pG-xiJ"/>
                         <segue destination="UVb-2H-l1y" kind="presentation" identifier="showDebug" id="YV9-9t-0Kn"/>
-                        <segue destination="K5T-EV-toN" kind="presentation" identifier="showFacts" id="JDr-ZL-i8D"/>
+                        <segue destination="THg-ZS-D5I" kind="presentation" identifier="showFacts" id="wcL-7y-kfU"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lPL-v9-hZZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -407,7 +407,7 @@
         <!--Fact View Controller-->
         <scene sceneID="mM6-Ku-zdp">
             <objects>
-                <viewController id="bIP-Qe-BK9" customClass="FactViewController" customModule="TuiBuddySwift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="factViewController" id="bIP-Qe-BK9" customClass="FactViewController" customModule="TuiBuddySwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6sy-zR-Sba"/>
                         <viewControllerLayoutGuide type="bottom" id="FzK-GZ-74x"/>
@@ -658,10 +658,10 @@
             </objects>
             <point key="canvasLocation" x="1804.5" y="473.25"/>
         </scene>
-        <!--Page View Controller-->
+        <!--Facts Pages-->
         <scene sceneID="o0h-q5-8Na">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="THg-ZS-D5I" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" title="Facts Pages" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="THg-ZS-D5I" customClass="FactPageViewController" customModule="TuiBuddySwift" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gli-uS-reg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1083" y="-193.5"/>
