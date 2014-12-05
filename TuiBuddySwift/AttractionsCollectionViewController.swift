@@ -44,6 +44,8 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
             let debugButton = UIBarButtonItem(title: "Debug", style: .Plain, target: self, action: Selector("debugButtonClicked"))
             self.navigationItem.leftBarButtonItem = debugButton
         }
+        // set the background blue
+        collectionView.backgroundColor = kBlueColor
     }
     
     override func viewWillAppear(animated: Bool) {

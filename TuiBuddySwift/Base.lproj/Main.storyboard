@@ -3,7 +3,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -27,42 +26,9 @@
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="376" height="96"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attraction Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ljX-FT-qpW">
-                                            <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="ljX-FT-qpW" firstAttribute="centerX" secondItem="iEY-CB-HuC" secondAttribute="centerX" id="7Nu-No-jRI"/>
-                                    <constraint firstItem="ljX-FT-qpW" firstAttribute="top" secondItem="iEY-CB-HuC" secondAttribute="topMargin" constant="29" id="eJh-F6-adX"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="ljX-FT-qpW"/>
-                                    </mask>
-                                    <mask key="constraints">
-                                        <exclude reference="7Nu-No-jRI"/>
-                                        <exclude reference="eJh-F6-adX"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="subviews">
-                                        <include reference="ljX-FT-qpW"/>
-                                    </mask>
-                                    <mask key="constraints">
-                                        <include reference="7Nu-No-jRI"/>
-                                        <include reference="eJh-F6-adX"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <outlet property="titleLabel" destination="ljX-FT-qpW" id="PJm-Kq-NYS"/>
-                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -201,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R6U-t6-mnI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="352.5" y="-877.5"/>
+            <point key="canvasLocation" x="352" y="-1080"/>
         </scene>
         <!--Add Edit Attraction View Controller-->
         <scene sceneID="zOV-EL-DvW">
@@ -420,7 +386,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k6L-8i-LdQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="352.5" y="488.25"/>
+            <point key="canvasLocation" x="352" y="742"/>
         </scene>
         <!--Fact Navigation-->
         <scene sceneID="gdg-VA-o68">

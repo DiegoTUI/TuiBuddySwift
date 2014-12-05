@@ -10,5 +10,5 @@ let kH1FontSize = 22.0
 let kH2FontSize = 16.0
 let kH3FontSize = 14.0
 
-let kNormalFont = "TUIType-Regular"
+let kRegularFont = "TUIType-Regular"
 let kBoldFont = "TUIType-Bold"

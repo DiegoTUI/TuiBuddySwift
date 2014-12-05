@@ -14,8 +14,16 @@ protocol AttractionViewCellDelegate {
 }
 
 class AttractionViewCell: UICollectionViewCell {
-    // Outlets
-    @IBOutlet weak var titleLabel: UILabel!
+    // Views
+    var _titleLabel: UILabel? = nil
+    var _textLabel: UILabel? = nil
+    var _mainImageView: UIImageView? = nil
+    // Layout constants
+    let kDefaultMargin = 8.0
+    let kBetweenLabelsOffset = 0.0
+    let kImageViewHeight = 80.0
+    let kImageViewWidth = 80.0
+    let kLabelHeight = 18.0
     // delegate
     var delegate: AttractionViewCellDelegate? = nil
     // attraction
@@ -23,7 +31,41 @@ class AttractionViewCell: UICollectionViewCell {
     
     // MARK: Setup
     func setup() {
-        titleLabel.text = attraction?.name
+        layout()
+        // title label
+        _titleLabel?.font = UIFont(name: kBoldFont, size: CGFloat(kH2FontSize))!
+        _titleLabel?.textColor = kDarkBlueColor
+        _titleLabel?.text = attraction?.name
+        // text label
+        _textLabel?.font = UIFont(name: kRegularFont, size: CGFloat(kH3FontSize))!
+        _textLabel?.textColor = kDarkBlueColor
+        _textLabel?.lineBreakMode = .ByWordWrapping
+        _textLabel?.numberOfLines = 0
+        _textLabel?.text = attraction?.text
+        _textLabel?.sizeToFit()
+        // image
+        var mainImage = UIImage(named: attraction!.thumbImageName)
+        _mainImageView?.image = UIImage(named: attraction!.thumbImageName)
+        // make it circular
+        var imageLayer = _mainImageView?.layer
+        imageLayer?.cornerRadius = _mainImageView == nil ? 40.0 : _mainImageView!.frame.size.width/2.0
+        imageLayer?.masksToBounds = true
+        _mainImageView?.clipsToBounds = true
+    }
+    
+    func layout() {
+        // main image
+        _mainImageView = UIImageView(frame: CGRect(x: kDefaultMargin, y: kDefaultMargin, width: kImageViewWidth, height: kImageViewHeight))
+        // Title and text labels
+        let kLabelX = 2.0 * kDefaultMargin + kImageViewWidth
+        let kLabelWidth = Double(self.frame.width) - kLabelX - kDefaultMargin
+        let kTextLabelY = kDefaultMargin + kBetweenLabelsOffset + kLabelHeight
+        _titleLabel = UILabel(frame: CGRect(x: kLabelX, y: kDefaultMargin, width: kLabelWidth, height: kLabelHeight))
+        _textLabel = UILabel(frame: CGRect(x: kLabelX, y: kTextLabelY, width: kLabelWidth, height: kLabelHeight))
+        // add subviews
+        addSubview(_mainImageView!)
+        addSubview(_titleLabel!)
+        addSubview(_textLabel!)
     }
     
     // MARK: Menu actions
