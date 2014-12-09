@@ -9,6 +9,9 @@
 import UIKit
 
 class FactsViewController: UIViewController {
+    // outlets
+    @IBOutlet weak var mainImageView: UIImageView!
+    @IBOutlet weak var pageContainerView: UIView!
     // the attraction
     var attraction: Attraction? = nil
     // the page view controller
@@ -20,17 +23,47 @@ class FactsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        pageViewController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+        // load background image
+        loadBackgroundImage()
+        // load pageView Controller
+        //pageViewController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
         pageViewControllerDataSource = FactPageViewControllerDataSource(attraction: self.attraction!)
         pageViewController!.dataSource = self.pageViewControllerDataSource
         
         let startingViewController: FactPageViewController = self.pageViewControllerDataSource!.initialViewController()!
         let viewControllers: NSArray = [startingViewController]
         pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: nil)
-        pageViewController!.view.frame = CGRectMake(0, 20, view.frame.size.width, view.frame.size.height);
+        //pageViewController!.view.frame = CGRectMake(0, 0, pageContainerView.frame.size.width, pageContainerView.frame.size.height);
         
-        addChildViewController(pageViewController!)
-        view.addSubview(pageViewController!.view)
-        pageViewController!.didMoveToParentViewController(self)
+        //addChildViewController(pageViewController!)
+        //view.addSubview(pageViewController!.view)
+        //pageViewController!.didMoveToParentViewController(self)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    func loadBackgroundImage() {
+        mainImageView.image = UIImage(named: "background_\(attraction!.id)")
+    }
+    
+    func resizeImage(image: UIImage?, toSize: CGSize) -> UIImage? {
+        if (image == nil) {
+            return nil
+        }
+        UIGraphicsBeginImageContext(view.frame.size);
+        image!.drawInRect(CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
+        var newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext();
+        //here is the scaled image which has been changed to the size specified
+        UIGraphicsEndImageContext();
+        return newImage
+    }
+    
+    // MARK: segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "factPagesContainer" {
+            pageViewController = segue.destinationViewController as? UIPageViewController
+        }
     }
 }

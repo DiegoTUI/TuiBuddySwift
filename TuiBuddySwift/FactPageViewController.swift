@@ -10,7 +10,6 @@ import UIKit
 
 class FactPageViewController: UIViewController {
     // outlets
-    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var factTextView: UIView!
