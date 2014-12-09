@@ -14,10 +14,13 @@ class FactPageViewControllerDataSource: NSObject, UIPageViewControllerDataSource
     // The fact iterator
     var _facts: [Fact] = []
     var _viewControllers: [FactPageViewController] = []
+    // The frame
+    var _frame: CGRect? = nil
     
-    init(facts: [Fact]) {
+    init(facts: [Fact], frame: CGRect? = nil) {
         super.init()
         _facts = facts
+        _frame = frame
         createViewControllers()
     }
     
@@ -25,6 +28,7 @@ class FactPageViewControllerDataSource: NSObject, UIPageViewControllerDataSource
         for fact in _facts {
             if var factPageViewController = _storyboard.instantiateViewControllerWithIdentifier("factPageViewController") as? FactPageViewController {
                 factPageViewController.fact = fact
+                factPageViewController.frame = _frame
                 _viewControllers.append(factPageViewController)
             }
         }

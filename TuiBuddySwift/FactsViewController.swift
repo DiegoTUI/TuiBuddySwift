@@ -20,6 +20,9 @@ class FactsViewController: UIViewController {
     var pageViewControllerDataSource: FactPageViewControllerDataSource? = nil
     // The storyboard
     let _storyboard = UIStoryboard(name: "Main", bundle: nil)
+    // Layout
+    let kContainerVerticalOffset: CGFloat = 20.0
+    let kContainerHorizontalOffset: CGFloat = 15.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +30,7 @@ class FactsViewController: UIViewController {
         // load background image
         loadBackgroundImage()
         // load pageView Controller
-        pageViewControllerDataSource = FactPageViewControllerDataSource(facts: attraction!.facts)
+        pageViewControllerDataSource = FactPageViewControllerDataSource(facts: attraction!.facts, frame: CGRect(x: 0, y: 0, width: view.frame.width - 2.0*kContainerHorizontalOffset, height: view.frame.height - 2.0*kContainerVerticalOffset))
         pageViewController!.dataSource = self.pageViewControllerDataSource
         
         let startingViewController: FactPageViewController = self.pageViewControllerDataSource!.initialViewController()!
