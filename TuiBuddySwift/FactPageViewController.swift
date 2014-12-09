@@ -55,7 +55,6 @@ class FactPageViewController: UIViewController {
         // yellow box
         // title
         let kYellowBoxWidth: CGFloat = width - 2.0*kDefaultOffset
-        //let kYellowBoxWidth: CGFloat = 200.0
         let kYellowBoxY: CGFloat = titleLabel.frame.origin.y + kTitleLabelHeight
         let yellowTitleLabel = UILabel(frame: CGRect(x: kDefaultOffset, y: kYellowBoxY, width: kYellowBoxWidth, height: kYellowTitleLabelHeight))
         yellowTitleLabel.font = UIFont(name: kBoldFont, size: CGFloat(kH2FontSize))!
@@ -69,6 +68,7 @@ class FactPageViewController: UIViewController {
         yellowTextLabel.numberOfLines = 0
         yellowTextLabel.text = fact!.text
         yellowTextLabel.sizeToFit()
+        
         
         view.addSubview(yellowTitleLabel)
         view.addSubview(yellowTextLabel)
