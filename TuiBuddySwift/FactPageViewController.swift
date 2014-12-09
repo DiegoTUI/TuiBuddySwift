@@ -9,12 +9,14 @@
 import UIKit
 
 class FactPageViewController: UIViewController {
-    // outlets
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var closeButton: UIButton!
-    @IBOutlet weak var factTextView: UIView!
-    @IBOutlet weak var swipeForMoreLabel: UILabel!
-    @IBOutlet weak var factImageView: UIImageView!
+    //  layout constants
+    let kDefaultOffset: CGFloat = 10.0
+    let kBottomImageOffset: CGFloat = 20.0
+    let kImageWidth: CGFloat = 300.0
+    let kImageHeight: CGFloat = 400.0
+    let kCloseButtonWidth: CGFloat = 30.0
+    let kCloseButtonHeight: CGFloat = 30.0
+    
     // the fact
     var fact: Fact? = nil
     
@@ -28,22 +30,30 @@ class FactPageViewController: UIViewController {
             setupView()
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // MARK: Setup view
     
     func setupView () {
-        titleLabel.text = fact!.name
+        let width: CGFloat = view.frame.size.width
+        let height: CGFloat = view.frame.size.height
+        // background color
+        view.backgroundColor = kTransparentBlueColor
+        // close button
+        let closeButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
+        closeButton.frame = CGRect(x: width - kDefaultOffset - 2.0*kCloseButtonWidth, y: kDefaultOffset, width: kCloseButtonWidth, height: kCloseButtonHeight)
+        closeButton.setTitle("X", forState: UIControlState.Normal)
+        closeButton.addTarget(self, action: "closeButtonClicked", forControlEvents: UIControlEvents.TouchUpInside)
+        view.addSubview(closeButton)
+        
+        
     }
     
     // MARK: Actions
-    
-    @IBAction func closeButtonClicked(sender: AnyObject) {
+    func closeButtonClicked() {
+        println("close!!")
     }
+    
+    
 }
 
 //MARK: - Equatable protocol

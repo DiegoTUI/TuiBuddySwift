@@ -12,6 +12,7 @@ class FactsViewController: UIViewController {
     // outlets
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var pageContainerView: UIView!
+    @IBOutlet weak var backgroundView: UIView!
     // the attraction
     var attraction: Attraction? = nil
     // the page view controller
@@ -26,18 +27,14 @@ class FactsViewController: UIViewController {
         // load background image
         loadBackgroundImage()
         // load pageView Controller
-        //pageViewController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
         pageViewControllerDataSource = FactPageViewControllerDataSource(attraction: self.attraction!)
         pageViewController!.dataSource = self.pageViewControllerDataSource
         
         let startingViewController: FactPageViewController = self.pageViewControllerDataSource!.initialViewController()!
         let viewControllers: NSArray = [startingViewController]
         pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: nil)
-        //pageViewController!.view.frame = CGRectMake(0, 0, pageContainerView.frame.size.width, pageContainerView.frame.size.height);
-        
-        //addChildViewController(pageViewController!)
-        //view.addSubview(pageViewController!.view)
-        //pageViewController!.didMoveToParentViewController(self)
+        // set background view color
+        backgroundView.backgroundColor = kTransparentBlueColor
     }
     
     override func viewWillAppear(animated: Bool) {
