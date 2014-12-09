@@ -16,6 +16,7 @@ class FactPageViewController: UIViewController {
     let kImageHeight: CGFloat = 400.0
     let kCloseButtonWidth: CGFloat = 30.0
     let kCloseButtonHeight: CGFloat = 30.0
+    let kTitleLabelHeight: CGFloat = 30.0
     
     // the fact
     var fact: Fact? = nil
@@ -44,6 +45,13 @@ class FactPageViewController: UIViewController {
         closeButton.setTitle("X", forState: UIControlState.Normal)
         closeButton.addTarget(self, action: "closeButtonClicked", forControlEvents: UIControlEvents.TouchUpInside)
         view.addSubview(closeButton)
+        // title Label
+        let kTitleLabelWidth: CGFloat = width - 2.0*kDefaultOffset - kCloseButtonWidth
+        let titleLabel = UILabel(frame: CGRect(x: kDefaultOffset, y: kDefaultOffset, width: kTitleLabelWidth, height: kTitleLabelHeight))
+        titleLabel.font = UIFont(name: kBoldFont, size: CGFloat(kH1FontSize))!
+        titleLabel.textColor = kWhiteColor
+        titleLabel.text = fact!.name
+        view.addSubview(titleLabel)
         
         
     }
