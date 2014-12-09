@@ -10,24 +10,29 @@ import UIKit
 
 class FactPageViewControllerDataSource: NSObject, UIPageViewControllerDataSource {
     // The storyboard
-    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    var _attraction: Attraction? = nil
+    let _storyboard = UIStoryboard(name: "Main", bundle: nil)
     // The fact iterator
-    var _factIterator: Iterator<Fact>? = nil
+    var _facts: [Fact] = []
+    var _viewControllers: [FactPageViewController] = []
     
-    init(attraction: Attraction) {
+    init(facts: [Fact]) {
         super.init()
-        _attraction = attraction
-        _factIterator = _attraction!.factIterator()
+        _facts = facts
+        createViewControllers()
+    }
+    
+    func createViewControllers() {
+        for fact in _facts {
+            if var factPageViewController = _storyboard.instantiateViewControllerWithIdentifier("factPageViewController") as? FactPageViewController {
+                factPageViewController.fact = fact
+                _viewControllers.append(factPageViewController)
+            }
+        }
     }
     
     func initialViewController() -> FactPageViewController? {
-        if (_factIterator != nil && _factIterator!.current() != nil) {
-            var factViewController: FactPageViewController? = storyboard.instantiateViewControllerWithIdentifier("factPageViewController") as? FactPageViewController
-            if (factViewController != nil) {
-                factViewController!.fact = _factIterator!.current()
-            }
-            return factViewController
+        if (_viewControllers.count > 0) {
+            return _viewControllers[0]
         }
         return nil
     }
@@ -35,32 +40,29 @@ class FactPageViewControllerDataSource: NSObject, UIPageViewControllerDataSource
     // MARK: UIPageViewControllerDataSource
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        if (_factIterator != nil && _factIterator!.isPrev()) {
-            var factViewController: FactPageViewController? = storyboard.instantiateViewControllerWithIdentifier("factPageViewController") as? FactPageViewController
-            if (factViewController != nil) {
-                factViewController!.fact = _factIterator!.prev()
+        if let factPageViewController = viewController as? FactPageViewController {
+            if let index = find(_viewControllers, factPageViewController) {
+                if index > 0 {
+                    return _viewControllers[index - 1]
+                }
             }
-            return factViewController
         }
         return nil
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        if (_factIterator != nil && _factIterator!.isNext()) {
-            var factViewController: FactPageViewController? = storyboard.instantiateViewControllerWithIdentifier("factPageViewController") as? FactPageViewController
-            if (factViewController != nil) {
-                factViewController!.fact = _factIterator!.next()
+        if let factPageViewController = viewController as? FactPageViewController {
+            if let index = find(_viewControllers, factPageViewController) {
+                if index < (_viewControllers.count - 1) {
+                    return _viewControllers[index + 1]
+                }
             }
-            return factViewController
         }
         return nil
     }
     
     func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-        if (_factIterator != nil) {
-            return _factIterator!.count()
-        }
-        return 0
+        return _facts.count
     }
     
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {

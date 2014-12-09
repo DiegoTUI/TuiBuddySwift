@@ -27,7 +27,7 @@ class FactsViewController: UIViewController {
         // load background image
         loadBackgroundImage()
         // load pageView Controller
-        pageViewControllerDataSource = FactPageViewControllerDataSource(attraction: self.attraction!)
+        pageViewControllerDataSource = FactPageViewControllerDataSource(facts: attraction!.facts)
         pageViewController!.dataSource = self.pageViewControllerDataSource
         
         let startingViewController: FactPageViewController = self.pageViewControllerDataSource!.initialViewController()!
