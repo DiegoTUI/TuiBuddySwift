@@ -11,6 +11,7 @@ import UIKit
 class FactPageViewController: UIViewController {
     //  layout constants
     let kDefaultOffset: CGFloat = 10.0
+    let kHalfDefaultOffset: CGFloat = 5.0
     let kBottomImageOffset: CGFloat = 20.0
     let kImageWidth: CGFloat = 300.0
     let kImageHeight: CGFloat = 400.0
@@ -54,22 +55,27 @@ class FactPageViewController: UIViewController {
         view.addSubview(titleLabel)
         // yellow box
         // title
-        let kYellowBoxWidth: CGFloat = width - 2.0*kDefaultOffset
-        let kYellowBoxY: CGFloat = titleLabel.frame.origin.y + kTitleLabelHeight
-        let yellowTitleLabel = UILabel(frame: CGRect(x: kDefaultOffset, y: kYellowBoxY, width: kYellowBoxWidth, height: kYellowTitleLabelHeight))
+        let kLabelsWidth: CGFloat = width - 2.0*kDefaultOffset
+        let kYellowBoxY: CGFloat = titleLabel.frame.origin.y + kTitleLabelHeight + kHalfDefaultOffset
+        let yellowTitleLabel = UILabel(frame: CGRect(x: kDefaultOffset, y: kYellowBoxY, width: kLabelsWidth, height: kYellowTitleLabelHeight))
         yellowTitleLabel.font = UIFont(name: kBoldFont, size: CGFloat(kH2FontSize))!
         yellowTitleLabel.textColor = kDarkBlueColor
         yellowTitleLabel.text = "Interesting Fact!"
         // text
-        let yellowTextLabel = UILabel(frame: CGRect(x: kDefaultOffset, y: kYellowBoxY + kYellowTitleLabelHeight, width: kYellowBoxWidth, height: kYellowTitleLabelHeight))
+        let yellowTextLabel = UILabel(frame: CGRect(x: kDefaultOffset, y: kYellowBoxY + kYellowTitleLabelHeight, width: kLabelsWidth, height: kYellowTitleLabelHeight))
         yellowTextLabel.font = UIFont(name: kRegularFont, size: CGFloat(kH2FontSize))!
         yellowTextLabel.textColor = kDarkBlueColor
         yellowTextLabel.lineBreakMode = .ByWordWrapping
         yellowTextLabel.numberOfLines = 0
         yellowTextLabel.text = fact!.text
         yellowTextLabel.sizeToFit()
-        
-        
+        // the yellow box itself
+        let kYellowBoxWidth: CGFloat = width - 2.0*kHalfDefaultOffset
+        let kYellowBoxHeight: CGFloat = kYellowTitleLabelHeight + yellowTextLabel.frame.height
+        let yellowBoxView = UIView(frame: CGRect(x: kHalfDefaultOffset, y: kYellowBoxY, width: kYellowBoxWidth, height: kYellowBoxHeight + kHalfDefaultOffset))
+        yellowBoxView.backgroundColor = kSandColor
+        // add the views
+        view.addSubview(yellowBoxView)
         view.addSubview(yellowTitleLabel)
         view.addSubview(yellowTextLabel)
     }
