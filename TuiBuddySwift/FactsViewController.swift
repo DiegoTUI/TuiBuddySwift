@@ -63,4 +63,10 @@ class FactsViewController: UIViewController {
             pageViewController = segue.destinationViewController as? UIPageViewController
         }
     }
+    
+    // MARK: actions
+    
+    @IBAction func closeButtonClicked(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }
