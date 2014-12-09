@@ -14,6 +14,7 @@ class Iterator <T:Equatable> {
     var prev: () -> T? = {return nil}
     var isPrev: () -> Bool = {return false}
     var isNext: () -> Bool = {return false}
+    var count: () -> Int = {return 0}
     
     init(items: [T]) {
         var currentItem: T? = (countElements(items) > 0) ? items[0] : nil
@@ -74,6 +75,10 @@ class Iterator <T:Equatable> {
                 return false
             }
             return false
+        }
+        // count
+        self.count = {[unowned self]() in
+            return items.count
         }
     }
 }

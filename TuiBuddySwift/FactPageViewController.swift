@@ -1,5 +1,5 @@
 //
-//  FactPageViewController.swift
+//  FactViewController.swift
 //  TuiBuddySwift
 //
 //  Created by Diego Lafuente on 05/12/14.
@@ -8,14 +8,26 @@
 
 import UIKit
 
-class FactPageViewController: UIPageViewController {
+class FactPageViewController: UIViewController {
+    // outlets
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var factTextView: UIView!
+    @IBOutlet weak var swipeForMoreLabel: UILabel!
+    @IBOutlet weak var factImageView: UIImageView!
+    // the fact
+    var fact: Fact? = nil
     
+    // MARK: View lifecycle
     
-    // MARK: view lifecycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
+        if (fact != nil) {
+            setupView()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,5 +35,20 @@ class FactPageViewController: UIPageViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: Setup view
     
+    func setupView () {
+        titleLabel.text = fact!.name
+    }
+    
+    // MARK: Actions
+    
+    @IBAction func closeButtonClicked(sender: AnyObject) {
+    }
+}
+
+//MARK: - Equatable protocol
+
+func == (left: FactPageViewController, right: FactPageViewController) -> Bool {
+    return left.fact == right.fact 
 }

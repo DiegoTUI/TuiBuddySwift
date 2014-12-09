@@ -63,10 +63,8 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == kShowFactsSegue {
             let attraction = sender as Attraction
-            let factPageViewController = segue.destinationViewController as FactPageViewController
-            let factPageViewControllerDataSource = FactPageViewControllerDataSource(attraction: attraction)
-            factPageViewController.dataSource = factPageViewControllerDataSource
-            factPageViewController.setViewControllers([initialViewController], direction: .Forward, animated: true, completion: nil)
+            var factPageViewController = segue.destinationViewController as FactsViewController
+            factPageViewController.attraction = attraction
         } else if segue.identifier == kAddAttractionSegue {
             // stop updating locations
             RegionManager.sharedInstance.stopMonitoringRegions()
@@ -86,13 +84,11 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
     // MARK: UICollectionViewDataSource
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        //#warning Incomplete method implementation -- Return the number of sections
         return 1
     }
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //#warning Incomplete method implementation -- Return the number of items in the section
         return AttractionManager.sharedInstance.readAttractions().count
     }
 

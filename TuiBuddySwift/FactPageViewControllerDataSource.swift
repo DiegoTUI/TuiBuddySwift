@@ -11,22 +11,32 @@ import UIKit
 class FactPageViewControllerDataSource: NSObject, UIPageViewControllerDataSource {
     // The storyboard
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    // The attraction
-    var attraction: Attraction? = nil
+    var _attraction: Attraction? = nil
     // The fact iterator
     var _factIterator: Iterator<Fact>? = nil
     
     init(attraction: Attraction) {
         super.init()
-        self.attraction = attraction
-        _factIterator = attraction.factIterator()
+        _attraction = attraction
+        _factIterator = _attraction!.factIterator()
+    }
+    
+    func initialViewController() -> FactPageViewController? {
+        if (_factIterator != nil && _factIterator!.current() != nil) {
+            var factViewController: FactPageViewController? = storyboard.instantiateViewControllerWithIdentifier("factPageViewController") as? FactPageViewController
+            if (factViewController != nil) {
+                factViewController!.fact = _factIterator!.current()
+            }
+            return factViewController
+        }
+        return nil
     }
     
     // MARK: UIPageViewControllerDataSource
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         if (_factIterator != nil && _factIterator!.isPrev()) {
-            var factViewController: FactViewController? = storyboard.instantiateViewControllerWithIdentifier("factViewController") as? FactViewController
+            var factViewController: FactPageViewController? = storyboard.instantiateViewControllerWithIdentifier("factPageViewController") as? FactPageViewController
             if (factViewController != nil) {
                 factViewController!.fact = _factIterator!.prev()
             }
@@ -37,7 +47,7 @@ class FactPageViewControllerDataSource: NSObject, UIPageViewControllerDataSource
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         if (_factIterator != nil && _factIterator!.isNext()) {
-            var factViewController: FactViewController? = storyboard.instantiateViewControllerWithIdentifier("factViewController") as? FactViewController
+            var factViewController: FactPageViewController? = storyboard.instantiateViewControllerWithIdentifier("factPageViewController") as? FactPageViewController
             if (factViewController != nil) {
                 factViewController!.fact = _factIterator!.next()
             }
@@ -47,8 +57,8 @@ class FactPageViewControllerDataSource: NSObject, UIPageViewControllerDataSource
     }
     
     func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-        if (attraction != nil) {
-            return attraction!.facts.count
+        if (_factIterator != nil) {
+            return _factIterator!.count()
         }
         return 0
     }
