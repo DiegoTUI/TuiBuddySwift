@@ -12,9 +12,9 @@ class FactPageViewController: UIViewController {
     //  layout constants
     let kDefaultOffset: CGFloat = 10.0
     let kHalfDefaultOffset: CGFloat = 5.0
-    let kBottomImageOffset: CGFloat = 20.0
-    let kImageWidth: CGFloat = 300.0
-    let kImageHeight: CGFloat = 400.0
+    let kBottomImageOffset: CGFloat = 50.0
+    let kImageWidth: CGFloat = 250.0
+    let kImageHeight: CGFloat = 333.33
     let kCloseButtonWidth: CGFloat = 30.0
     let kCloseButtonHeight: CGFloat = 30.0
     let kTitleLabelHeight: CGFloat = 30.0
@@ -78,13 +78,19 @@ class FactPageViewController: UIViewController {
         view.addSubview(yellowBoxView)
         view.addSubview(yellowTitleLabel)
         view.addSubview(yellowTextLabel)
+        // Image view
+        let kImageViewX: CGFloat = (width - kImageWidth) / 2.0
+        let kImageViewY: CGFloat = height - kBottomImageOffset - kImageHeight
+        let mainImageView = UIImageView(frame: CGRect(x: kImageViewX, y: kImageViewY, width: kImageWidth, height: kImageHeight))
+        mainImageView.contentMode = .ScaleAspectFit
+        mainImageView.image = UIImage(named: fact!.imageName)
+        view.addSubview(mainImageView)
     }
     
     // MARK: Actions
     func closeButtonClicked() {
         println("close!!")
     }
-    
     
 }
 
