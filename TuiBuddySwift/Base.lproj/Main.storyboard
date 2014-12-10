@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -397,6 +398,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Cni-5T-uGp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zke-u1-HQB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="qLr-2z-VSS">
@@ -452,11 +454,11 @@
                                 <exclude reference="f0K-Uj-s8E"/>
                                 <exclude reference="gwq-qw-M5x"/>
                                 <exclude reference="rng-ni-zLN"/>
+                                <exclude reference="kl5-5F-H5n"/>
                                 <exclude reference="15b-X7-PTv"/>
                                 <exclude reference="Hcp-rm-PJX"/>
                                 <exclude reference="K7J-fl-t7O"/>
                                 <exclude reference="bgA-7v-sl4"/>
-                                <exclude reference="kl5-5F-H5n"/>
                                 <exclude reference="7vs-aB-tIR"/>
                                 <exclude reference="991-rv-qCy"/>
                                 <exclude reference="fmI-rg-09x"/>
@@ -476,11 +478,11 @@
                                 <include reference="f0K-Uj-s8E"/>
                                 <include reference="gwq-qw-M5x"/>
                                 <include reference="rng-ni-zLN"/>
+                                <include reference="kl5-5F-H5n"/>
                                 <include reference="15b-X7-PTv"/>
                                 <include reference="Hcp-rm-PJX"/>
                                 <include reference="K7J-fl-t7O"/>
                                 <include reference="bgA-7v-sl4"/>
-                                <include reference="kl5-5F-H5n"/>
                                 <include reference="7vs-aB-tIR"/>
                                 <include reference="991-rv-qCy"/>
                                 <include reference="fmI-rg-09x"/>
@@ -507,6 +509,7 @@
                         <viewControllerLayoutGuide type="bottom" id="0Nb-dy-cNu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Q5J-ZF-6gB">
+                        <rect key="frame" x="0.0" y="0.0" width="368" height="760"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>

@@ -32,6 +32,7 @@ class AttractionViewCell: BaseCollectionViewCell {
     // MARK: Setup
     
     override func setup() {
+        removeViews()
         // main image
         _mainImageView = UIImageView(frame: CGRect(x: kDefaultMargin, y: kDefaultMargin, width: kImageViewWidth, height: kImageViewHeight))
         // Title and text labels
@@ -70,6 +71,12 @@ class AttractionViewCell: BaseCollectionViewCell {
         imageLayer.cornerRadius = _mainImageView == nil ? 40.0 : _mainImageView!.frame.size.width/2.0
         imageLayer.masksToBounds = true
         _mainImageView!.clipsToBounds = true
+    }
+
+    func removeViews() {
+        for subview in subviews {
+            (subview as UIView).removeFromSuperview()
+        }
     }
     
     // MARK: Menu actions
