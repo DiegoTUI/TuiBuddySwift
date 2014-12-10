@@ -74,9 +74,9 @@ class AttractionViewCell: BaseCollectionViewCell {
     }
 
     func removeViews() {
-        for subview in subviews {
-            (subview as UIView).removeFromSuperview()
-        }
+        _titleLabel?.removeFromSuperview()
+        _textLabel?.removeFromSuperview()
+        _mainImageView?.removeFromSuperview()
     }
     
     // MARK: Menu actions
