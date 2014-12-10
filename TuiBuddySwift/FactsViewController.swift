@@ -8,7 +8,9 @@
 
 import UIKit
 
-class FactsViewController: UIViewController {
+class FactsViewController: UIViewController, NotificationHandler {
+    // should the controller show alerts?
+    var shouldShow = true
     // outlets
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var pageContainerView: UIView!
@@ -71,5 +73,12 @@ class FactsViewController: UIViewController {
     
     @IBAction func closeButtonClicked(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // MARK: - Notification Handler
+    
+    func handleNotificationForAttraction(attraction: Attraction) {
+        self.attraction = attraction
+        self.viewDidLoad()
     }
 }
