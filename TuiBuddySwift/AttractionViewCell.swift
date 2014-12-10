@@ -19,7 +19,8 @@ class AttractionViewCell: BaseCollectionViewCell {
     var _textLabel: UILabel? = nil
     var _mainImageView: UIImageView? = nil
     // Layout constants
-    let kDefaultMargin = 8.0
+    let kDefaultOffset = 8.0
+    let kImageUpperOffset = 5.0
     let kBetweenLabelsOffset = 0.0
     let kImageViewHeight = 80.0
     let kImageViewWidth = 80.0
@@ -34,12 +35,12 @@ class AttractionViewCell: BaseCollectionViewCell {
     override func setup() {
         removeViews()
         // main image
-        _mainImageView = UIImageView(frame: CGRect(x: kDefaultMargin, y: kDefaultMargin, width: kImageViewWidth, height: kImageViewHeight))
+        _mainImageView = UIImageView(frame: CGRect(x: kDefaultOffset, y: kImageUpperOffset, width: kImageViewWidth, height: kImageViewHeight))
         // Title and text labels
-        let kLabelX = 2.0 * kDefaultMargin + kImageViewWidth
-        let kLabelWidth = Double(self.frame.width) - kLabelX - kDefaultMargin
-        let kTextLabelY = kDefaultMargin + kBetweenLabelsOffset + kLabelHeight
-        _titleLabel = UILabel(frame: CGRect(x: kLabelX, y: kDefaultMargin, width: kLabelWidth, height: kLabelHeight))
+        let kLabelX = 2.0 * kDefaultOffset + kImageViewWidth
+        let kLabelWidth = Double(self.frame.width) - kLabelX - kDefaultOffset
+        let kTextLabelY = kDefaultOffset + kBetweenLabelsOffset + kLabelHeight
+        _titleLabel = UILabel(frame: CGRect(x: kLabelX, y: kDefaultOffset, width: kLabelWidth, height: kLabelHeight))
         _titleLabel!.font = UIFont(name: kBoldFont, size: CGFloat(kH2FontSize))!
         _titleLabel!.textColor = kDarkBlueColor
         _textLabel = UILabel(frame: CGRect(x: kLabelX, y: kTextLabelY, width: kLabelWidth, height: kLabelHeight))
