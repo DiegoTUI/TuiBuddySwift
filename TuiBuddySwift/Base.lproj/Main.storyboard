@@ -388,22 +388,6 @@
             </objects>
             <point key="canvasLocation" x="352" y="742"/>
         </scene>
-        <!--Fact Navigation-->
-        <scene sceneID="gdg-VA-o68">
-            <objects>
-                <navigationController title="Fact Navigation" id="K5T-EV-toN" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Owa-5q-dNA">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="AOX-ui-mKc" kind="relationship" relationship="rootViewController" id="DqR-ij-Faz"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="un2-hn-1CB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1083" y="473.25"/>
-        </scene>
         <!--Facts View Controller-->
         <scene sceneID="SRG-9d-8sM">
             <objects>
@@ -532,59 +516,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F3Q-kO-JPj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2448" y="-193.5"/>
-        </scene>
-        <!--Fact View Controller-->
-        <scene sceneID="UvR-fW-rgI">
-            <objects>
-                <viewController storyboardIdentifier="attractionFactViewController" title="Fact View Controller" id="AOX-ui-mKc" customClass="AttractionFactViewController" customModule="TuiBuddySwift" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ggd-hC-ZhT"/>
-                        <viewControllerLayoutGuide type="bottom" id="xqA-J7-cfo"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="WYp-cm-UK1">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yj-dw-GaA">
-                                <rect key="frame" x="16" y="72" width="568" height="145"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="145" id="e61-Z6-1aQ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe screen for more facts!!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKj-yW-Tou">
-                                <rect key="frame" x="189" y="571" width="224" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="6yj-dw-GaA" firstAttribute="centerX" secondItem="vKj-yW-Tou" secondAttribute="centerX" constant="-1" id="PUJ-ez-I5W"/>
-                            <constraint firstItem="6yj-dw-GaA" firstAttribute="top" secondItem="Ggd-hC-ZhT" secondAttribute="bottom" constant="8" symbolic="YES" id="Zqf-2G-znb"/>
-                            <constraint firstItem="6yj-dw-GaA" firstAttribute="trailing" secondItem="WYp-cm-UK1" secondAttribute="trailingMargin" id="c2Y-Dg-vnd"/>
-                            <constraint firstItem="6yj-dw-GaA" firstAttribute="leading" secondItem="WYp-cm-UK1" secondAttribute="leadingMargin" id="dFt-jr-ZLe"/>
-                            <constraint firstItem="xqA-J7-cfo" firstAttribute="top" secondItem="vKj-yW-Tou" secondAttribute="bottom" constant="8" symbolic="YES" id="yga-DJ-ACc"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="bFx-1L-J9p">
-                        <barButtonItem key="rightBarButtonItem" title="Close" id="pWZ-d1-rVo">
-                            <connections>
-                                <action selector="closeButtonClicked:" destination="AOX-ui-mKc" id="Dkl-xV-g2J"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="actionLabel" destination="vKj-yW-Tou" id="E9T-t4-xfn"/>
-                        <outlet property="descriptionLabel" destination="6yj-dw-GaA" id="avG-t6-g9p"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dEN-72-msM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1804.5" y="473.25"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="Ph8-wM-aQ9">
