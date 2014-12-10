@@ -13,12 +13,13 @@ class FactPageViewController: UIViewController {
     let kDefaultOffset: CGFloat = 10.0
     let kHalfDefaultOffset: CGFloat = 5.0
     let kBottomImageOffset: CGFloat = 50.0
-    let kImageWidth: CGFloat = 250.0
-    let kImageHeight: CGFloat = 333.33
+    let kImageWidth: CGFloat = 225.0
+    let kImageHeight: CGFloat = 300.0
     let kCloseButtonWidth: CGFloat = 30.0
     let kCloseButtonHeight: CGFloat = 30.0
     let kTitleLabelHeight: CGFloat = 30.0
     let kYellowTitleLabelHeight: CGFloat = 20.0
+    let kSwipeLabelHeight: CGFloat = 20.0
     
     // the fact
     var fact: Fact? = nil
@@ -78,6 +79,15 @@ class FactPageViewController: UIViewController {
         view.addSubview(yellowBoxView)
         view.addSubview(yellowTitleLabel)
         view.addSubview(yellowTextLabel)
+        // swipe text label
+        let kSwipeLabelY: CGFloat = yellowBoxView.frame.origin.y + kYellowBoxHeight + kHalfDefaultOffset
+        let kSwipeLabelWidth = width - 2.0*kHalfDefaultOffset
+        let swipeLabel = UILabel(frame: CGRect(x: kHalfDefaultOffset, y: kSwipeLabelY, width: kSwipeLabelWidth, height: kSwipeLabelHeight))
+        swipeLabel.font = UIFont(name: kBoldFont, size: CGFloat(kH2FontSize))!
+        swipeLabel.textColor = kWhiteColor
+        swipeLabel.textAlignment = .Right
+        swipeLabel.text = "Swipe for more"
+        view.addSubview(swipeLabel)
         // Image view
         let kImageViewX: CGFloat = (width - kImageWidth) / 2.0
         let kImageViewY: CGFloat = height - kBottomImageOffset - kImageHeight
