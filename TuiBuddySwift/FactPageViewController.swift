@@ -51,6 +51,10 @@ class FactPageViewController: UIViewController {
         let kTitleLabelWidth: CGFloat = width - 2.0*kDefaultOffset - kCloseButtonWidth
         let titleLabel = UILabel(frame: CGRect(x: kDefaultOffset, y: kDefaultOffset, width: kTitleLabelWidth, height: kTitleLabelHeight))
         titleLabel.font = UIFont(name: kBoldFont, size: CGFloat(kH1FontSize))!
+        // lower the size of the font if the string is truncated
+        while (fact!.name.sizeWithAttributes([NSFontAttributeName: titleLabel.font]).width > titleLabel.bounds.size.width) {
+            titleLabel.font = UIFont(name: kBoldFont, size: titleLabel.font.pointSize - 0.5)!
+        }
         titleLabel.textColor = kWhiteColor
         titleLabel.text = fact!.name
         view.addSubview(titleLabel)
