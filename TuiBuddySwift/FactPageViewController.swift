@@ -57,6 +57,7 @@ class FactPageViewController: UIViewController {
         }
         titleLabel.textColor = kWhiteColor
         titleLabel.text = fact!.name
+        addShadowToLabel(titleLabel)
         view.addSubview(titleLabel)
         // yellow box
         // title
@@ -99,6 +100,14 @@ class FactPageViewController: UIViewController {
         mainImageView.contentMode = .ScaleAspectFit
         mainImageView.image = UIImage(named: fact!.imageName)
         view.addSubview(mainImageView)
+    }
+    
+    func addShadowToLabel(label: UILabel) {
+        label.layer.shadowColor = kBlackColor.CGColor;
+        label.layer.shadowOffset = CGSizeMake(0.0, 0.0);
+        label.layer.shadowRadius = 3.0;
+        label.layer.shadowOpacity = 0.5;
+        label.layer.masksToBounds = false;
     }
     
     // MARK: Actions
