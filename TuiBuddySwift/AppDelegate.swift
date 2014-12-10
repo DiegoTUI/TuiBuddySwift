@@ -22,10 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ReachabilityManager.sharedInstance
         // Register protocol for caching
         NSURLProtocol.registerClass(RNCachingURLProtocol.self)
-        // register for local notifications (iOS8 only)
-        if UIApplication.instancesRespondToSelector(Selector("registerUserNotificationSettings:")) {
-            application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
-        }
+        // set up notifications
+        setupNotifications(application)
         // change NavigationBar style for all navigation bars
         UINavigationBar.appearance().barTintColor = kSandColor
         UINavigationBar.appearance().tintColor = kDarkBlueColor
@@ -45,10 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         println("Entered background.")
-        /*var localNotification = UILocalNotification()
-        localNotification.timeZone = NSTimeZone.defaultTimeZone()
-        localNotification.alertBody = "holy crap!!"
-        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)*/
+        if config.debug {
+            NotificationManager.sharedInstance.didEnterRegion("1")
+        }
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -64,6 +61,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        handleLocalNotification(notification)
+    }
+    
+    // MARK: - Handle actions from notifications
+    
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
+        if (identifier == kOpenNowActionIdentifier) {
+            handleLocalNotification(notification)
+        }
+        completionHandler()
+    }
+    
+    // MARK: - Setup notifications
+    
+    func setupNotifications(application: UIApplication) {
+        // create actions
+        // open now
+        var openNowAction = UIMutableUserNotificationAction()
+        openNowAction.identifier = kOpenNowActionIdentifier
+        openNowAction.title = kOpenNowActionTitle
+        openNowAction.activationMode = .Foreground
+        openNowAction.destructive = false
+        openNowAction.authenticationRequired = false
+        // look later
+        var lookLaterAction = UIMutableUserNotificationAction()
+        lookLaterAction.identifier = kLookLaterActionIdentifier
+        lookLaterAction.title = kLookLaterActionTitle
+        lookLaterAction.activationMode = .Background
+        lookLaterAction.destructive = false
+        lookLaterAction.authenticationRequired = false
+        // notification category
+        var notificationCategory = UIMutableUserNotificationCategory()
+        notificationCategory.identifier = kNotificationCategoryIdentifier
+        notificationCategory.setActions([openNowAction, lookLaterAction], forContext: .Default)
+        notificationCategory.setActions([openNowAction, lookLaterAction], forContext: .Minimal)
+        // register for local notifications (iOS8 only)
+        var categories = NSSet(object: notificationCategory)
+        if UIApplication.instancesRespondToSelector(Selector("registerUserNotificationSettings:")) {
+            println("registerring user notification settings")
+            application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: categories))
+        }
+    }
+    
+    // MARK: Handle notification
+    
+    func handleLocalNotification(notification: UILocalNotification) {
         // clear notifications in NotificationManager
         NotificationManager.sharedInstance.resetLocalNotifications()
         // handle notification
@@ -74,6 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             notificationHandler.handleNotificationForAttraction(attraction)
         }
     }
+    
     
     // MARK: - Visible view controller
     

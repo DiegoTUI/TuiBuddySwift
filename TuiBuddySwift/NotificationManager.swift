@@ -35,13 +35,18 @@ class NotificationManager: RegionManagerDelegate {
         return Static.instance!
     }
     
+    // MARK: Init
+    
+    init() {
+    }
+    
     // MARK: - RegionManagerDelegate
     
     func didEnterRegion(attractionId: String) {
         println("Entered region: \(attractionId)")
         // find attraction
         let attraction = AttractionManager.sharedInstance.readAttractions().filter({$0.id == attractionId})[0]
-        let message = "Check out these cool facts about \(attraction.name)!!"
+        let message = "You are at \(attraction.name). Would you like more info about it?"
         // check if the app is in background or foreground
         if UIApplication.sharedApplication().applicationState == .Background {
             // Background: trigger local notification
@@ -96,6 +101,7 @@ class NotificationManager: RegionManagerDelegate {
             var localNotification = UILocalNotification()
             localNotification.timeZone = NSTimeZone.defaultTimeZone()
             localNotification.alertBody = message
+            localNotification.category = kNotificationCategoryIdentifier
             // serialize the attraction using a NSKeyedArchiver
             let archivedAttraction = NSKeyedArchiver.archivedDataWithRootObject(attraction)
             localNotification.userInfo = ["attraction": archivedAttraction]
