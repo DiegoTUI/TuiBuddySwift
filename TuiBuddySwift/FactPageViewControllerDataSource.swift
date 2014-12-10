@@ -26,11 +26,10 @@ class FactPageViewControllerDataSource: NSObject, UIPageViewControllerDataSource
     
     func createViewControllers() {
         for fact in _facts {
-            if var factPageViewController = _storyboard.instantiateViewControllerWithIdentifier("factPageViewController") as? FactPageViewController {
-                factPageViewController.fact = fact
-                factPageViewController.frame = _frame
-                _viewControllers.append(factPageViewController)
-            }
+            var factPageViewController = FactPageViewController()
+            factPageViewController.fact = fact
+            factPageViewController.frame = _frame
+            _viewControllers.append(factPageViewController)
         }
     }
     

@@ -521,26 +521,6 @@
             </objects>
             <point key="canvasLocation" x="1095" y="-194.25"/>
         </scene>
-        <!--Fact Page View Controller-->
-        <scene sceneID="dkW-BS-arC">
-            <objects>
-                <viewController storyboardIdentifier="factPageViewController" id="JHw-tb-WMM" customClass="FactPageViewController" customModule="TuiBuddySwift" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="TMa-Qf-Qcd"/>
-                        <viewControllerLayoutGuide type="bottom" id="0Nb-dy-cNu"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Q5J-ZF-6gB">
-                        <rect key="frame" x="0.0" y="0.0" width="368" height="760"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    </view>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="368" height="760"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="F3Q-kO-JPj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2448" y="-193.5"/>
-        </scene>
         <!--Page View Controller-->
         <scene sceneID="Ph8-wM-aQ9">
             <objects>
