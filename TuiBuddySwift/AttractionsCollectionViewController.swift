@@ -35,7 +35,7 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
         //self.collectionView.registerClass(AttractionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
-        cellWidth = Double(self.collectionView.frame.size.width) - kLeftOffset - kRightOffset
+        cellWidth = Double(self.collectionView!.frame.size.width) - kLeftOffset - kRightOffset
         // set contextual menu
         let editMenuItem = UIMenuItem(title: "Edit", action: "editMenuOptionClicked:")
         UIMenuController.sharedMenuController().menuItems = [editMenuItem]
@@ -45,7 +45,7 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
             self.navigationItem.leftBarButtonItem = debugButton
         }
         // set the background blue
-        collectionView.backgroundColor = kBlueColor
+        collectionView!.backgroundColor = kBlueColor
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -165,9 +165,9 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
     
     func attractionEdited(attraction: Attraction) {
         if let cellToRefresh = cellForAttraction(attraction) {
-            let indexPath: NSIndexPath? = collectionView.indexPathForCell(cellToRefresh)
+            let indexPath: NSIndexPath? = collectionView!.indexPathForCell(cellToRefresh)
             let indexPaths = indexPath == nil ? [] : [indexPath!]
-            collectionView.reloadItemsAtIndexPaths(indexPaths)
+            collectionView!.reloadItemsAtIndexPaths(indexPaths)
         }
     }
     
@@ -180,7 +180,7 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
     // MARK: find cell with attraction
     
     func cellForAttraction(attraction: Attraction) -> AttractionViewCell? {
-        for cell in collectionView.visibleCells() {
+        for cell in collectionView!.visibleCells() {
             if (cell as AttractionViewCell).containsAttraction(attraction) {
                 return cell as? AttractionViewCell
             }

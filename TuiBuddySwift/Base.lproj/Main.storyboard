@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EwV-7S-4Rw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C81f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EwV-7S-4Rw">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -461,20 +462,20 @@
                                 <exclude reference="9Ne-DL-s5n"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="2cq-Fi-zmG"/>
-                                <exclude reference="A27-hX-Ruc"/>
-                                <exclude reference="mpN-iG-hfS"/>
-                                <exclude reference="z8T-ae-IQI"/>
                                 <exclude reference="16N-M5-dmv"/>
                                 <exclude reference="2Pd-3u-VOM"/>
                                 <exclude reference="Arq-GS-GDw"/>
                                 <exclude reference="BnV-d6-r14"/>
                                 <exclude reference="a8f-LU-Ffn"/>
+                                <exclude reference="Uc1-oS-Uk9"/>
+                                <exclude reference="2cq-Fi-zmG"/>
+                                <exclude reference="A27-hX-Ruc"/>
+                                <exclude reference="mpN-iG-hfS"/>
+                                <exclude reference="z8T-ae-IQI"/>
                                 <exclude reference="Hfj-me-WIz"/>
                                 <exclude reference="Pd0-AW-JF1"/>
                                 <exclude reference="VSZ-HP-Kzt"/>
                                 <exclude reference="Y6L-aD-EbV"/>
-                                <exclude reference="Uc1-oS-Uk9"/>
                                 <exclude reference="VZi-TW-MHA"/>
                                 <exclude reference="iQb-t3-PIG"/>
                                 <exclude reference="lzh-D9-xpv"/>
@@ -490,20 +491,20 @@
                                 <include reference="9Ne-DL-s5n"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="2cq-Fi-zmG"/>
-                                <include reference="A27-hX-Ruc"/>
-                                <include reference="mpN-iG-hfS"/>
-                                <include reference="z8T-ae-IQI"/>
                                 <include reference="16N-M5-dmv"/>
                                 <include reference="2Pd-3u-VOM"/>
                                 <include reference="Arq-GS-GDw"/>
                                 <include reference="BnV-d6-r14"/>
                                 <include reference="a8f-LU-Ffn"/>
+                                <include reference="Uc1-oS-Uk9"/>
+                                <include reference="2cq-Fi-zmG"/>
+                                <include reference="A27-hX-Ruc"/>
+                                <include reference="mpN-iG-hfS"/>
+                                <include reference="z8T-ae-IQI"/>
                                 <include reference="Hfj-me-WIz"/>
                                 <include reference="Pd0-AW-JF1"/>
                                 <include reference="VSZ-HP-Kzt"/>
                                 <include reference="Y6L-aD-EbV"/>
-                                <include reference="Uc1-oS-Uk9"/>
                                 <include reference="VZi-TW-MHA"/>
                                 <include reference="iQb-t3-PIG"/>
                                 <include reference="lzh-D9-xpv"/>
