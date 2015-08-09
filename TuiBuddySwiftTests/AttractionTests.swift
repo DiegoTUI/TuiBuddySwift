@@ -50,7 +50,7 @@ class AttractionTests: XCTestCase {
         let fact = Fact(id:"35", name: "testName", text:"testText")
         let attraction = Attraction(id: "53", name: "testName", text: "testText", latitude: 1.0, longitude: 2.0, radius: 3.0, facts: [fact])
         let archivedAttraction = NSKeyedArchiver.archivedDataWithRootObject(attraction)
-        let retrievedAttraction = NSKeyedUnarchiver.unarchiveObjectWithData(archivedAttraction) as Attraction
+        let retrievedAttraction = NSKeyedUnarchiver.unarchiveObjectWithData(archivedAttraction) as! Attraction
         XCTAssertEqual(attraction, retrievedAttraction, "wrong attraction archived by NSKeyedArchiver")
         XCTAssertEqual(attraction.facts.count, retrievedAttraction.facts.count, "wrong facts length archived by NSKeyedArchiver")
         XCTAssertEqual(attraction.facts[0], retrievedAttraction.facts[0], "wrong fact archived by NSKeyedArchiver")

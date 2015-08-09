@@ -60,7 +60,7 @@ class AttractionFactViewController: UIViewController {
         // push a new view controller into the Navigation View Controller if there is a nextFact
         if let nextFact = AttractionFactViewController.factIterator?.next() {
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            var destinationViewController = storyBoard.instantiateViewControllerWithIdentifier("attractionFactViewController") as AttractionFactViewController
+            var destinationViewController = storyBoard.instantiateViewControllerWithIdentifier("attractionFactViewController") as! AttractionFactViewController
             self.navigationController?.pushViewController(destinationViewController, animated: true)
         }
     }

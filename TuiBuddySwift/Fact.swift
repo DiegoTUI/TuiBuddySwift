@@ -33,10 +33,10 @@ class Fact: NSObject, NSCoding, Equatable {
     
     convenience required init(coder decoder: NSCoder) {
         self.init()
-        id = decoder.decodeObjectForKey("id") as String
-        name = decoder.decodeObjectForKey("name") as String
-        text = decoder.decodeObjectForKey("text") as String
-        imageName = decoder.decodeObjectForKey("imageName") as String
+        id = decoder.decodeObjectForKey("id") as! String
+        name = decoder.decodeObjectForKey("name")as! String
+        text = decoder.decodeObjectForKey("text") as! String
+        imageName = decoder.decodeObjectForKey("imageName") as! String
     }
     
     func encodeWithCoder(encoder: NSCoder) {

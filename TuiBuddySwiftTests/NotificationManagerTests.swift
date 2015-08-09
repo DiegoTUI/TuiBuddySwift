@@ -21,8 +21,8 @@ class NotificationManagerTests: XCTestCase {
     func handleLocalNotification (notification: UILocalNotification) {
         XCTAssertEqual(notification.alertBody!, messageInNotification!, "wrong message sent in notification")
         // unarchive attraction
-        let archivedAttraction = notification.userInfo!["attraction"] as NSData
-        let attraction: Attraction = NSKeyedUnarchiver.unarchiveObjectWithData(archivedAttraction) as Attraction
+        let archivedAttraction = notification.userInfo!["attraction"] as! NSData
+        let attraction: Attraction = NSKeyedUnarchiver.unarchiveObjectWithData(archivedAttraction) as! Attraction
         XCTAssertEqual(attraction, attractionInNotification!, "wrong attraction sent in notification")
         
         notificationsReceived![attractionInNotification!.id]!++
@@ -33,7 +33,7 @@ class NotificationManagerTests: XCTestCase {
         var shouldShow = true
         
         override func presentViewController(viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
-            var alert = viewControllerToPresent as UIAlertController
+            var alert = viewControllerToPresent as! UIAlertController
             XCTAssertEqual(alert.message!, master!.messageInNotification!, "wrong message in AlertController")
             master!.notificationsReceived![master!.attractionInNotification!.id]!++
         }

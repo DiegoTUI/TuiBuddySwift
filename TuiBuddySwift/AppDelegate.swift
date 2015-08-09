@@ -100,7 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var categories = NSSet(object: notificationCategory)
         if UIApplication.instancesRespondToSelector(Selector("registerUserNotificationSettings:")) {
             println("registerring user notification settings")
-            application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: categories))
+            application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: categories as Set<NSObject>))
         }
     }
     
@@ -112,8 +112,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // handle notification
         var visibleViewController = NotificationManager.visibleViewController()
         if let notificationHandler = visibleViewController as? NotificationHandler {
-            let archivedAttraction = notification.userInfo!["attraction"] as NSData
-            let attraction: Attraction = NSKeyedUnarchiver.unarchiveObjectWithData(archivedAttraction) as Attraction
+            let archivedAttraction = notification.userInfo!["attraction"] as! NSData
+            let attraction: Attraction = NSKeyedUnarchiver.unarchiveObjectWithData(archivedAttraction) as! Attraction
             notificationHandler.handleNotificationForAttraction(attraction)
         }
     }

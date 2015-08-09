@@ -24,7 +24,7 @@ class IteratorTests: XCTestCase {
     func testEmptyIterator() {
         let stringArray: [String] = []
         let iterator = Iterator<String>(items: stringArray)
-        XCTAssertEqual(iterator.count(), stringArray.count, "wrong number of elements in the iterator")
+        XCTAssertEqual(iterator.countItems(), stringArray.count, "wrong number of elements in the iterator")
         XCTAssertNil(iterator.current(), "empty iterator has no current item")
         XCTAssertNil(iterator.next(), "empty iterator has no next item")
         XCTAssertNil(iterator.prev(), "empty iterator has no prev item")
@@ -36,7 +36,7 @@ class IteratorTests: XCTestCase {
         let stringArray = ["1", "2", "3"]
         let iterator = Iterator<String>(items: stringArray)
         // count
-        XCTAssertEqual(iterator.count(), stringArray.count, "wrong number of elements in the iterator")
+        XCTAssertEqual(iterator.countItems(), stringArray.count, "wrong number of elements in the iterator")
         // first element
         XCTAssertNotNil(iterator.current(), "current item should exist in this iterator")
         XCTAssertEqual(iterator.current()!, "1", "wrong first element of this iterator")

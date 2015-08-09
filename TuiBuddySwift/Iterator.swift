@@ -14,10 +14,10 @@ class Iterator <T:Equatable> {
     var prev: () -> T? = {return nil}
     var isPrev: () -> Bool = {return false}
     var isNext: () -> Bool = {return false}
-    var count: () -> Int = {return 0}
+    var countItems: () -> Int = {return 0}
     
     init(items: [T]) {
-        var currentItem: T? = (countElements(items) > 0) ? items[0] : nil
+        var currentItem: T? = (count(items) > 0) ? items[0] : nil
         // current
         self.current = {[unowned self]() in
             return currentItem
@@ -28,7 +28,7 @@ class Iterator <T:Equatable> {
                 return nil
             }
             if let index = find(items, currentItem!) {
-                if index < countElements(items) - 1 {
+                if index < count(items) - 1 {
                     currentItem = items[index + 1]
                     return currentItem
                 }
@@ -42,7 +42,7 @@ class Iterator <T:Equatable> {
                 return false
             }
             if let index = find(items, currentItem!) {
-                if index < countElements(items) - 1 {
+                if index < count(items) - 1 {
                     return true
                 }
                 return false
@@ -77,7 +77,7 @@ class Iterator <T:Equatable> {
             return false
         }
         // count
-        self.count = {[unowned self]() in
+        self.countItems = {[unowned self]() in
             return items.count
         }
     }

@@ -90,7 +90,7 @@ class NotificationManager: RegionManagerDelegate {
             return nil
         }
         if rootViewController! is UINavigationController {
-            return (rootViewController! as UINavigationController).visibleViewController
+            return (rootViewController! as! UINavigationController).visibleViewController
         }
         return rootViewController!
     }

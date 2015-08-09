@@ -37,7 +37,7 @@ class FactsViewController: UIViewController, NotificationHandler {
         
         let startingViewController: FactPageViewController = self.pageViewControllerDataSource!.initialViewController()!
         let viewControllers: NSArray = [startingViewController]
-        pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: nil)
+        pageViewController!.setViewControllers(viewControllers as [AnyObject], direction: .Forward, animated: false, completion: nil)
         // set background view color
         backgroundView.backgroundColor = kTransparentBlueColor
     }

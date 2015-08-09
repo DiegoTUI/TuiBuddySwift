@@ -89,7 +89,7 @@ class RegionManager: NSObject, CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]) {
         println("did update locations")
-        let location = (locations.last as CLLocation)
+        let location = (locations.last as! CLLocation)
         delegate?.didUpdateLocation?(location)
         let regions = regionsForCoordinate(location.coordinate)
         var newInRegions = Array<String>()

@@ -50,7 +50,7 @@ class AttractionManager {
     func openDb() {
         // copy the db to writable file system and open it
         let dbPath: String! = NSBundle.mainBundle().pathForResource(config.sqliteDbName, ofType: "sqlite")
-        let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
         let writableDbPath = "\(documentsPath)/\(config.sqliteDbName).sqlite"
         // copy the db file if it doesn't exist
         if !NSFileManager.defaultManager().fileExistsAtPath(writableDbPath) {
@@ -82,17 +82,17 @@ class AttractionManager {
         var cmsItem: NSDictionary? = cmsItemIterator.current()
         while let cmsAttraction = cmsItem  {
             // get the variables to build the attraction
-            let id: String = cmsAttraction["attractionId"] as String
-            let name: String = cmsAttraction["attractionName"] as String
-            let text: String = cmsAttraction["attractionText"] as String
+            let id: String = cmsAttraction["attractionId"] as! String
+            let name: String = cmsAttraction["attractionName"] as! String
+            let text: String = cmsAttraction["attractionText"] as! String
             // now facts
             var facts = Array<Fact>()
-            let cmsFacts: NSArray = cmsAttraction["facts"] as NSArray
+            let cmsFacts: NSArray = cmsAttraction["facts"] as! NSArray
             for fact in cmsFacts {
-                let factAsDictionary: NSDictionary = fact as NSDictionary
-                var factToInsert = Fact(id: factAsDictionary["factId"] as String,
-                    name: factAsDictionary["factTitle"] as String,
-                    text: factAsDictionary["factText"] as String)
+                let factAsDictionary: NSDictionary = fact as! NSDictionary
+                var factToInsert = Fact(id: factAsDictionary["factId"] as! String,
+                    name: factAsDictionary["factTitle"] as! String,
+                    text: factAsDictionary["factText"] as! String)
                 // set fact image
                 factToInsert.imageName = "fact_\(id)_\(factToInsert.id)"
                 facts.append(factToInsert)

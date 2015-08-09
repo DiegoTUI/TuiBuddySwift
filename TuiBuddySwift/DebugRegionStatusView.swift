@@ -20,7 +20,7 @@ class DebugRegionStatusView: UIView {
     
     func initWithAttractions(attractions: Array<Attraction>) {
         // Add labels with attractions
-        let labelSize = labelSizeForRows(countElements(attractions))
+        let labelSize = labelSizeForRows(count(attractions))
         for (index, attraction) in enumerate(attractions) {
             var label = UILabel(frame: CGRect(origin: CGPoint(x: kLeftMargin, y: kTopMargin + Double(index)*Double(labelSize.height)), size: labelSize))
             label.adjustsFontSizeToFitWidth = true

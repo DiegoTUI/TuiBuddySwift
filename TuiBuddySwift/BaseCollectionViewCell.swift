@@ -10,10 +10,10 @@ import UIKit
 
 class BaseCollectionViewCell: UICollectionViewCell {
 
-    override init() {
+    /*override init() {
         super.init()
         setup()
-    }
+    }*/
     
     override init(frame: CGRect) {
         super.init(frame: frame)

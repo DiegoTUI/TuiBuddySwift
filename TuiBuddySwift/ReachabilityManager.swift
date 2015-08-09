@@ -39,7 +39,7 @@ class ReachabilityManager {
     // MARK: - Capture changes in reachability
     @objc func reachabilityChanged(notification: NSNotification) {
         println("Reachability changed")
-        if (notification.object as Reachability).currentReachabilityStatus() == .NotReachable {
+        if (notification.object as! Reachability).currentReachabilityStatus() == .NotReachable {
             println("Internet not reachable")
             isInternetReachable = false
         }

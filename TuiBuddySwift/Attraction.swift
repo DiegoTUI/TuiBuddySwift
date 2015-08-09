@@ -53,13 +53,13 @@ class Attraction: NSObject, NSCoding, Equatable {
     
     convenience required init(coder decoder: NSCoder) {
         self.init()
-        id = decoder.decodeObjectForKey("id") as String
-        name = decoder.decodeObjectForKey("name") as String
-        text = decoder.decodeObjectForKey("text") as String
+        id = decoder.decodeObjectForKey("id") as! String
+        name = decoder.decodeObjectForKey("name") as! String
+        text = decoder.decodeObjectForKey("text") as! String
         latitude = decoder.decodeDoubleForKey("latitude")
         longitude = decoder.decodeDoubleForKey("longitude")
         radius = decoder.decodeDoubleForKey("radius")
-        facts = decoder.decodeObjectForKey("facts") as [Fact]
+        facts = decoder.decodeObjectForKey("facts") as! [Fact]
         _buildImageNames()
     }
     

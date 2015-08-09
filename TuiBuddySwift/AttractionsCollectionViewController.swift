@@ -62,19 +62,19 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == kShowFactsSegue {
-            let attraction = sender as Attraction
-            var factPageViewController = segue.destinationViewController as FactsViewController
+            let attraction = sender as! Attraction
+            var factPageViewController = segue.destinationViewController as! FactsViewController
             factPageViewController.attraction = attraction
         } else if segue.identifier == kAddAttractionSegue {
             // stop updating locations
             RegionManager.sharedInstance.stopMonitoringRegions()
-            let destinationViewController = segue.destinationViewController as AddEditAttractionViewController
+            let destinationViewController = segue.destinationViewController as! AddEditAttractionViewController
             destinationViewController.titleText = "Add Attraction"
             destinationViewController.delegate = self
         } else if segue.identifier == kEditAttractionSegue {
             // stop updating locations
             RegionManager.sharedInstance.stopMonitoringRegions()
-            let destinationViewController = segue.destinationViewController as AddEditAttractionViewController
+            let destinationViewController = segue.destinationViewController as! AddEditAttractionViewController
             destinationViewController.titleText = "Edit Attraction"
             destinationViewController.attraction = sender as? Attraction
             destinationViewController.delegate = self
@@ -93,7 +93,7 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as AttractionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! AttractionViewCell
     
         // Configure the cell
         cell.attraction = AttractionManager.sharedInstance.readAttractions()[indexPath.row] as Attraction
@@ -136,7 +136,7 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier(kShowFactsSegue, sender: (collectionView.cellForItemAtIndexPath(indexPath) as AttractionViewCell).attraction)
+        performSegueWithIdentifier(kShowFactsSegue, sender: (collectionView.cellForItemAtIndexPath(indexPath) as! AttractionViewCell).attraction)
     }
 
     
@@ -181,7 +181,7 @@ class AttractionsCollectionViewController: UICollectionViewController, Attractio
     
     func cellForAttraction(attraction: Attraction) -> AttractionViewCell? {
         for cell in collectionView!.visibleCells() {
-            if (cell as AttractionViewCell).containsAttraction(attraction) {
+            if (cell as! AttractionViewCell).containsAttraction(attraction) {
                 return cell as? AttractionViewCell
             }
         }

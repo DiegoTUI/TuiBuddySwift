@@ -41,7 +41,7 @@ class FactTests: XCTestCase {
     func testNSCoding() {
         let fact = Fact(id:"53", name: "testName", text:"testDifferentText")
         let archivedFact = NSKeyedArchiver.archivedDataWithRootObject(fact)
-        let retrievedFact = NSKeyedUnarchiver.unarchiveObjectWithData(archivedFact) as Fact
+        let retrievedFact = NSKeyedUnarchiver.unarchiveObjectWithData(archivedFact) as! Fact
         XCTAssertEqual(fact, retrievedFact, "wrong fact archived by NSKeyedArchiver")
     }
 

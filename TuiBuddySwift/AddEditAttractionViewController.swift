@@ -13,7 +13,7 @@ extension String {
     // Calculates if a string can be converted to double
     func isDouble() -> Bool {
         let scanner = NSScanner(string: self)
-        return scanner.scanDouble(nil) && scanner.scanLocation == countElements(self)
+        return scanner.scanDouble(nil) && scanner.scanLocation == count(self)
     }
     // Double value of string
     var double:Double {
@@ -80,7 +80,7 @@ class AddEditAttractionViewController: UIViewController, UITextFieldDelegate, CL
     }
     
     func checkTextFieldForEmpty(textField: UITextField) -> Bool {
-        if countElements(textField.text) > 0 {
+        if count(textField.text) > 0 {
             textField.layer.borderColor = UIColor.blackColor().CGColor
             return true
         } else {
@@ -146,7 +146,7 @@ class AddEditAttractionViewController: UIViewController, UITextFieldDelegate, CL
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]) {
         _locationManager.stopUpdatingLocation()
-        let location = (locations.last as CLLocation)
+        let location = (locations.last as! CLLocation)
         // fill text fields in
         latitudeTextField.text = "\(location.coordinate.latitude)"
         longitudeTextField.text = "\(location.coordinate.longitude)"

@@ -36,7 +36,7 @@ class CmsManager {
     // MARK: - Iteration
     
     func cmsItemIterator() -> Iterator<NSDictionary> {
-        return Iterator<NSDictionary>(items: _cmsContents as [NSDictionary])
+        return Iterator<NSDictionary>(items: _cmsContents as! [NSDictionary])
     }
     
     // MARK: - Reload cms (only used for test purposes)

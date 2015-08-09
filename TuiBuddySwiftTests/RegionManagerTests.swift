@@ -71,7 +71,7 @@ class RegionManagerTests: XCTestCase {
         var attractions = AttractionManager.sharedInstance.readAttractions()
         for attraction in attractions {
             let regions = regionManagerInstance!.regionsForCoordinate(CLLocationCoordinate2D(latitude: attraction.latitude, longitude: attraction.longitude))
-            XCTAssertEqual(countElements(regions), 1, "only the designated region should be returned")
+            XCTAssertEqual(count(regions), 1, "only the designated region should be returned")
             let region = regions[0]
             XCTAssertEqual(region.identifier, String(attraction.id), "attraction and region have different id")
             XCTAssertEqualWithAccuracy(attraction.latitude, region.center.latitude, 0.01, "attraction and region have different latitude")
