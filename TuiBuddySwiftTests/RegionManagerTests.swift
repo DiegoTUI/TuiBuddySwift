@@ -14,7 +14,7 @@ var countEnteredRegion = Dictionary<String, Int>()
 var countExitedRegion = Dictionary<String, Int>()
 var countUpdatedLocation = 0
 
-class mockRegionManagerDelegate: RegionManagerDelegate {
+@objc class mockRegionManagerDelegate: RegionManagerDelegate {
     func didEnterRegion(attractionId: String) {
         countEnteredRegion[attractionId]!++
     }
